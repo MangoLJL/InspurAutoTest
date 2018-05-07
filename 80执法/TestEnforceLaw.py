@@ -8,7 +8,7 @@ import time
 from time import sleep
 #driver.find_element_by_xpath("").click()
 
-class testEnforceLaw(object):
+class TestEnforceLaw(object):
 	def __init__(self,url):
 		self.url=url
 
@@ -20,7 +20,10 @@ class testEnforceLaw(object):
 
 		#登陆页面并点击行政执法
 	def LoginAndClickEnforceLaw(self,driver):
-
+		def ClickXpath(string):
+			driver.find_element_by_xpath(string).click()
+		def ClickID(string):
+			driver.find_element_by_id(string).click()
 		driver.get(self.url)
 		driver.find_element_by_id("j_username").send_keys("YUANGONG01")
 		driver.find_element_by_id("j_password").send_keys("1")
@@ -60,6 +63,7 @@ class testEnforceLaw(object):
 		time.sleep(9)
 		driver.find_element_by_id("el_saveAndSendFilCase").click()
 		driver.switch_to.default_content()
+		
 		iframe=find_element_by_xpath("")
 		driver.switch_to.frame(2)
 		#driver.find_element_by_id("organInfoTab").click()
@@ -77,8 +81,4 @@ class testEnforceLaw(object):
 		driver.find_element_by_xpath("//a[@title='测试充电的']").click()
 
 
-mytest=testEnforceLaw("http://10.12.1.80/portal/jsp/public/login.jsp")
-driver=mytest.SetupDriver()
-mytest.LoginAndClickEnforceLaw(driver)
-mytest.NewCase(driver)
 
