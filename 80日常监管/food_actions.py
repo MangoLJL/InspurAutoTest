@@ -101,6 +101,28 @@ class NewCheck(object):
         collect_tab = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//a[@href='#collection']")))
         collect_tab.click()
         self.driver.find_element_by_xpath("//html//tr[1]/td[2]/input[1]").click()
-        time.sleep(1)
-        save_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "save")))
-        save_button.click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(5)
+        self.driver.find_element_by_xpath("//table[@id='queryTable1']//tbody//tr//td[@class='queryTable-btn-td']//button[@id='save']").click()
+        time.sleep(2)
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame("mainFrame")
+        self.driver.find_element_by_id("thirdhBtn").click()
+
+    def fourth_step(self):
+        question_sheet = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
+        question_sheet.click()
+        self.driver.find_element_by_id("basicSituation").send_keys("sunhr测试用文字")
+        self.driver.find_element_by_id("fourBtn").click()
+
+    def fifth_step(self):
+        checkResult0 = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult0")))
+        checkResult0.click()
+        self.driver.find_element_by_id("dealMethod0").click()
+        self.driver.find_element_by_id("isShowInfo1").click()
+        self.driver.find_element_by_id("fithBtn").click()
+
+    def final_step(self):
+        self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
+        self.driver.switch_to.default_content()
+        self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
