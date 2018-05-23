@@ -11,8 +11,8 @@ import time
 
 class Setup(object):
 
-    def __init__(self):
-        pass
+    def __init__(self, url):
+        self.url = url
 
         # 连接浏览器驱动
     def setup_driver(self):
@@ -20,6 +20,15 @@ class Setup(object):
         # chrome_option.add_argument("--headless")
         driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         driver.maximize_window()
+        self.driver = driver
+        self.driver.get(self.url)
+        self.driver.find_element_by_id("j_username").send_keys("wangweixuan")
+        self.driver.find_element_by_id("j_password").send_keys("1")
+        time.sleep(1)
+        self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
+        time.sleep(2)
+        self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'智慧监管')]").click()
+        self.driver.find_element_by_id("000000000000000000000000019445").click()
         return driver
 
 
@@ -126,3 +135,7 @@ class NewCheck(object):
         self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+
+'''
+class NewRandomDouble(object):
+'''

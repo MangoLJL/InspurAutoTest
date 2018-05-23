@@ -4,12 +4,11 @@ from food_actions import Setup, LoginAndClick, SwitchToFrame, NewCheck
 
 
 def new_check():
-    dc = Setup()
+
+    dc = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = dc.setup_driver()
-    login_and_click = LoginAndClick(driver, 'http://10.12.1.80/portal/jsp/public/login.jsp')
     new_check = NewCheck(driver)
     switch_to_frame = SwitchToFrame(driver)
-    login_and_click.login_and_click()
     new_check.click_food_new_check()
     switch_to_frame.switch_to_main_frame()
     new_check.first_step()
