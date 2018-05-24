@@ -8,15 +8,18 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+# 建立驱动，选择系统，选择菜单
+
 
 class Setup(object):
 
     def __init__(self, url):
         self.url = url
 
-        # 连接浏览器驱动
+        # 连接浏览器驱动并选择所需要测试的系统
     def setup_driver(self, username, password, first_menu, second_menu):
         chrome_option = Options()
+        # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
         driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         driver.maximize_window()
@@ -43,6 +46,8 @@ class Setup(object):
         self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
         self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
 
+# 切换Frame：MainFrame/default_content
+
 
 class SwitchToFrame(object):
 
@@ -59,6 +64,8 @@ class SwitchToFrame(object):
         self.driver.switch_to.default_content()
         time.sleep(1)
 
+# 获取当前日期，获取当前星期，获取当前日期和详细时间
+
 
 class Time(object):
 
@@ -70,3 +77,18 @@ class Time(object):
 
     def get_log_time(self):
         return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+
+
+class Button(object):
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def click_plus_button(self):
+        self.driver.find_element_by_xpath("//i[@class='fa fa-plus']").click()
+
+    def click_calendar_start_button(self):
+        self.driver.find_element_by_id("checkStartDate").click()
+
+    def click_calendar_end_button(self):
+        self.driver.find_element_by_id("checkEndDate").click()

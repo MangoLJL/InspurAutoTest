@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-from common_action import Time
+from common_action import Time, Button
 import time
 
 
@@ -18,14 +18,6 @@ class NewCheck(object):
         self.log_time = timer.get_log_time()
         self.current_week = timer.get_current_week()
         self.current_date = timer.get_current_date()
-
-    def click_food_new_check(self):
-        self.driver.find_element_by_id("menu-toggler").click()
-        time.sleep(2)
-
-        self.driver.find_element_by_id("000000000000000000000000019446").click()
-        self.driver.find_element_by_id("000000000000000000000000019454").click()
-        self.driver.find_element_by_id("check0101010001").click()
 
     def first_step(self):
         radio3 = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "radio3")))
@@ -87,7 +79,7 @@ class NewCheck(object):
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
 
 
-class NewRandomDouble(object):
+class NewDoubleRandom(object):
 
     def __init__(self, driver):
         self.driver = driver
@@ -95,6 +87,33 @@ class NewRandomDouble(object):
         self.log_time = timer.get_log_time()
         self.current_week = timer.get_current_week()
         self.current_date = timer.get_current_date()
+        self.button = Button(self.driver)
 
     def new_random_task(self):
-        self.driver.find_element_by_id
+        self.button.click_plus_button()
+        time.sleep(10)
+        self.driver.find_element_by_id("planName").send_keys("【%s】sunhr测试双随机" % self.current_date)
+        self.driver.find_element_by_id("planCode").send_keys(self.current_date)
+        self.driver.find_element_by_id("radio0").click()
+        self.driver.find_element_by_id("s2id_checkTypeCode").click()
+        self.driver.find_element_by_id("select2-results-1").click()
+        self.button.click_calendar_start_button()
+        self.driver.find_element_by_xpath("//html//div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[5]").click()
+        self.button.click_calendar_end_button()
+        self.driver.find_element_by_xpath("//html//div[4]/div[3]/table[1]/tbody[1]/tr[4]/td[5]").click()
+        self.driver.find_element_by_id("planContent").send_keys("【%s】sunhr测试双随机任务概要" % self.current_date)
+        self.driver.find_element_by_xpath("//a[@href='#planEntInfo']").click()
+        time.sleep(3)
+        listbox = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "select2-chosen-2")))
+        listbox.click()
+        self.driver.find_element_by_id("select2-result-label-79").click()
+        self.driver.find_element_by_id("mainEntAmount").send_keys("10")
+        self.driver.find_element_by_id("mainEntRadomButton").click()
+        self.driver.find_element_by_xpath("//a[@href='#planPersonInfo']").click()
+        self.driver.find_element_by_id("checkPersonAmount").send_keys("300")
+        self.driver.find_element_by_id("checkPersonRadomButton").click()
+        queryMoreCountMainLi = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "queryMoreCountMainLi")))
+        queryMoreCountMainLi.click()
+        #//span[@data - toggle = 'tooltip'][contains(text(), '刘宝祥')]
+        print(self.driver)
+        time.sleep(100)
