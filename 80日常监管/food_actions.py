@@ -6,69 +6,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
+from common_action import Time
 import time
-
-
-class Setup(object):
-
-    def __init__(self, url):
-        self.url = url
-
-        # 连接浏览器驱动
-    def setup_driver(self):
-        chrome_option = Options()
-        # chrome_option.add_argument("--headless")
-        driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
-        driver.maximize_window()
-        self.driver = driver
-        self.driver.get(self.url)
-        self.driver.find_element_by_id("j_username").send_keys("wangweixuan")
-        self.driver.find_element_by_id("j_password").send_keys("1")
-        time.sleep(1)
-        self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
-        time.sleep(2)
-        self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'智慧监管')]").click()
-        self.driver.find_element_by_id("000000000000000000000000019445").click()
-        return driver
-
-
-class LoginAndClick(object):
-
-    def __init__(self, driver, url):
-        self.driver = driver
-        self.url = url
-
-    def login_and_click(self):
-        self.driver.get(self.url)
-        self.driver.find_element_by_id("j_username").send_keys("wangweixuan")
-        self.driver.find_element_by_id("j_password").send_keys("1")
-        time.sleep(1)
-        self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
-        time.sleep(2)
-        self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'智慧监管')]").click()
-        self.driver.find_element_by_id("000000000000000000000000019445").click()
-
-
-class SwitchToFrame(object):
-
-    def __init__(self, driver):
-        self.driver = driver
-
-    def switch_to_main_frame(self):
-        time.sleep(2)
-        self.driver.switch_to.frame("mainFrame")
-        time.sleep(1)
-
-    def switch_to_default_content(self):
-        time.sleep(2)
-        self.driver.switch_to.default_content()
-        time.sleep(1)
 
 
 class NewCheck(object):
 
     def __init__(self, driver):
         self.driver = driver
+        timer = Time()
+        self.log_time = timer.get_log_time()
+        self.current_week = timer.get_current_week()
+        self.current_date = timer.get_current_date()
 
     def click_food_new_check(self):
         self.driver.find_element_by_id("menu-toggler").click()
@@ -119,9 +68,10 @@ class NewCheck(object):
         self.driver.find_element_by_id("thirdhBtn").click()
 
     def fourth_step(self):
+
         question_sheet = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
-        self.driver.find_element_by_id("basicSituation").send_keys("sunhr测试用文字")
+        self.driver.find_element_by_id("basicSituation").send_keys("【%s】sunhr测试用文字" % self.log_time)
         self.driver.find_element_by_id("fourBtn").click()
 
     def fifth_step(self):
@@ -136,6 +86,15 @@ class NewCheck(object):
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
 
-'''
+
 class NewRandomDouble(object):
-'''
+
+    def __init__(self, driver):
+        self.driver = driver
+        timer = Time()
+        self.log_time = timer.get_log_time()
+        self.current_week = timer.get_current_week()
+        self.current_date = timer.get_current_date()
+
+    def new_random_task(self):
+        self.driver.find_element_by_id
