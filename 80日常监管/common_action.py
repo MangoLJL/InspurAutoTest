@@ -30,21 +30,35 @@ class Setup(object):
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
         time.sleep(2)
-        self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu).click()
-        if second_menu == '行政执法' or second_menu == '投诉举报' or second_menu == '风险预警' or second_menu == '分析标准' or second_menu == '移动服务' or second_menu == '考试信息':
-            second_menu_class = 'extApply'
-        else:
-            second_menu_class = 'pic-font'
-        self.driver.find_element_by_xpath("//span[@class='%s'][contains(text(),'%s')]" % (second_menu_class, second_menu)).click()
+        try:
+            self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu).click()
+            if second_menu == '行政执法' or second_menu == '投诉举报' or second_menu == '风险预警' or second_menu == '分析标准' or second_menu == '移动服务' or second_menu == '考试信息':
+                second_menu_class = 'extApply'
+            else:
+                second_menu_class = 'pic-font'
+            self.driver.find_element_by_xpath("//span[@class='%s'][contains(text(),'%s')]" % (second_menu_class, second_menu)).click()
+        except Exception as e:
+            print('点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程：', e)
         return driver
 
         # 选择左侧菜单
     def choose_menu(self, first_menu, second_menu, third_menu):
-        self.driver.find_element_by_id("menu-toggler").click()
-        time.sleep(1)
-        self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
-        self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
-        self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
+        button = Button(self.driver)
+        time.sleep(10)
+        try:
+            button.click_confirm_button()
+            print('系统首页测试到有错误弹窗')
+        except:
+            pass
+        finally:
+            self.driver.find_element_by_id("menu-toggler").click()
+            time.sleep(1)
+
+            self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
+            time.sleep(0.5)
+            self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
+            time.sleep(0.5)
+            self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
 
 # 切换Frame：MainFrame/default_content
 
@@ -92,3 +106,14 @@ class Button(object):
 
     def click_calendar_end_button(self):
         self.driver.find_element_by_id("checkEndDate").click()
+
+    def click_save_button(self):
+        self.driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
+
+    def click_confirm_button(self):
+        self.driver.switch_to.default_content()
+        self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+        '''
+        enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
+        enterprise_radio_button.click()
+		'''

@@ -19,7 +19,7 @@ def new_check():
     new_check.fifth_step()
     new_check.final_step()
     driver.quit()
-    print('流程测试成功，测试通过')
+    print('食品新建日常检查流程测试成功，测试通过')
     return True
 
 
@@ -31,6 +31,6 @@ def double_random_task():
     new_double_random = NewDoubleRandom(driver)
     switch_to_frame.switch_to_main_frame()
     new_double_random.new_random_task()
-
-    print('流程测试成功，测试通过')
+    driver.quit()
+    print('食品双随机流程测试成功，测试通过')
     return True
