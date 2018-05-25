@@ -90,7 +90,7 @@ class Time(object):
         return time.strftime('%w', time.localtime(time.time()))
 
     def get_log_time(self):
-        return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+        return time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 
 
 class Button(object):

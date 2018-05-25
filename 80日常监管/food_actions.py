@@ -96,7 +96,7 @@ class NewDoubleRandom(object):
         time.sleep(1)
         self.button.click_plus_button()
         time.sleep(5)
-        task_name = ("【%s】sunhr测试双随机" % self.log_time)
+        task_name = ("%ssunhr测试双随机" % self.log_time)
         self.driver.find_element_by_id("planName").send_keys(task_name)
         self.driver.find_element_by_id("planCode").send_keys(self.current_date)
         self.driver.find_element_by_id("radio0").click()
@@ -140,20 +140,29 @@ class NewDoubleRandom(object):
             print('员工列表可能加载有误', e)
         time.sleep(1)
         self.button.click_save_button()
-        time.sleep(10)
-        self.button.click_confirm_button()
         time.sleep(5)
+        self.button.click_confirm_button()
+        return task_name
+
+    def confirm_new_random_test(self, task_name):
         # 以下步骤为登陆员工01账号查看是否可以接收
-        task_succeed_confirmer = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
-        driver = task_succeed_confirmer.setup_driver('YUANGONG01', '1', '智慧监管', '日常监管')
-        task_succeed_confirmer.choose_menu('食品监督检查', '任务管理', '计划接收')
-        switch_to_frame = SwitchToFrame(driver)
-        new_double_random = NewDoubleRandom(driver)
-        switch_to_frame.switch_to_main_frame()
-
-
-TODOLIST:
-    爬取数据和目标数据相比较
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.find_element_by_xpath("//label[@class='control-label']").click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        '''
+        self.driver.find_element_by_xpath("//*[@id='grid']/tbody/tr[1]/td[3]/a").click()
+        time.sleep(100)
+        '''
+        current_html = self.driver.page_source
+        print(current_html)
+        soup = BeautifulSoup(current_html, 'lxml')
+        target = soup.find('a', string=re.compile(task_name))  # 查找到员工01的位置，获取编号
+        if target == None:
+            print("获取双随机任务失败，任务可能没有创建成功")
+        else:
+            print("成功")
+            time.sleep(10)
+        '''
 
         try:
             self.driver.find_element_by_xpath("//a[@data-toggle='tooltip'][contains(text(),'%s')]" % task_name)
@@ -161,3 +170,4 @@ TODOLIST:
         except Exception as e:
             print('双随机任务获取失败', e)
         time.sleep(100)
+        '''
