@@ -164,7 +164,7 @@ class NewDoubleRandom(object):
         return task_name
 
     def receive_new_random_test(self, task_name):
-        # 以下步骤为登陆员工01账号查看是否可以接收
+        # 以下步骤为登陆账号查看是否可以接收
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplan_receive_list.jsp?entParentId=food')
         self.driver.get(url)
         time.sleep(2)
@@ -192,9 +192,31 @@ class NewDoubleRandom(object):
             self.button.click_confirm_button()
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "双随机任务接收成功")
 
-    def check_new_random_test(self, task_name)
-http:
-    //10.12.1.80 / checkOfCity / jsp / dtdcheck / basic / publicRecord / my_record_task_list.jsp?parentId = food
+    def check_new_random_test(self, task_name):
+        # 以下步骤为根据创建的双随机计划建立检查
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
+        self.driver.get(url)
+        time.sleep(2)
+
+        def find_task(task_name):
+            current_html = self.driver.page_source
+            soup = BeautifulSoup(current_html, 'lxml')
+            target = soup.find('a', string=re.compile(task_name))
+            return target
+        while 1:
+            target = find_task(task_name)
+            if target == None:
+                try:
+                    self.driver.find_element_by_id('grid_next').click()
+                except Exception as e:
+                    print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '根据双随机任务%s录入检查失败' % task_name)
+            else:
+                finaltarget = target.parent
+                finaltarget = finaltarget.previous_sibling
+                finaltarget = finaltarget.previous_sibling
+                finaltarget = finaltarget.get_text()
+                break
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button' % finaltarget).click()
 
 
 class NewNormalTask(object):
