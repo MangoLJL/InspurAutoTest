@@ -118,7 +118,10 @@ class Button(object):
         self.driver.find_element_by_id("checkEndDate").click()
 
     def click_save_button(self):
-        self.driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
+        try:
+            self.driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
+        except Exception as e:
+            self.driver.find_element_by_xpath("//button[@class='btn btn-success btn-sm']").click()
 
     def click_confirm_button(self):
         self.driver.switch_to.default_content()

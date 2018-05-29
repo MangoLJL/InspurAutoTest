@@ -23,8 +23,8 @@ def new_check():
         driver.quit()
         return ture_or_false
     except Exception as e:
-        print("测试未通过，截图已保存至new_check.png", e)
-        driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snew_check.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        print("测试未通过，截图已保存至new_check.png，错误信息：", e)
+        driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snew_check.png" % time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())))
 
 
 def double_random_task():
@@ -44,12 +44,12 @@ def double_random_task():
         new_random_test_confirmer_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = new_random_test_confirmer_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
         new_random_test_checker = NewDoubleRandom(driver)
-        new_random_test_checker.check_new_random_test(task_name)
-
+        ture_or_false = new_random_test_checker.check_new_random_test(task_name)
         return ture_or_false
+        driver.quit()
     except Exception as e:
-        print("测试未通过，截图已保存至double_random_task_error.png", e)
-        driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sdouble_random_task_error.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        print("测试未通过，截图已保存至double_random_task_error.png，错误信息：", e)
+        driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sdouble_random_task_error.png" % time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())))
 
 
 def normal_task():
@@ -66,5 +66,5 @@ def normal_task():
         driver.quit()
         return ture_or_false
     except Exception as e:
-        print("测试未通过，截图已保存至normal_task_error.png", e)
-        driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snormal_task_error.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        print("测试未通过，截图已保存至normal_task_error.png，错误信息：", e)
+        driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snormal_task_error.png" % time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())))

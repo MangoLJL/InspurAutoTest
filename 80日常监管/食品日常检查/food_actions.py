@@ -133,12 +133,12 @@ class NewDoubleRandom(object):
         self.driver.find_element_by_id("planContent").send_keys("【%s】sunhr测试双随机任务概要" % self.log_time)
         self.driver.find_element_by_xpath("//a[@href='#planEntInfo']").click()
         time.sleep(3)
-        self.driver.find_element_by_id("mainEntAmount").send_keys("10")
+        self.driver.find_element_by_id("mainEntAmount").send_keys("100")
         self.driver.find_element_by_id("mainEntRadomButton").click()
         try:
             self.driver.find_element_by_xpath("//a[@href='#planPersonInfo']").click()
         except Exception as e:
-            print('企业列表未正确加载或有报错', e)
+            print('企业列表未正确加载或有报错，错误信息：', e)
         time.sleep(3)
         self.driver.find_element_by_id("checkPersonAmount").send_keys("387")
         self.driver.find_element_by_id("groupingNum").send_keys("1")
@@ -155,12 +155,13 @@ class NewDoubleRandom(object):
             employee_number = finaltarget.get_text()
             self.driver.find_element_by_xpath("//html//tr[%s]/td[8]/button[1]" % employee_number).click()  # 根据获取到编号的XPATH点击设为组长按钮
         except Exception as e:
-            print('员工列表可能加载有误', e)
+            print('员工列表可能加载有误，错误信息：', e)
         time.sleep(1)
         self.button.click_save_button()
         time.sleep(5)
+        # 此处应该增加错误判断====================
         self.button.click_confirm_button()
-        driver.quit()
+        self.driver.quit()
         return task_name
 
     def receive_new_random_test(self, task_name):
@@ -173,7 +174,6 @@ class NewDoubleRandom(object):
         target = soup.find('a', string=re.compile(task_name))
         if target == None:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "获取双随机任务失败，任务可能没有创建成功")
-            return False
         else:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "双随机计划创建成功,开始签收")
             finaltarget = target.parent
@@ -196,20 +196,23 @@ class NewDoubleRandom(object):
         # 以下步骤为根据创建的双随机计划建立检查
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
-        time.sleep(2)
-
-        def find_task(task_name):
+        while 1:
+            # 以下步骤为查询task_name的双随机计划
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            time.sleep(2)
             current_html = self.driver.page_source
             soup = BeautifulSoup(current_html, 'lxml')
             target = soup.find('a', string=re.compile(task_name))
-            return target
-        while 1:
-            target = find_task(task_name)
             if target == None:
-                try:
-                    self.driver.find_element_by_id('grid_next').click()
-                except Exception as e:
-                    print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '根据双随机任务%s录入检查失败' % task_name)
+                # 如果本页没有查询到，则查询下一页
+                next_page_status = soup.find(class_='paginate_button next disabled')
+                if next_page_status == None:
+                    try:
+                        self.driver.find_element_by_xpath("//a[@href='#'][contains(text(),'下一页')]").click()
+                    except Exception as e:
+                        print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '根据双随机任务%s录入检查失败，错误信息：' % task_name, e)
+                else:
+                    raise Error(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '已至最后一页仍未发现结果')
             else:
                 finaltarget = target.parent
                 finaltarget = finaltarget.previous_sibling
@@ -217,6 +220,40 @@ class NewDoubleRandom(object):
                 finaltarget = finaltarget.get_text()
                 break
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button' % finaltarget).click()
+        try:
+            enterprise_selector = self.driver.find_element_by_id("enterpriseName")
+            ActionChains(self.driver).double_click(enterprise_selector).perform()
+            self.driver.switch_to.default_content()
+            time.sleep(1)
+            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+            self.driver.switch_to.frame(iframe)
+            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
+            enterprise_radio_button.click()
+            self.button.click_save_button()
+            time.sleep(1)
+            self.driver.switch_to.default_content()
+            self.driver.find_element_by_id("firstBtn").click()
+            ####
+            check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "checkTypeCode0")))
+            check_type_button.click()
+            self.driver.find_element_by_xpath(
+                "//tr[@id='nametr1']//td[@class='fieldInput']//div[@class='input-group']//span[@class='input-group-addon']//i[@class='fa fa-search']").click()
+            self.driver.switch_to.default_content()
+            time.sleep(1)
+            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+            self.driver.switch_to.frame(iframe)
+            collect_tab = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.XPATH, "//a[@href='#collection']")))
+            collect_tab.click()
+            self.driver.find_element_by_xpath("//html//tr[1]/td[2]/input[1]").click()
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            time.sleep(2)
+            self.driver.find_element_by_xpath("//table[@id='queryTable1']//tbody//tr//td[@class='queryTable-btn-td']//button[@id='save']").click()
+            time.sleep(2)
+            self.driver.switch_to.default_content()
+            self.driver.find_element_by_id("secondBtn").click()
+        except Exception as e:
+            print(e)
+            time.sleep(30)
 
 
 class NewNormalTask(object):
