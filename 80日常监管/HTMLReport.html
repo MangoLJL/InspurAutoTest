@@ -123,9 +123,9 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Test Report</h1>
 <p class='attribute'><strong>测试人员 : </strong> 孙浩然</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-05-25 17:01:49</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:02:27.066959</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 1，错误 1，通过率= 0.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-05-29 09:20:30</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:01:12.772398</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 1，失败 1，通过率= 0.00%</p>
 
 <p class='description'></p>
 </div>
@@ -134,7 +134,7 @@ function html_escape(s) {
 
 <p id='show_detail_line'>
 <a class="btn btn-primary" href='javascript:showCase(0)'>概要（0.00%）</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败（0）</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败（1）</a>
 <a class="btn btn-success" href='javascript:showCase(2)'>通过（0）</a>
 <a class="btn btn-info" href='javascript:showCase(3)'>所有（1）</a>
 </p>
@@ -156,46 +156,106 @@ function html_escape(s) {
     <td>详细</td>
 </tr>
 
-<tr class='errorClass warning'>
+<tr class='failClass warning'>
     <td>test_food_daily_check.TestFoodDailyCheck: Test food_daily_check.py</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
-    <td class="text-center">0</td>
     <td class="text-center">1</td>
+    <td class="text-center">0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="detail" id='c1'>详细</a></td>
 </tr>
 
 <tr id='ft1_1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_double_random_task</div></td>
+    <td class='failCase'><div class='testcase'>test_normal_task</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
-    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>失败</button>
     <div id='div_ft1_1' class="collapse">  -->
 
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>失败</button>
     <div id='div_ft1_1' class="collapse in">
     <pre>
     
-ft1_1: Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\test_food_daily_check.py", line 13, in test_double_random_task
-    self.assertEqual(True, double_random_task())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\food_daily_check.py", line 40, in double_random_task
-    new_random_test_confirmer.confirm_new_random_test(task_name)
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\food_actions.py", line 150, in confirm_new_random_test
-    self.driver.find_element_by_xpath("//label[@class='control-label']").click()
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 385, in find_element_by_xpath
-    return self.find_element(by=By.XPATH, value=xpath)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
-    'value': value})['value']
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//label[@class='control-label']"}
+ft1_1: &lt;!DOCTYPE html&gt;&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;head&gt;
+&lt;title&gt;已选择部门&lt;/title&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="http://10.12.1.80/skins/common/all/css/G3-all.min.css" /&gt;
+&lt;script type="text/javascript" src="http://10.12.1.80/skins/common/all/js/G3-all.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://10.12.1.80/skins/common/ext/global/js/ls-adapter.min.js"&gt;&lt;/script&gt;
+&lt;!--[if lt IE 9]&gt;  &lt;link rel="stylesheet" href="http://10.12.1.80/skins/common/IE8/respond.min.css"&gt; &lt;![endif]--&gt;
+&lt;!--[if lt IE 9]&gt;  &lt;script type="text/javascript" src="http://10.12.1.80/skins/common/plugin/placeholder/placeholder.min.js"&gt;&lt;/script&gt; &lt;![endif]--&gt;
+&lt;!--[if lt IE 9]&gt;  &lt;script type="text/javascript" src="http://10.12.1.80/skins/common/IE8/html5shiv.min.js"&gt;&lt;/script&gt; &lt;![endif]--&gt;
+&lt;!--[if lt IE 9]&gt;  &lt;script type="text/javascript" src="http://10.12.1.80/skins/common/IE8/respond.min.js"&gt;&lt;/script&gt; &lt;![endif]--&gt;
+&lt;script type="text/javascript" src="http://10.12.1.80/skins/common/plugin/datatables/js/jquery.dataTables.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="http://10.12.1.80/skins/common/plugin/datatables/ext/dataTables_ext.min.css" /&gt;
+&lt;script type="text/javascript" src="http://10.12.1.80/skins/common/plugin/datatables/ext/dataTables_ext.min.js"&gt;&lt;/script&gt;&lt;style type="text/css"&gt;  .JColResizer{table-layout:fixed;} .JColResizer &amp;gt; tbody &amp;gt; tr &amp;gt; td, .JColResizer &amp;gt; tbody &amp;gt; tr &amp;gt; th{overflow:hidden;}  .JCLRgrips{ height:0px; position:relative;} .JCLRgrip{margin-left:-5px; position:absolute; z-index:5; } .JCLRgrip .JColResizer{position:absolute;background-color:red;filter:alpha(opacity=1);opacity:0;width:10px;height:100%;cursor: e-resize;top:0px} .JCLRLastGrip{position:absolute; width:1px; } .JCLRgripDrag{ border-left:1px dotted black;	} .JCLRFlex{width:auto!important;} .JCLRgrip.JCLRdisabledGrip .JColResizer{cursor:default; display:none;}&lt;/style&gt;
+&lt;script type="text/javascript"&gt;G3.webPath = "/checkOfCity/";&lt;/script&gt;
+&lt;script type="text/javascript"&gt;G3.staticResPath = "http://10.12.1.80/";&lt;/script&gt;
+&lt;script type="text/javascript"&gt;G3.frontStatic = {"demoUrl":"/demo","crediturl":"/fda_credit","bpmUrl":"/bpm","settingscenterUrl":"/settingscenter","cformUrl":"/cform","bspUrl":"/bsp","basedataUrl":"/basedata","cfileUrl":"/cfile","srrUrl":"/srr","serverUrl":"/"};&lt;/script&gt;
+&lt;script type="text/javascript"&gt;G3.staticResPath = "http://10.12.1.80/";&lt;/script&gt;
+&lt;script type="text/javascript"&gt;G3.frontStatic.serverUrl = "http://10.12.1.80/";&lt;/script&gt;
+
+
+&lt;style type="text/css"&gt;
+	.pull-right{
+		margin-right: 5px;
+	}
+&lt;/style&gt;
+&lt;script type="text/javascript" src="/checkOfCity/skins/dtdcommon/common.js"&gt;&lt;/script&gt;&lt;link rel="stylesheet" type="text/css" href="/checkOfCity/skins/dtdcommon/common.css" /&gt;
+&lt;script type="text/javascript"&gt;
+	var id = "8a8c81d163a68a640163a97a7b030010";
+	var struId = "1";
+	var project = "JN";
+&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="http://10.12.1.80/skins/common/plugin/layer/skin/default/layer.css" /&gt;&lt;style type="text/css"&gt;::-ms-clear{display: none;}&lt;/style&gt;&lt;link rel="stylesheet" type="text/css" href="http://10.12.1.80/skins/common/theme/theme-default/theme.css" /&gt;&lt;/head&gt;
+&lt;body style=""&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col-md-12"&gt;
+				&lt;div class="panel panel-default"&gt;
+					&lt;div class="panel-heading"&gt;
+						&lt;div class="pull-right"&gt;
+							&lt;button class="btn btn-primary" type="button" onclick="selected();"&gt;
+								 &lt;i class="fa fa-plus"&gt;&lt;/i&gt;选择部门
+							&lt;/button&gt;
+							&lt;button class="btn btn-primary" type="button" onclick="selectedTeam();"&gt;
+								 &lt;i class="fa fa-plus"&gt;&lt;/i&gt;选择部门分组
+							&lt;/button&gt;
+&lt;!-- 							&lt;button class="btn btn-primary" type="button" onclick="selectAssist();"&gt; --&gt;
+&lt;!-- 								 &lt;i class="fa fa-plus"&gt;&lt;/i&gt;选择协管人员 --&gt;
+&lt;!-- 							&lt;/button&gt; --&gt;
+							&lt;button class="btn btn-success" type="button" onclick="confirm();"&gt;
+								 &lt;i class="fa fa-edit"&gt;&lt;/i&gt;确定
+							&lt;/button&gt;
+							
+							&lt;button class="btn btn-danger" type="button" onclick="deleted();"&gt;
+								&lt;i class="fa fa-trash-o fa-fw"&gt;&lt;/i&gt;删除
+							&lt;/button&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="panel-body"&gt;
+						&lt;div id="grid_wrapper" class="dataTables_wrapper form-inline no-footer"&gt;&lt;div class=""&gt;&lt;div id="grid_processing" class="dataTables_processing" style="display: none;"&gt;&lt;p&gt;&lt;span&gt;&lt;font&gt;正在抓取数据，请稍后&lt;/font&gt;&lt;i class="fa fa-spinner fa-spin"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="JCLRgrips" style="width: 878px;"&gt;&lt;div class="JCLRgrip" style="left: 152px; height: 75px;"&gt;&lt;div class="JColResizer"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="JCLRgrip" style="left: 299px; height: 75px;"&gt;&lt;div class="JColResizer"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="JCLRgrip JCLRLastGrip" style="left: 880px; height: 75px;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;table class="table table-bordered table-hover dataTable no-footer JColResizer" id="grid" role="grid"&gt;
+							&lt;thead&gt;
+							&lt;tr role="row"&gt;&lt;th class="sorting_disabled center" rowspan="1" colspan="1" style="width: 147px;"&gt;序号&lt;/th&gt;&lt;th class="sorting_disabled center" rowspan="1" colspan="1" style="width: 143px;"&gt;&lt;input type="checkbox" /&gt;&lt;/th&gt;&lt;th class="sorting_disabled center" rowspan="1" colspan="1" style="width: 568px;"&gt;单位-部门名称&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+						&lt;tbody&gt;&lt;tr class="odd"&gt;&lt;td valign="top" colspan="3" class="dataTables_empty"&gt;没有您要搜索的内容&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div class=""&gt;&lt;/div&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;script type="text/javascript" src="dtdcheckplan_selected.js"&gt;&lt;/script&gt;
+
+&lt;div id="g3Alert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="alertTitle" style="overflow: hidden;z-index:1041;"&gt;&lt;/div&gt;&lt;iframe id="obj_mask" src="" frameborder="0" style="display:none;position:absolute; visibility:inherit; top:0px; left:0px; width:100%; height:100%; background:transparent;z-index:1;filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0);"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;
+Message: no such element: Unable to locate element: {"method":"id","selector":"organTree_1_check"}
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
+Traceback (most recent call last):
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\test_food_daily_check.py", line 17, in test_normal_task
+    self.assertEqual(True, normal_task())
+AssertionError: True != None
 
 
     </pre>
@@ -207,8 +267,8 @@ selenium.common.exceptions.NoSuchElementException: Message: no such element: Una
     <td>总计</td>
     <td>1</td>
     <td>0</td>
-    <td>0</td>
     <td>1</td>
+    <td>0</td>
     <td>通过率：0.00%</td>
 </tr>
 </table>

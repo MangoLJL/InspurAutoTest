@@ -99,7 +99,9 @@ class Button(object):
         self.driver = driver
 
     def click_plus_button(self):
+        time.sleep(2)
         self.driver.find_element_by_xpath("//i[@class='fa fa-plus']").click()
+        time.sleep(5)
 
     def click_calendar_start_button(self):
         self.driver.find_element_by_id("checkStartDate").click()
@@ -113,7 +115,3 @@ class Button(object):
     def click_confirm_button(self):
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
-        '''
-        enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
-        enterprise_radio_button.click()
-		'''
