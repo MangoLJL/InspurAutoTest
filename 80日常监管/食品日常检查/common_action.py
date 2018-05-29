@@ -38,7 +38,8 @@ class Setup(object):
                 second_menu_class = 'pic-font'
             self.driver.find_element_by_xpath("//span[@class='%s'][contains(text(),'%s')]" % (second_menu_class, second_menu)).click()
         except Exception as e:
-            print('点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程：', e)
+            self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%ssetup_driver.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+            print('点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程,截图已保存至setup_driver.png', e)
         return driver
 
         # 选择左侧菜单
@@ -46,14 +47,16 @@ class Setup(object):
         button = Button(self.driver)
         time.sleep(10)
         try:
+            self.driver.switch_to.default_content()
+            self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']")
+            self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%schoose_menu.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
             button.click_confirm_button()
-            print('系统首页测试到有错误弹窗')
+            print('系统首页检测到有错误弹窗,截图已保存至choose_menu.png')
         except:
             pass
         finally:
             self.driver.find_element_by_id("menu-toggler").click()
             time.sleep(1)
-
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
@@ -101,6 +104,11 @@ class Button(object):
     def click_plus_button(self):
         time.sleep(2)
         self.driver.find_element_by_xpath("//i[@class='fa fa-plus']").click()
+        time.sleep(5)
+
+    def click_edit_button(self):
+        time.sleep(2)
+        self.driver.find_element_by_xpath("//i[@class='fa fa-edit']").click()
         time.sleep(5)
 
     def click_calendar_start_button(self):

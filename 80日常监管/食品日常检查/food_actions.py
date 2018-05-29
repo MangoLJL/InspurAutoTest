@@ -55,7 +55,7 @@ class NewCheck(object):
         collect_tab.click()
         self.driver.find_element_by_xpath("//html//tr[1]/td[2]/input[1]").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        time.sleep(5)
+        time.sleep(2)
         self.driver.find_element_by_xpath("//table[@id='queryTable1']//tbody//tr//td[@class='queryTable-btn-td']//button[@id='save']").click()
         time.sleep(2)
         self.driver.switch_to.default_content()
@@ -66,8 +66,10 @@ class NewCheck(object):
 
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
-        self.driver.find_element_by_id("basicSituation").send_keys("【%s】sunhr测试用文字" % self.log_time)
+        check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
+        self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
         self.driver.find_element_by_id("fourBtn").click()
+        return check_situation
 
     def fifth_step(self):
         checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult0")))
@@ -80,6 +82,30 @@ class NewCheck(object):
         self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+
+    def confirm_new_check(self, check_situation):
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
+        self.driver.get(url)
+        self.driver.find_element_by_id("grid_length").click()
+        self.driver.find_element_by_xpath("//option[@value='100']").click()
+        current_html = self.driver.page_source
+        soup = BeautifulSoup(current_html, 'lxml')
+        target = soup.find('span', string=re.compile('提交'))
+        finaltarget = target.parent
+        for i in range(0, 10):
+            finaltarget = finaltarget.previous_sibling
+        self.driver.find_element_by_xpath("//html//tr[%s]/td[3]/a[1]" % finaltarget.get_text()).click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.switch_to.default_content()
+        time.sleep(5)
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
+        current_situation = self.driver.find_element_by_id("basicSituation").text
+        if current_situation == check_situation:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '食品新建日常检查流程测试成功，测试通过')
+            return True
+        else:
+            return False
 
 
 class NewDoubleRandom(object):
@@ -121,7 +147,6 @@ class NewDoubleRandom(object):
         queryMoreCountMainLi.click()
         current_html = self.driver.page_source
         soup = BeautifulSoup(current_html, 'lxml')
-        divs = soup.find_all(class_='nowrap')
         try:
             target = soup.find('span', string=re.compile('刘宝祥'))  # 查找到员工01的位置，获取编号
             targetparent = target.parent
@@ -135,27 +160,27 @@ class NewDoubleRandom(object):
         self.button.click_save_button()
         time.sleep(5)
         self.button.click_confirm_button()
+        driver.quit()
         return task_name
 
-    def confirm_new_random_test(self, task_name):
+    def receive_new_random_test(self, task_name):
         # 以下步骤为登陆员工01账号查看是否可以接收
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplan_receive_list.jsp?entParentId=food')
-
         self.driver.get(url)
         time.sleep(2)
         current_html = self.driver.page_source
         soup = BeautifulSoup(current_html, 'lxml')
         target = soup.find('a', string=re.compile(task_name))
         if target == None:
-            print("获取双随机任务失败，任务可能没有创建成功")
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "获取双随机任务失败，任务可能没有创建成功")
             return False
         else:
-            print(time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "双随机计划创建成功,开始签收并进行现场检查")
-            targetparent = target.parent
-            targetparentbrother = targetparent.previous_sibling
-            finaltarget = targetparentbrother.previous_sibling
-            task_number = finaltarget.get_text()
-            self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button' % task_number).click()
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "双随机计划创建成功,开始签收")
+            finaltarget = target.parent
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.get_text()
+            self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button' % finaltarget).click()
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(2)
             self.driver.switch_to.default_content()
@@ -165,7 +190,11 @@ class NewDoubleRandom(object):
             self.driver.find_element_by_id("checkNumber").send_keys("1")
             self.driver.find_element_by_xpath("//button[@class='btn btn-success btn-xs']").click()
             self.button.click_confirm_button()
-            return True
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "双随机任务接收成功")
+
+    def check_new_random_test(self, task_name)
+http:
+    //10.12.1.80 / checkOfCity / jsp / dtdcheck / basic / publicRecord / my_record_task_list.jsp?parentId = food
 
 
 class NewNormalTask(object):
@@ -180,28 +209,48 @@ class NewNormalTask(object):
         self.driver.find_element_by_id("planName").send_keys(plan_name)
         self.driver.find_element_by_id("select2-chosen-1").click()
         self.driver.find_element_by_id("select2-results-1").click()
+        self.driver.find_element_by_id("radio3").click()
         self.button.click_calendar_start_button()
-        self.driver.find_element_by_xpath("//html//div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[5]").click()
+        self.driver.find_element_by_xpath("//html//div[3]/div[3]/table[1]/tbody[1]/tr[1]/td[1]").click()
         self.button.click_calendar_end_button()
-        self.driver.find_element_by_xpath("//html//div[4]/div[3]/table[1]/tbody[1]/tr[4]/td[5]").click()
+        self.driver.find_element_by_xpath("//html//div[4]/div[3]/table[1]/tbody[1]/tr[6]/td[7]").click()
         self.driver.find_element_by_id("DeptName").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
         self.driver.switch_to.default_content()
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
         self.button.click_plus_button()
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        iframe2 = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        iframe2 = self.driver.find_element_by_xpath("(//iframe[contains(@id,'layui-layer-iframe')])[last()]")
         self.driver.switch_to.frame(iframe2)
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        time.sleep(5)
-
-        print(self.driver.page_source)
         self.driver.find_element_by_id("organTree_1_check").click()
-        self.driver.find_element_by_id("save").click()
-        time.sleep(100)
+        self.driver.find_element_by_id("save").click()  # 选择部门之后点击保存
+        self.driver.switch_to.default_content()
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
+        self.button.click_edit_button()
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame("mainFrame")
+        self.driver.find_element_by_id("planContent").send_keys("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试普通任务概要")
+        self.driver.switch_to.frame("frameName")
+        self.driver.find_element_by_xpath("(//i[@class='fa fa-save fa-fw'])[last()]").click()
+        self.button.click_confirm_button()
+        return plan_name
+
+    def confirm_new_normal_task(self, plan_name):
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+        self.driver.get(url)
+        time.sleep(2)
+        current_html = self.driver.page_source
+        soup = BeautifulSoup(current_html, 'lxml')
+        target = soup.find('a', string=re.compile(plan_name))
+        if target == None:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "获取普通任务失败，任务可能没有创建成功,当前页面截图已保存至confirm_new_normal_task.png")
+            self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sconfirm_new_normal_task.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+            return False
+        else:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过")
+            return True
