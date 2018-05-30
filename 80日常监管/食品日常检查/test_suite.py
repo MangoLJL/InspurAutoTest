@@ -8,6 +8,7 @@ from HTMLTestRunner import HTMLTestRunner
 
 
 def job():
+    print('开始运行...')
     suite = unittest.TestSuite()
     tests = [TestNewCheck("test_new_check"), TestDoubleRandomTask("test_double_random_task"), TestNormalTask("test_normal_task")]
     suite.addTests(tests)
@@ -18,8 +19,9 @@ def job():
                                 verbosity=2
                                 )
         runner.run(suite)
- schedule.every(2).hours.do(job)
+schedule.every(2).hours.do(job)
 # schedule.every().day.at("20:01").do(job)
 while True:
+
     schedule.run_pending()
     time.sleep(1)
