@@ -123,8 +123,8 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Test Report</h1>
 <p class='attribute'><strong>测试人员 : </strong> 孙浩然</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-05-29 21:03:37</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:01:50.829702</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-05-30 20:01:00</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:51.274428</p>
 <p class='attribute'><strong>测试结果 : </strong> 共 1，错误 1，通过率= 0.00%</p>
 
 <p class='description'></p>
@@ -157,7 +157,7 @@ function html_escape(s) {
 </tr>
 
 <tr class='errorClass warning'>
-    <td>test_food_daily_check.TestDoubleRandomTask: 测试双随机任务</td>
+    <td>test_food_daily_check.TestNewCheck: 测试新建检查</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
     <td class="text-center">0</td>
@@ -166,7 +166,7 @@ function html_escape(s) {
 </tr>
 
 <tr id='ft1_1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_double_random_task</div></td>
+    <td class='errorCase'><div class='testcase'>test_new_check: Test method new_check()</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
     <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
@@ -177,17 +177,20 @@ function html_escape(s) {
     <div id='div_ft1_1' class="collapse in">
     <pre>
     
-ft1_1: 测试未通过，截图已保存至double_random_task_error.png，错误信息： Message: chrome not reachable
+ft1_1: 2018-05-30_20-01-00开始进行小作坊日常检查测试
+小作坊日常检查测试未通过，截图已保存至new_check.png，错误信息： Message: chrome not reachable
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 42, in double_random_task
-    new_random_test_receiver.receive_new_random_test(task_name)  # 接收双随机任务
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_actions.py", line 171, in receive_new_random_test
-    current_html = self.driver.page_source
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 670, in page_source
-    return self.execute(Command.GET_PAGE_SOURCE)['value']
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 22, in new_check
+    food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 61, in choose_menu
+    self.driver.find_element_by_id("menu-toggler").click()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 351, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
+    'value': value})['value']
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
     self.error_handler.check_response(response)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
@@ -200,10 +203,10 @@ selenium.common.exceptions.WebDriverException: Message: chrome not reachable
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 18, in test_double_random_task
-    self.assertEqual(True, double_random_task())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 52, in double_random_task
-    driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sdouble_random_task_error.png" % time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())))
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 11, in test_new_check
+    self.assertEqual(True, new_check())
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 96, in new_check
+    driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snew_check.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
     png = self.get_screenshot_as_png()
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png

@@ -1,4 +1,7 @@
 # coding=utf-8
+import re
+import time
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -6,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-import time
+
 
 # 建立驱动，选择系统，选择菜单
 
@@ -62,6 +65,7 @@ class Setup(object):
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
+            time.sleep(5)
 
 # 切换Frame：MainFrame/default_content
 
@@ -126,3 +130,53 @@ class Button(object):
     def click_confirm_button(self):
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+
+
+class CommonAction(object):
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def get_screenshot(self, name):
+        self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%s%s.png" % (time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())), name))
+
+    def find(self, find_target):
+        while 1:
+            try:
+                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+                time.sleep(2)
+                current_html = self.driver.page_source
+                soup = BeautifulSoup(current_html, 'lxml')
+                target = soup.find('a', string=re.compile(find_target))
+                if target == None:
+                    # 如果本页没有查询到，则查询下一页
+                    next_page_status = soup.find(class_='paginate_button next disabled')
+                    if next_page_status == None:
+                        try:
+                            self.driver.find_element_by_xpath("//a[@href='#'][contains(text(),'下一页')]").click()
+                        except Exception as e:
+                            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '查询%s失败，错误信息：' % task_name, e)
+                    else:
+                        print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '已至最后一页仍未发现结果')
+                        return None
+                else:
+                    return target
+            except Exception as e:
+                print(e)
+                break
+
+    def data_exsists(self):
+        while 1:
+            try:
+                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+                time.sleep(2)
+                current_html = self.driver.page_source
+                soup = BeautifulSoup(current_html, 'lxml')
+                target = soup.find('span', string=re.compile('没有查询到数据'))
+                if target == None:
+                    return True
+                else:
+                    return False
+            except Exception as e:
+                print(e)
+                break
