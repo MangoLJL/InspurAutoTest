@@ -88,7 +88,7 @@ class NewCheck(object):
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
 
     def confirm_new_check(self, check_situation, checktype):
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/cosmetic/publicRecord/my_record_list.jsp?parentId=hz')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()
@@ -106,7 +106,7 @@ class NewCheck(object):
         self.driver.switch_to.frame(iframe)
         current_situation = self.driver.find_element_by_id("basicSituation").text
         if current_situation == check_situation:
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '食品新建日常检查$%s流程测试成功，测试通过' % checktype)
             return True
         else:
             return False
@@ -167,7 +167,7 @@ class NewDoubleRandom(object):
 
     def receive_new_random_test(self, task_name):
         # 以下步骤为登陆账号查看是否可以接收
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplan_receive_list.jsp?entParentId=food')
+        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplan_receive_list.jsp?entParentId=hz')
         self.driver.get(url)
         time.sleep(2)
         current_html = self.driver.page_source
@@ -195,7 +195,7 @@ class NewDoubleRandom(object):
 
     def check_new_random_test(self, task_name):
         # 以下步骤为根据创建的双随机计划建立检查
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=hz')
         self.driver.get(url)
         target = self.common_action.find(task_name)
         finaltarget = target.parent
@@ -253,7 +253,7 @@ class NewDoubleRandom(object):
             print(e)
 
     def confirm_random_enterprise_check(self, task_name, enterprise_name):
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=hz')
         self.driver.get(url)
         target = self.common_action.find(task_name)
         finaltarget = target.parent
@@ -320,7 +320,7 @@ class NewNormalTask(object):
 
     def confirm_new_normal_task(self, plan_name):
         try:
-            url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+            url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=hz')
             self.driver.get(url)
             time.sleep(2)
             current_html = self.driver.page_source
@@ -331,7 +331,7 @@ class NewNormalTask(object):
                 self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sconfirm_new_normal_task.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
                 return False
             else:
-                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过，任务名称为：" + plan_name)
+                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过")
                 return True
         except Exception as e:
             print(e)

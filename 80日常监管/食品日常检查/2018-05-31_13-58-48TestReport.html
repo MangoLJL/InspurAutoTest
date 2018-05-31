@@ -123,8 +123,8 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Test Report</h1>
 <p class='attribute'><strong>测试人员 : </strong> 孙浩然</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-05-31 09:38:00</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:31.984118</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-05-31 13:58:48</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:12:16.046448</p>
 <p class='attribute'><strong>测试结果 : </strong> 共 3，错误 3，通过率= 0.00%</p>
 
 <p class='description'></p>
@@ -177,16 +177,39 @@ function html_escape(s) {
     <div id='div_ft1_1' class="collapse in">
     <pre>
     
-ft1_1: 2018-05-31_09-38-00开始进行小作坊日常检查测试
-小作坊日常检查测试未通过，截图已保存至new_check.png，错误信息： Message: chrome not reachable
+ft1_1: 2018-05-31_13-58-48开始进行小作坊日常检查测试
+2018-05-31_13-59-52小作坊企业列表无数据，跳过此类别企业...
+2018-05-31_13-59-55开始进行食品摊贩日常检查测试
+2018-05-31_14-01-15测试食品摊贩日常检查出错，截图已保存
+2018-05-31_14-01-16开始进行食品摊贩专项检查测试
+2018-05-31-14-02-57食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_14-03-00开始进行食品摊贩量化评级测试
+2018-05-31-14-04-22食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_14-04-24开始进行食品摊贩学校季度检查测试
+2018-05-31-14-05-46食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_14-05-48开始进行食品摊贩飞行检查测试
+2018-05-31-14-07-12食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_14-07-15开始进行小餐饮日常检查测试
+2018-05-31_14-08-21小作坊企业列表无数据，跳过此类别企业...
+2018-05-31_14-08-23开始进行食品生产日常检查测试
+2018-05-31_14-10-05测试食品生产日常检查出错，截图已保存
+2018-05-31_14-10-06开始进行食品生产专项检查测试
+点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程,截图已保存至setup_driver.png Message: unknown error: Element &lt;span class="pic-font"&gt;...&lt;/span&gt; is not clickable at point (24, 7). Other element would receive the click: &lt;div class="navbar-header" style="padding-top: 20px;"&gt;...&lt;/div&gt;
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
+2018-05-31_14-10-44测试食品生产专项检查出错，截图已保存
+食品生产专项检查测试未通过，截图已保存至new_check.png，错误信息： Message: chrome not reachable
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 37, in setup_driver
-    self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu).click()
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 385, in find_element_by_xpath
-    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 33, in new_check
+    food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 61, in choose_menu
+    self.driver.find_element_by_id("menu-toggler").click()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 351, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
     'value': value})['value']
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
@@ -201,10 +224,8 @@ selenium.common.exceptions.WebDriverException: Message: chrome not reachable
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 21, in new_check
-    driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 44, in setup_driver
-    self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%ssetup_driver.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 55, in new_check
+    time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
     png = self.get_screenshot_as_png()
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png
@@ -225,9 +246,22 @@ During handling of the above exception, another exception occurred:
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 11, in test_new_check
     self.assertEqual(True, new_check())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 96, in new_check
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 113, in new_check
     driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snew_check.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
-UnboundLocalError: local variable 'driver' referenced before assignment
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
+    png = self.get_screenshot_as_png()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png
+    return base64.b64decode(self.get_screenshot_as_base64().encode('ascii'))
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1050, in get_screenshot_as_base64
+    return self.execute(Command.SCREENSHOT)['value']
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
 
 
     </pre>
@@ -257,12 +291,12 @@ UnboundLocalError: local variable 'driver' referenced before assignment
     <pre>
     
 ft2_1: 测试未通过，截图已保存至double_random_task_error.png，错误信息： Message: session not created exception
-from disconnected: unable to send message to renderer
+from disconnected: received Inspector.detached event
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 102, in double_random_task
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 119, in double_random_task
     driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 27, in setup_driver
     driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
@@ -277,7 +311,7 @@ Traceback (most recent call last):
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
 selenium.common.exceptions.SessionNotCreatedException: Message: session not created exception
-from disconnected: unable to send message to renderer
+from disconnected: received Inspector.detached event
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
@@ -287,7 +321,7 @@ During handling of the above exception, another exception occurred:
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 19, in test_double_random_task
     self.assertEqual(True, double_random_task())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 122, in double_random_task
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 139, in double_random_task
     driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sdouble_random_task_error.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 UnboundLocalError: local variable 'driver' referenced before assignment
 
@@ -318,23 +352,27 @@ UnboundLocalError: local variable 'driver' referenced before assignment
     <div id='div_ft3_1' class="collapse in">
     <pre>
     
-ft3_1: 测试未通过，截图已保存至normal_task_error.png，错误信息： Message: unknown error: cannot determine loading status
+ft3_1: 测试未通过，截图已保存至normal_task_error.png，错误信息： Message: session not created exception
 from disconnected: received Inspector.detached event
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 128, in normal_task
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 145, in normal_task
     driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 30, in setup_driver
-    self.driver.get(self.url)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 324, in get
-    self.execute(Command.GET, {'url': url})
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 27, in setup_driver
+    driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 75, in __init__
+    desired_capabilities=desired_capabilities)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 154, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 243, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
     self.error_handler.check_response(response)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created exception
 from disconnected: received Inspector.detached event
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
@@ -345,7 +383,7 @@ During handling of the above exception, another exception occurred:
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 27, in test_normal_task
     self.assertEqual(True, normal_task())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 140, in normal_task
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 157, in normal_task
     driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snormal_task_error.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 UnboundLocalError: local variable 'driver' referenced before assignment
 

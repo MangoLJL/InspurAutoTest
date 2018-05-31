@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+    //console.log(detail_class.length)
+    if (level == 3) {
+        for (var i = 0; i < detail_class.length; i++){
+            detail_class[i].innerHTML="收起"
+        }
+    }
+    else{
+            for (var i = 0; i < detail_class.length; i++){
+            detail_class[i].innerHTML="详细"
+        }
+    }
+}
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">Test Report</h1>
+<p class='attribute'><strong>测试人员 : </strong> 孙浩然</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-05-31 17:36:46</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:57:18.923488</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 3，通过 3，通过率= 100.00%</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要（100.00%）</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败（0）</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过（3）</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有（3）</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_food_daily_check.TestNewCheck: 测试新建检查</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_new_check: Test method new_check()</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in">
+    <pre>
+    
+pt1_1: 2018-05-31_17-36-46开始进行小作坊日常检查测试
+2018-05-31_17-37-51小作坊企业列表无数据，跳过此类别企业...
+2018-05-31_17-37-54开始进行食品摊贩日常检查测试
+2018-05-31_17-38-33测试食品摊贩日常检查出错，截图已保存,当前url为：http://10.12.1.80/portal/jsp/portal/index.jsp错误信息为Message: no such element: Unable to locate element: {"method":"xpath","selector":"//iframe[contains(@id,'layui-layer-iframe')]"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
+2018-05-31_17-38-33开始进行食品摊贩专项检查测试
+2018-05-31-17-39-49食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_17-39-51开始进行食品摊贩量化评级测试
+2018-05-31-17-41-08食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_17-41-11开始进行食品摊贩学校季度检查测试
+2018-05-31-17-42-27食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_17-42-30开始进行食品摊贩飞行检查测试
+2018-05-31-17-43-46食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_17-43-49开始进行小餐饮日常检查测试
+2018-05-31_17-44-53小餐饮企业列表无数据，跳过此类别企业...
+2018-05-31_17-44-56开始进行食品生产日常检查测试
+2018-05-31-17-46-11食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_17-46-13开始进行食品生产专项检查测试
+2018-05-31-17-47-31食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_17-47-34开始进行食品生产量化评级测试
+2018-05-31-17-48-50食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_17-48-52开始进行食品生产学校季度检查测试
+2018-05-31-17-50-08食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_17-50-11开始进行食品生产飞行检查测试
+2018-05-31-17-51-23食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_17-51-26开始进行食品流通日常检查测试
+2018-05-31-17-52-45食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_17-52-47开始进行食品流通专项检查测试
+2018-05-31-17-53-59食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_17-54-02开始进行食品流通量化评级测试
+2018-05-31-17-55-16食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_17-55-19开始进行食品流通学校季度检查测试
+2018-05-31-17-56-34食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_17-56-37开始进行食品流通飞行检查测试
+2018-05-31-17-57-53食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_17-57-55开始进行餐饮服务日常检查测试
+2018-05-31-17-59-14食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_17-59-17开始进行餐饮服务专项检查测试
+2018-05-31-18-00-35食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_18-00-37开始进行餐饮服务量化评级测试
+2018-05-31-18-01-49食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_18-01-52开始进行餐饮服务学校季度检查测试
+2018-05-31-18-03-06食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_18-03-09开始进行餐饮服务飞行检查测试
+2018-05-31-18-04-25食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_18-04-28开始进行食品经营大类三个小类的测试，共15个事项
+2018-05-31_18-04-28开始进行食品销售经营者测试
+2018-05-31-18-05-44食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_18-05-46开始进行食品销售经营者测试
+2018-05-31-18-07-02食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_18-07-05开始进行食品销售经营者测试
+2018-05-31-18-08-20食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_18-08-22开始进行食品销售经营者测试
+2018-05-31-18-09-41食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_18-09-43开始进行食品销售经营者测试
+2018-05-31-18-10-59食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_18-11-01开始进行餐饮服务经营者测试
+2018-05-31-18-12-14食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_18-12-17开始进行餐饮服务经营者测试
+2018-05-31-18-13-35食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_18-13-37开始进行餐饮服务经营者测试
+2018-05-31-18-14-52食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_18-14-54开始进行餐饮服务经营者测试
+2018-05-31-18-16-13食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_18-16-16开始进行餐饮服务经营者测试
+2018-05-31-18-17-34食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_18-17-36开始进行单位食堂测试
+2018-05-31-18-18-52食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_18-18-55开始进行单位食堂测试
+2018-05-31-18-20-10食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_18-20-12开始进行单位食堂测试
+2018-05-31-18-21-23食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_18-21-25开始进行单位食堂测试
+2018-05-31-18-22-45食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_18-22-48开始进行单位食堂测试
+2018-05-31-18-24-03食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+2018-05-31_18-24-06开始进行校外托管日常检查测试
+2018-05-31-18-25-20食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_18-25-22开始进行校外托管专项检查测试
+2018-05-31-18-26-30食品新建日常检查$checkTypeCode1流程测试成功，测试通过
+2018-05-31_18-26-32开始进行校外托管量化评级测试
+2018-05-31-18-27-43食品新建日常检查$checkTypeCode2流程测试成功，测试通过
+2018-05-31_18-27-46开始进行校外托管学校季度检查测试
+2018-05-31-18-28-55食品新建日常检查$checkTypeCode3流程测试成功，测试通过
+2018-05-31_18-28-58开始进行校外托管飞行检查测试
+2018-05-31-18-30-09食品新建日常检查$checkTypeCode4流程测试成功，测试通过
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_food_daily_check.TestDoubleRandomTask: 测试双随机任务</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',1)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_double_random_task</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse in">
+    <pre>
+    
+pt2_1: 2018-05-31-18-31-52双随机计划创建成功,开始签收
+2018-05-31-18-31-55双随机任务接收成功
+2018-05-31-18-32-46依据双随机任务新建检查已提交，检查企业为市中区俊晴小吃店
+2018-05-31-18-32-52依据双随机任务新建检查成功，检查企业为市中区俊晴小吃店
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_food_daily_check.TestNormalTask: 测试普通任务.py</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',1)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_normal_task</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse in">
+    <pre>
+    
+pt3_1: 2018-05-31-18-34-02普通任务创建成功,测试通过
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>通过率：100.00%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+
+</body>
+</html>

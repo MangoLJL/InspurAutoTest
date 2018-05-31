@@ -123,9 +123,9 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Test Report</h1>
 <p class='attribute'><strong>测试人员 : </strong> 孙浩然</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-05-31 09:38:00</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:31.984118</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 3，错误 3，通过率= 0.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-05-31 09:40:42</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:03:23.502680</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 3，失败 1，错误 2，通过率= 0.00%</p>
 
 <p class='description'></p>
 </div>
@@ -134,7 +134,7 @@ function html_escape(s) {
 
 <p id='show_detail_line'>
 <a class="btn btn-primary" href='javascript:showCase(0)'>概要（0.00%）</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败（0）</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败（1）</a>
 <a class="btn btn-success" href='javascript:showCase(2)'>通过（0）</a>
 <a class="btn btn-info" href='javascript:showCase(3)'>所有（3）</a>
 </p>
@@ -156,78 +156,44 @@ function html_escape(s) {
     <td>详细</td>
 </tr>
 
-<tr class='errorClass warning'>
+<tr class='failClass warning'>
     <td>test_food_daily_check.TestNewCheck: 测试新建检查</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
-    <td class="text-center">0</td>
     <td class="text-center">1</td>
+    <td class="text-center">0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="detail" id='c1'>详细</a></td>
 </tr>
 
 <tr id='ft1_1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_new_check: Test method new_check()</div></td>
+    <td class='failCase'><div class='testcase'>test_new_check: Test method new_check()</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
-    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>失败</button>
     <div id='div_ft1_1' class="collapse">  -->
 
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>失败</button>
     <div id='div_ft1_1' class="collapse in">
     <pre>
     
-ft1_1: 2018-05-31_09-38-00开始进行小作坊日常检查测试
-小作坊日常检查测试未通过，截图已保存至new_check.png，错误信息： Message: chrome not reachable
+ft1_1: 2018-05-31_09-40-42开始进行小作坊日常检查测试
+2018-05-31_09-41-41小作坊企业列表无数据，跳过此类别企业...
+2018-05-31_09-41-43开始进行食品摊贩日常检查测试
+2018-05-31-09-43-01食品新建日常检查$checkTypeCode0流程测试成功，测试通过
+2018-05-31_09-43-04开始进行食品摊贩专项检查测试
+点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程,截图已保存至setup_driver.png Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[@class='applyText'][contains(text(),'智慧监管')]"}
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
-Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 37, in setup_driver
-    self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu).click()
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 385, in find_element_by_xpath
-    return self.find_element(by=By.XPATH, value=xpath)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
-    'value': value})['value']
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+食品摊贩专项检查测试未通过，截图已保存至new_check.png，错误信息： Message: no such element: Unable to locate element: {"method":"id","selector":"menu-toggler"}
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 21, in new_check
-    driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 44, in setup_driver
-    self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%ssetup_driver.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
-    png = self.get_screenshot_as_png()
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png
-    return base64.b64decode(self.get_screenshot_as_base64().encode('ascii'))
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1050, in get_screenshot_as_base64
-    return self.execute(Command.SCREENSHOT)['value']
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: chrome not reachable
-  (Session info: chrome=66.0.3359.181)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
-
-
-During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 11, in test_new_check
     self.assertEqual(True, new_check())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 96, in new_check
-    driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snew_check.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
-UnboundLocalError: local variable 'driver' referenced before assignment
+AssertionError: True != None
 
 
     </pre>
@@ -256,28 +222,24 @@ UnboundLocalError: local variable 'driver' referenced before assignment
     <div id='div_ft2_1' class="collapse in">
     <pre>
     
-ft2_1: 测试未通过，截图已保存至double_random_task_error.png，错误信息： Message: session not created exception
-from disconnected: unable to send message to renderer
+ft2_1: 测试未通过，截图已保存至double_random_task_error.png，错误信息： Message: chrome not reachable
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
 Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 102, in double_random_task
-    driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 27, in setup_driver
-    driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 75, in __init__
-    desired_capabilities=desired_capabilities)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 154, in __init__
-    self.start_session(desired_capabilities, browser_profile)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 243, in start_session
-    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 103, in double_random_task
+    food_new_random_task_setup.choose_menu('食品监督检查', '任务管理', '双随机任务')
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 61, in choose_menu
+    self.driver.find_element_by_id("menu-toggler").click()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 351, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
+    'value': value})['value']
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
     self.error_handler.check_response(response)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.SessionNotCreatedException: Message: session not created exception
-from disconnected: unable to send message to renderer
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
@@ -289,7 +251,20 @@ Traceback (most recent call last):
     self.assertEqual(True, double_random_task())
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 122, in double_random_task
     driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sdouble_random_task_error.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
-UnboundLocalError: local variable 'driver' referenced before assignment
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
+    png = self.get_screenshot_as_png()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png
+    return base64.b64decode(self.get_screenshot_as_base64().encode('ascii'))
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1050, in get_screenshot_as_base64
+    return self.execute(Command.SCREENSHOT)['value']
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
 
 
     </pre>
@@ -318,24 +293,24 @@ UnboundLocalError: local variable 'driver' referenced before assignment
     <div id='div_ft3_1' class="collapse in">
     <pre>
     
-ft3_1: 测试未通过，截图已保存至normal_task_error.png，错误信息： Message: unknown error: cannot determine loading status
-from disconnected: received Inspector.detached event
+ft3_1: 测试未通过，截图已保存至normal_task_error.png，错误信息： Message: chrome not reachable
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 128, in normal_task
     driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 30, in setup_driver
-    self.driver.get(self.url)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 324, in get
-    self.execute(Command.GET, {'url': url})
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 31, in setup_driver
+    self.driver.find_element_by_id("j_username").send_keys("%s" % username)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 351, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
+    'value': value})['value']
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
     self.error_handler.check_response(response)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
-from disconnected: received Inspector.detached event
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
@@ -359,8 +334,8 @@ UnboundLocalError: local variable 'driver' referenced before assignment
     <td>总计</td>
     <td>3</td>
     <td>0</td>
-    <td>0</td>
-    <td>3</td>
+    <td>1</td>
+    <td>2</td>
     <td>通过率：0.00%</td>
 </tr>
 </table>

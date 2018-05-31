@@ -1,8 +1,6 @@
 import unittest
 import schedule
-import threading
 import time
-
 from test_food_daily_check import TestNewCheck, TestDoubleRandomTask, TestNormalTask
 from HTMLTestRunner import HTMLTestRunner
 
@@ -10,7 +8,7 @@ from HTMLTestRunner import HTMLTestRunner
 
 
 def job():
-    print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
+    print('开始运行...')
     suite = unittest.TestSuite()
     tests = [TestNewCheck("test_new_check"), TestDoubleRandomTask("test_double_random_task"), TestNormalTask("test_normal_task")]
     suite.addTests(tests)
@@ -21,28 +19,12 @@ def job():
                                 verbosity=2
                                 )
         runner.run(suite)
-
-
-def job_task23():
-    threading.Thread(target=job).start()
-
-
-def job_task01():
-    threading.Thread(target=job).start()
-
-
-def job_task03():
-    threading.Thread(target=job).start()
-
-
-def job_task05():
-    threading.Thread(target=job).start()
-
-schedule.every().day.at("23:00").do(job_task23)
-schedule.every().day.at("01:00").do(job_task01)
-schedule.every().day.at("03:00").do(job_task03)
-schedule.every().day.at("05:00").do(job_task05)
+'''
+schedule.every(2).hours.do(job)
+# schedule.every().day.at("20:01").do(job)
 while True:
-	print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
+
     schedule.run_pending()
     time.sleep(1)
+'''
+job()
