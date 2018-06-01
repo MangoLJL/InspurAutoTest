@@ -24,7 +24,7 @@ class Setup(object):
         chrome_option = Options()
         # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
-        driver = webdriver.Chrome(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
+        driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         driver.maximize_window()
         self.driver = driver
         self.driver.get(self.url)
