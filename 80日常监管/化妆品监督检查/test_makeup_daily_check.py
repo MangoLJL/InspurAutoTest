@@ -1,5 +1,5 @@
 import unittest
-from food_daily_check import *
+from makeup_daily_check import *
 
 
 class TestNewCheck(unittest.TestCase):

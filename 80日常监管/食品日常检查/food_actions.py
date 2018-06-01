@@ -136,7 +136,8 @@ class NewDoubleRandom(object):
         self.driver.find_element_by_xpath("//html//div[4]/div[3]/table[1]/tbody[1]/tr[5]/td[7]").click()
         self.driver.find_element_by_id("DeptName").click()  # 被检查单位/部门
         self.driver.switch_to.default_content()
-        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(3)
         self.driver.switch_to.frame("mainFrame")
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
@@ -145,7 +146,8 @@ class NewDoubleRandom(object):
         self.button.click_save_button()
         time.sleep(2)
         self.driver.switch_to.default_content()
-        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(3)
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_id("planTemplateName").click()  # 指定检查表模板
         self.driver.switch_to.default_content()

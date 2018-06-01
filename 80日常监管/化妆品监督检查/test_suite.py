@@ -1,7 +1,7 @@
 import unittest
 import schedule
 import time
-from test_food_daily_check import TestNewCheck, TestDoubleRandomTask, TestNormalTask
+from test_makeup_daily_check import TestNewCheck, TestDoubleRandomTask, TestNormalTask
 from HTMLTestRunner import HTMLTestRunner
 
 # if __name__ == '__main__':
