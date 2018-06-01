@@ -80,6 +80,7 @@ class NewCheck(object):
         checkResult0.click()
         self.driver.find_element_by_id("dealMethod0").click()
         self.driver.find_element_by_id("isShowInfo1").click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_id("fithBtn").click()
 
     def final_step(self):
