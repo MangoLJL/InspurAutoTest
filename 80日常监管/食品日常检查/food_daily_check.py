@@ -64,7 +64,7 @@ def new_check():
                 food_bussiness_suite_true_or_false = [[], [], []]
                 for z in range(0, 3):
                     for i in range(0, 5):
-                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行%s测试' % food_bussiness_type[z])
+                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行%s-%s测试' % (food_bussiness_type[z], check_type_name))
                         food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
                         driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
                         common_action = CommonAction(driver)
