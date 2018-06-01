@@ -166,6 +166,7 @@ class NewDoubleRandom(object):
         # 此处应该增加错误判断====================
         self.button.click_confirm_button()
         self.driver.quit()
+        print task_name
         return task_name
 
     def receive_new_random_test(self, task_name):
