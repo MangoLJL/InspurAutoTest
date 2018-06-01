@@ -41,7 +41,8 @@ class Setup(object):
                 second_menu_class = 'pic-font'
             self.driver.find_element_by_xpath("//span[@class='%s'][contains(text(),'%s')]" % (second_menu_class, second_menu)).click()
         except Exception as e:
-            self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%ssetup_driver.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+            self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenchot\\%ssetup_driver.png" %
+                                               time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
             print('点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程,截图已保存至setup_driver.png', e)
         return driver
 
@@ -52,7 +53,8 @@ class Setup(object):
         try:
             self.driver.switch_to.default_content()
             self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']")
-            self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%schoose_menu.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+            self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenchot\\%schoose_menu.png" %
+                                               time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
             button.click_confirm_button()
             print('系统首页检测到有错误弹窗,截图已保存至choose_menu.png')
         except:
@@ -138,7 +140,8 @@ class CommonAction(object):
         self.driver = driver
 
     def get_screenshot(self, name):
-        self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%s%s.png" % (time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())), name))
+        self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenchot\\%s%s.png" %
+                                           (time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())), name))
 
     def find(self, find_target):
         while 1:
