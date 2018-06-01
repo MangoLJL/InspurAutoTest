@@ -151,7 +151,6 @@ class NewDoubleRandom(object):
         self.driver.find_element_by_id("planTemplateName").click()  # 指定检查表模板
         self.driver.switch_to.default_content()
         time.sleep(1)
-
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
         time.sleep(3)
@@ -213,8 +212,9 @@ class NewDoubleRandom(object):
             finaltarget = target.parent
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.get_text()
-            self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button' % finaltarget).click()
+            self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[13]/button' % finaltarget).click()
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(2)
             self.driver.switch_to.default_content()
