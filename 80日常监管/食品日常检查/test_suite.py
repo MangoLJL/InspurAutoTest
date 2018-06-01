@@ -21,8 +21,8 @@ def job():
                                 verbosity=2
                                 )
         runner.run(suite)
-
-
+job()
+'''
 def job_task23():
     threading.Thread(target=job).start()
 
@@ -43,6 +43,7 @@ schedule.every().day.at("01:00").do(job_task01)
 schedule.every().day.at("03:00").do(job_task03)
 schedule.every().day.at("05:00").do(job_task05)
 while True:
-	print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
+
     schedule.run_pending()
     time.sleep(1)
+'''

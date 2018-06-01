@@ -143,9 +143,9 @@ def double_random_task():
 
 
 def normal_task():
+    food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
+    driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
-        food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
-        driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
         food_new_random_task_setup.choose_menu('食品监督检查', '任务管理', '计划管理')
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()

@@ -123,9 +123,9 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Test Report</h1>
 <p class='attribute'><strong>测试人员 : </strong> 孙浩然</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-05-31 09:40:42</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:03:23.502680</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 3，失败 1，错误 2，通过率= 0.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-06-01 09:45:53</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:27:40.636192</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 3，失败 2，错误 1，通过率= 0.00%</p>
 
 <p class='description'></p>
 </div>
@@ -134,7 +134,7 @@ function html_escape(s) {
 
 <p id='show_detail_line'>
 <a class="btn btn-primary" href='javascript:showCase(0)'>概要（0.00%）</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败（1）</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败（2）</a>
 <a class="btn btn-success" href='javascript:showCase(2)'>通过（0）</a>
 <a class="btn btn-info" href='javascript:showCase(3)'>所有（3）</a>
 </p>
@@ -177,23 +177,70 @@ function html_escape(s) {
     <div id='div_ft1_1' class="collapse in">
     <pre>
     
-ft1_1: 2018-05-31_09-40-42开始进行小作坊日常检查测试
-2018-05-31_09-41-41小作坊企业列表无数据，跳过此类别企业...
-2018-05-31_09-41-43开始进行食品摊贩日常检查测试
-2018-05-31-09-43-01食品新建日常检查$checkTypeCode0流程测试成功，测试通过
-2018-05-31_09-43-04开始进行食品摊贩专项检查测试
-点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程,截图已保存至setup_driver.png Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[@class='applyText'][contains(text(),'智慧监管')]"}
+ft1_1: 2018-06-01_09-45-53开始进行小作坊-日常检查测试
+2018-06-01_09-46-59小作坊企业列表无数据，跳过小作坊类别企业...
+2018-06-01_09-47-02开始进行食品摊贩-日常检查测试
+2018-06-01-09-48-22测试通过
+2018-06-01_09-48-25开始进行食品摊贩-专项检查测试
+2018-06-01-09-49-42测试通过
+2018-06-01_09-49-45开始进行食品摊贩-量化评级测试
+2018-06-01-09-50-53测试通过
+2018-06-01_09-50-55开始进行食品摊贩-学校季度检查测试
+2018-06-01_09-51-29测试食品摊贩学校季度检查出错，截图已保存,当前url为：http://10.12.1.80/portal/jsp/portal/index.jsp错误信息为Message: element not visible
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
-食品摊贩专项检查测试未通过，截图已保存至new_check.png，错误信息： Message: no such element: Unable to locate element: {"method":"id","selector":"menu-toggler"}
+2018-06-01_09-51-30开始进行食品摊贩-飞行检查测试
+2018-06-01-09-52-46测试通过
+2018-06-01_09-52-48开始进行小餐饮-日常检查测试
+2018-06-01_09-53-39小餐饮企业列表无数据，跳过小餐饮类别企业...
+2018-06-01_09-53-42开始进行食品生产-日常检查测试
+2018-06-01-09-54-50测试通过
+2018-06-01_09-54-52开始进行食品生产-专项检查测试
+2018-06-01_09-55-22测试食品生产专项检查出错，截图已保存,当前url为：http://10.12.1.80/portal/jsp/portal/index.jsp错误信息为Message: element not visible
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
+2018-06-01_09-55-23开始进行食品生产-量化评级测试
+2018-06-01-09-56-40测试通过
+2018-06-01_09-56-42开始进行食品生产-学校季度检查测试
+2018-06-01-09-57-49测试通过
+2018-06-01_09-57-52开始进行食品生产-飞行检查测试
+2018-06-01-09-58-59测试通过
+2018-06-01_09-59-01开始进行食品流通-日常检查测试
+2018-06-01-10-00-11测试通过
+2018-06-01_10-00-14开始进行食品流通-专项检查测试
+2018-06-01_10-01-11测试食品流通专项检查出错，截图已保存,当前url为：http://10.12.1.80/portal/jsp/portal/index.jsp错误信息为Message: unknown error: Element &lt;iframe id="mainFrame" name="mainFrame" src="/checkOfCity/jsp/dtdcheck/food/publicRecord/record_edit.jsp?method=add&amp;amp;parentId=food" frameborder="0" allowtransparency="true" height="100%" width="100%" cd_frame_id_="dc393ee67e4f1937526c456afcd917ae"&gt;&lt;/iframe&gt; is not clickable at point (1142, 311). Other element would receive the click: &lt;iframe scrolling="auto" allowtransparency="true" id="layui-layer-iframe1" name="layui-layer-iframe1" onload="this.className='';" class="" frameborder="0" src="/checkOfCity/jsp/dtdcheck/food/publicRecord/record_entshow.jsp?enterpriseTypeId=0101&amp;amp;parentId=01" style="height: 450px;" cd_frame_id_="c123804cb7538d505d3de5233db778e8"&gt;&lt;/iframe&gt;
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
+2018-06-01_10-01-13开始进行食品流通-量化评级测试
+2018-06-01_10-02-03测试食品流通量化评级出错，截图已保存,当前url为：http://10.12.1.80/portal/jsp/portal/index.jsp错误信息为Message: element not visible
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
+2018-06-01_10-02-05开始进行食品流通-学校季度检查测试
+2018-06-01-10-03-17测试通过
+2018-06-01_10-03-19开始进行食品流通-飞行检查测试
+2018-06-01-10-04-30测试通过
+2018-06-01_10-04-32开始进行餐饮服务-日常检查测试
+2018-06-01-10-05-46测试通过
+2018-06-01_10-05-48开始进行餐饮服务-专项检查测试
+2018-06-01-10-07-00测试通过
+2018-06-01_10-07-02开始进行餐饮服务-量化评级测试
+2018-06-01-10-08-09测试通过
+2018-06-01_10-08-12开始进行餐饮服务-学校季度检查测试
+2018-06-01-10-09-21测试通过
+2018-06-01_10-09-24开始进行餐饮服务-飞行检查测试
+2018-06-01-10-10-31测试通过
+2018-06-01_10-10-34开始进行食品经营大类三个小类的测试，共15个事项
+2018-06-01_10-10-34开始进行食品销售经营者测试
+2018-06-01-10-11-45测试通过
+2018-06-01_10-11-48开始进行食品销售经营者测试
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 11, in test_new_check
     self.assertEqual(True, new_check())
-AssertionError: True != None
+AssertionError: True != False
 
 
     </pre>
@@ -201,70 +248,35 @@ AssertionError: True != None
     </td>
 </tr>
 
-<tr class='errorClass warning'>
+<tr class='failClass warning'>
     <td>test_food_daily_check.TestDoubleRandomTask: 测试双随机任务</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
-    <td class="text-center">0</td>
     <td class="text-center">1</td>
+    <td class="text-center">0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c2',1)" class="detail" id='c2'>详细</a></td>
 </tr>
 
 <tr id='ft2_1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_double_random_task</div></td>
+    <td class='failCase'><div class='testcase'>test_double_random_task</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
-    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>失败</button>
     <div id='div_ft2_1' class="collapse">  -->
 
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_1'>失败</button>
     <div id='div_ft2_1' class="collapse in">
     <pre>
     
-ft2_1: 测试未通过，截图已保存至double_random_task_error.png，错误信息： Message: chrome not reachable
+ft2_1: 测试未通过，截图已保存至double_random_task_error.png，当前url为：http://10.12.1.80/portal/jsp/portal/index.jsp错误信息为：Message: no such element: Unable to locate element: {"method":"xpath","selector":"//i[@class='fa fa-plus']"}
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
-
-Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 103, in double_random_task
-    food_new_random_task_setup.choose_menu('食品监督检查', '任务管理', '双随机任务')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 61, in choose_menu
-    self.driver.find_element_by_id("menu-toggler").click()
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 351, in find_element_by_id
-    return self.find_element(by=By.ID, value=id_)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
-    'value': value})['value']
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: chrome not reachable
-  (Session info: chrome=66.0.3359.181)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
-
-
-During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 19, in test_double_random_task
     self.assertEqual(True, double_random_task())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 122, in double_random_task
-    driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sdouble_random_task_error.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
-    png = self.get_screenshot_as_png()
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png
-    return base64.b64decode(self.get_screenshot_as_base64().encode('ascii'))
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1050, in get_screenshot_as_base64
-    return self.execute(Command.SCREENSHOT)['value']
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: chrome not reachable
-  (Session info: chrome=66.0.3359.181)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
-
+AssertionError: True != None
 
 
     </pre>
@@ -293,24 +305,42 @@ selenium.common.exceptions.WebDriverException: Message: chrome not reachable
     <div id='div_ft3_1' class="collapse in">
     <pre>
     
-ft3_1: 测试未通过，截图已保存至normal_task_error.png，错误信息： Message: chrome not reachable
-  (Session info: chrome=66.0.3359.181)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
-
-Traceback (most recent call last):
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 128, in normal_task
-    driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 31, in setup_driver
-    self.driver.find_element_by_id("j_username").send_keys("%s" % username)
-  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 351, in find_element_by_id
-    return self.find_element(by=By.ID, value=id_)
+ft3_1: Traceback (most recent call last):
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 37, in setup_driver
+    self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu).click()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 385, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 955, in find_element
     'value': value})['value']
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
     self.error_handler.check_response(response)
   File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 148, in normal_task
+    driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\common_action.py", line 44, in setup_driver
+    self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%ssetup_driver.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1008, in get_screenshot_as_file
+    png = self.get_screenshot_as_png()
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1040, in get_screenshot_as_png
+    return base64.b64decode(self.get_screenshot_as_base64().encode('ascii'))
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1050, in get_screenshot_as_base64
+    return self.execute(Command.SCREENSHOT)['value']
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 312, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\sunhaoran\AppData\Local\Continuum\anaconda3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=66.0.3359.181)
   (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17134 x86_64)
 
@@ -320,8 +350,8 @@ During handling of the above exception, another exception occurred:
 Traceback (most recent call last):
   File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\test_food_daily_check.py", line 27, in test_normal_task
     self.assertEqual(True, normal_task())
-  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 140, in normal_task
-    driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%snormal_task_error.png" % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
+  File "C:\Users\sunhaoran\Documents\GitHub\PythonAutoTest\80日常监管\食品日常检查\food_daily_check.py", line 159, in normal_task
+    print("测试未通过，截图已保存至normal_task_error.png，当前url为：%s错误信息为：%s" % (driver.current_url, e))
 UnboundLocalError: local variable 'driver' referenced before assignment
 
 
@@ -334,8 +364,8 @@ UnboundLocalError: local variable 'driver' referenced before assignment
     <td>总计</td>
     <td>3</td>
     <td>0</td>
-    <td>1</td>
     <td>2</td>
+    <td>1</td>
     <td>通过率：0.00%</td>
 </tr>
 </table>
