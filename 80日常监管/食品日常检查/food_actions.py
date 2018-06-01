@@ -138,7 +138,6 @@ class NewDoubleRandom(object):
         self.driver.switch_to.default_content()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(3)
-        self.driver.switch_to.frame("mainFrame")
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
         time.sleep(3)
@@ -152,11 +151,11 @@ class NewDoubleRandom(object):
         self.driver.find_element_by_id("planTemplateName").click()  # 指定检查表模板
         self.driver.switch_to.default_content()
         time.sleep(1)
-        self.driver.switch_to.frame("mainFrame")
-        iframe = self.driver.find_element_by_xpath("//*[@id='grid']/tbody/tr[1]/td[2]/input")
+
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
         time.sleep(3)
-        self.driver.find_element_by_id("organTree_1_check").click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[3]/td[2]/input').click()
         self.button.click_save_button()
         time.sleep(2)
         self.driver.switch_to.default_content()
