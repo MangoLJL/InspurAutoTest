@@ -76,9 +76,9 @@ class NewCheck(object):
         return check_situation
 
     def fifth_step(self):
-        checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult0")))
+        checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult1")))
         checkResult0.click()
-        self.driver.find_element_by_id("dealMethod0").click()
+        self.driver.find_element_by_id("dealMethod5").click()
         self.driver.find_element_by_id("isShowInfo1").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_id("fithBtn").click()
