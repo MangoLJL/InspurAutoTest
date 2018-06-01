@@ -20,8 +20,7 @@ class TestDoubleRandomTask(unittest.TestCase):
 
 class TestNormalTask(unittest.TestCase):
     """测试普通任务.py"""
-#    @unittest.skip("I don't want to run this case.")
-
+    @unittest.skip("I don't want to run this case.")
     def test_normal_task(self):
         self.assertEqual(True, normal_task())
 if __name__ == '__main__':
