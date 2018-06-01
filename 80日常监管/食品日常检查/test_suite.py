@@ -22,6 +22,7 @@ def job():
                                 )
         runner.run(suite)
 job()
+schedule.every(3).hours.do(job)
 '''
 def job_task23():
     threading.Thread(target=job).start()
