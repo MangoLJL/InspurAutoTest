@@ -13,6 +13,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 
 class NewCheck(object):
+    # 新建检查
 
     def __init__(self, driver):
         self.driver = driver
@@ -114,6 +115,7 @@ class NewCheck(object):
 
 
 class NewDoubleRandom(object):
+    # 双随机任务新建并发起检查
 
     def __init__(self, driver):
         self.driver = driver
@@ -121,6 +123,7 @@ class NewDoubleRandom(object):
         self.common_action = CommonAction(self.driver)
 
     def create_new_random_task(self):
+        # 新建双随机任务
         self.button.click_plus_button()
         task_name = ("%ssunhr测试双随机" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("planName").send_keys(task_name)
@@ -286,6 +289,7 @@ class NewDoubleRandom(object):
             print(e)
 
     def confirm_random_enterprise_check(self, task_name, enterprise_name):
+        # 确定根据双随机任务发起的检查建立成功
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
         self.driver.get(url)
         target = self.common_action.find(task_name)
@@ -309,6 +313,7 @@ class NewDoubleRandom(object):
 
 
 class NewNormalTask(object):
+    # 普通任务发起并新建检查
 
     def __init__(self, driver):
         self.driver = driver
@@ -316,6 +321,7 @@ class NewNormalTask(object):
         self.common_action = CommonAction(self.driver)
 
     def create_task(self):
+        # 新建普通任务
         self.button.click_plus_button()
         plan_name = (time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "sunhr测试计划")
         self.driver.find_element_by_id("planName").send_keys(plan_name)
@@ -355,6 +361,7 @@ class NewNormalTask(object):
         return plan_name
 
     def confirm_new_normal_task(self, plan_name):
+        # 确定普通任务新建成功
         try:
             url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
             self.driver.get(url)
@@ -372,6 +379,7 @@ class NewNormalTask(object):
             print(e)
 
     def create_normal_task_check(self, plan_name):
+        # 针对新建的普通任务发起检查
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
         self.button.click_search_button()
@@ -428,14 +436,15 @@ class NewNormalTask(object):
             self.driver.find_element_by_id("fourBtn").click()
             self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
             self.button.click_confirm_button()
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查已提交，检查企业为%s" % enterprise_name)
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据普通任务新建检查已提交，检查企业为【%s】" % enterprise_name)
             return enterprise_name
         except Exception as e:
             self.common_action.get_screenshot("check_new_random_test")
-            print("根据%s创建针对%s的流程失败" % (plan_name, enterprise_name))
+            print("根据普通任务【%s】创建针对【%s】的流程失败" % (plan_name, enterprise_name))
             print(e)
 
     def confirm_normal_task_check(self, task_name, enterprise_name):
+        # 确认针对普通任务发起的检查新建成功
         try:
             url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
             self.driver.get(url)
@@ -453,7 +462,7 @@ class NewNormalTask(object):
             self.driver.switch_to.frame(iframe)
             target = self.common_action.find(enterprise_name)
             if target != None:
-                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
+                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据普通任务新建检查成功，检查企业为【%s】" % enterprise_name)
                 return True
             else:
                 return False

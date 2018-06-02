@@ -46,12 +46,12 @@ def new_check():
                             ture_or_false[i] = new_check_confirmer.confirm_new_check(check_situation, checkTypeCode)  # 共五个
                             driver.quit()
                         else:
-                            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '%s企业列表无数据，跳过%s类别企业...' % (enterprise_type[y], enterprise_type[y]))
+                            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过【%s】类别企业...' % (enterprise_type[y], enterprise_type[y]))
                             driver.quit()
                             break
                     except Exception as e:
                         ture_or_false[i] = False
-                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试%s%s出错，截图已保存,当前url为：%s错误信息为%s' %
+                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                               (enterprise_type[y], check_type_name[i], driver.current_url, e))
                         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s%snew_check.png" % (
                             time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
@@ -64,7 +64,7 @@ def new_check():
                 food_bussiness_suite_true_or_false = [[], [], []]
                 for z in range(0, 3):
                     for i in range(0, 5):
-                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行%s-%s测试' % (food_bussiness_type[z], check_type_name))
+                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】测试' % (food_bussiness_type[z], check_type_name))
                         food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
                         driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
                         common_action = CommonAction(driver)
@@ -93,7 +93,7 @@ def new_check():
                             driver.find_element_by_id(businessItem).click()
                             driver.find_element_by_id("secondBtn").click()
                         else:
-                            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '%s企业列表无数据，跳过此类别企业...' % enterprise_type[y])
+                            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
                             driver.quit()
                             break
                         checkTypeCode = 'checkTypeCode' + str(i)
@@ -112,7 +112,7 @@ def new_check():
         return (reduce(true_plus_false, final_true_or_false))
     except Exception as e:
         return False
-        print("%s%s测试未通过，截图已保存至new_check.png，当前url为：%s错误信息为：" % (enterprise_type[y], check_type_name[i], driver.current_url, e))
+        print("【%s】-【%s】测试未通过，截图已保存至new_check.png，当前url为：【%s】错误信息为：" % (enterprise_type[y], check_type_name[i], driver.current_url, e))
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snew_check.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
@@ -139,7 +139,7 @@ def double_random_task():
         return ture_or_false
         driver.quit()
     except Exception as e:
-        print("测试未通过，截图已保存至double_random_task_error.png，当前url为：%s错误信息为：%s" % (driver.current_url, e))
+        print("测试未通过，截图已保存至double_random_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sdouble_random_task_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
@@ -163,6 +163,6 @@ def normal_task():
         driver.quit()
         return ture_or_false
     except Exception as e:
-        print("测试未通过，截图已保存至normal_task_error.png，当前url为：%s错误信息为：%s" % (driver.current_url, e))
-        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenchot\\%snormal_task_error.png" %
+        print("测试未通过，截图已保存至normal_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snormal_task_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
