@@ -399,7 +399,7 @@ class NewNormalTask(object):
             self.driver.find_element_by_id("firstBtn").click()
             check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "checkTypeCode0")))
             check_type_button.click()
-            self.driver.find_element_by_xpath("//*[@id='nametr1']/td/div[1]/span/i").click()  # 123
+            self.driver.find_element_by_xpath("//*[@id='nametr2']/td/div[1]/span/i").click()  # 123
             self.driver.switch_to.default_content()
             time.sleep(1)
             iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
