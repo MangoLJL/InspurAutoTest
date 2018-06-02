@@ -155,6 +155,11 @@ def normal_task():
         normal_plan_name = new_normal_task.create_task()
         new_normal_task_confirmer = NewNormalTask(driver)
         ture_or_false = new_normal_task_confirmer.confirm_new_normal_task(normal_plan_name)
+        new_random_test_confirmer_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
+        driver = new_random_test_confirmer_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
+        new_normal_task_check_creater = NewNormalTask(driver)
+        enterprise_name = new_normal_task_check_creater.create_normal_task_check(normal_plan_name)
+        ture_or_false = new_normal_task_check_creater.confirm_namarl_task_enterprise_check(normal_plan_name, enterprise_name)
         driver.quit()
         return ture_or_false
     except Exception as e:

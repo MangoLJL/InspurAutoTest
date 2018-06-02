@@ -364,14 +364,12 @@ class NewNormalTask(object):
             if target == None:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "获取普通任务%s失败，任务可能没有创建成功,当前页面截图已保存至confirm_new_normal_task.png" % plan_name)
                 self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sconfirm_new_normal_task.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
-                return False
             else:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过，任务名称为：" + plan_name)
-                return True
         except Exception as e:
             print(e)
 
-    def normal_task_check(self, plan_name):
+    def create_normal_task_check(self, plan_name):
         try:
             url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
             self.driver.get(url)
@@ -429,3 +427,25 @@ class NewNormalTask(object):
                 self.common_action.get_screenshot("check_new_random_test")
                 print("根据%s创建针对%s的流程失败" % (task_name, enterprise_name))
                 print(e)
+
+    def confirm_namarl_task_enterprise_check(self, task_name, enterprise_name):
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+        self.driver.get(url)
+        target = self.common_action.find(task_name)
+        finaltarget = target.parent
+        finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.get_text()
+        self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.switch_to.default_content()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
+        target = self.common_action.find(enterprise_name)
+        if target != None:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
+            return True
+        else:
+            return False
