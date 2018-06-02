@@ -159,7 +159,7 @@ def normal_task():
         driver = new_random_test_confirmer_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
         new_normal_task_check_creater = NewNormalTask(driver)
         enterprise_name = new_normal_task_check_creater.create_normal_task_check(normal_plan_name)
-        ture_or_false = new_normal_task_check_creater.confirm_namarl_task_enterprise_check(normal_plan_name, enterprise_name)
+        ture_or_false = new_normal_task_check_creater.confirm_normal_task_enterprise_check(normal_plan_name, enterprise_name)
         driver.quit()
         return ture_or_false
     except Exception as e:

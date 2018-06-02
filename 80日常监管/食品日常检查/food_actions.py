@@ -370,82 +370,84 @@ class NewNormalTask(object):
             print(e)
 
     def create_normal_task_check(self, plan_name):
-        try:
-            url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
-            self.driver.get(url)
-            target = self.common_action.find(plan_name)
-            finaltarget = target.parent
-            finaltarget = finaltarget.previous_sibling
-            finaltarget = finaltarget.previous_sibling
-            finaltarget = finaltarget.get_text()
-            self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button' % finaltarget).click()
-            try:
-                enterprise_name = '未选择'
-                enterprise_selector = self.driver.find_element_by_id("enterpriseName")
-                ActionChains(self.driver).double_click(enterprise_selector).perform()
-                self.driver.switch_to.default_content()
-                time.sleep(1)
-                iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-                self.driver.switch_to.frame(iframe)
-                enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
-                enterprise_name = self.driver.find_element_by_xpath("//html//tr[1]/td[3]").text
-                enterprise_radio_button.click()
-                self.button.click_save_button()
-                time.sleep(1)
-                self.driver.switch_to.default_content()
-                self.driver.find_element_by_id("firstBtn").click()
-                check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "checkTypeCode0")))
-                check_type_button.click()
-                self.driver.find_element_by_xpath("//*[@id='nametr1']/td/div[1]/span/i").click()
-                self.driver.switch_to.default_content()
-                time.sleep(1)
-                iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-                self.driver.switch_to.frame(iframe)
-                collect_tab = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.XPATH, "//a[@href='#collection']")))
-                collect_tab.click()
-                self.driver.find_element_by_xpath("//html//tr[1]/td[2]/input[1]").click()
-                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-                time.sleep(2)
-                self.driver.find_element_by_xpath("//table[@id='queryTable1']//tbody//tr//td[@class='queryTable-btn-td']//button[@id='save']").click()
-                time.sleep(2)
-                self.driver.switch_to.default_content()
-                self.driver.find_element_by_id("secondBtn").click()
-                question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
-                question_sheet.click()
-                check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
-                self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
-                self.driver.find_element_by_id("thirdhBtn").click()
-                checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult0")))
-                checkResult0.click()
-                self.driver.find_element_by_id("dealMethod0").click()
-                self.driver.find_element_by_id("fourBtn").click()
-                self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
-                self.button.click_confirm_button()
-                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查已提交，检查企业为%s" % enterprise_name)
-                return enterprise_name
-            except Exception as e:
-                self.common_action.get_screenshot("check_new_random_test")
-                print("根据%s创建针对%s的流程失败" % (task_name, enterprise_name))
-                print(e)
-
-    def confirm_namarl_task_enterprise_check(self, task_name, enterprise_name):
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
-        target = self.common_action.find(task_name)
+        target = self.common_action.find(plan_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.get_text()
-        self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
-        time.sleep(1)
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.driver.switch_to.default_content()
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-        self.driver.switch_to.frame(iframe)
-        target = self.common_action.find(enterprise_name)
-        if target != None:
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
-            return True
-        else:
-            return False
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button' % finaltarget).click()
+        try:
+            enterprise_name = '未选择'
+            enterprise_selector = self.driver.find_element_by_id("enterpriseName")
+            ActionChains(self.driver).double_click(enterprise_selector).perform()
+            self.driver.switch_to.default_content()
+            time.sleep(1)
+            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+            self.driver.switch_to.frame(iframe)
+            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
+            enterprise_name = self.driver.find_element_by_xpath("//html//tr[1]/td[3]").text
+            enterprise_radio_button.click()
+            self.button.click_save_button()
+            time.sleep(1)
+            self.driver.switch_to.default_content()
+            self.driver.find_element_by_id("firstBtn").click()
+            check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "checkTypeCode0")))
+            check_type_button.click()
+            self.driver.find_element_by_xpath("//*[@id='nametr1']/td/div[1]/span/i").click()
+            self.driver.switch_to.default_content()
+            time.sleep(1)
+            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+            self.driver.switch_to.frame(iframe)
+            collect_tab = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.XPATH, "//a[@href='#collection']")))
+            collect_tab.click()
+            self.driver.find_element_by_xpath("//html//tr[1]/td[2]/input[1]").click()
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            time.sleep(2)
+            self.driver.find_element_by_xpath("//table[@id='queryTable1']//tbody//tr//td[@class='queryTable-btn-td']//button[@id='save']").click()
+            time.sleep(2)
+            self.driver.switch_to.default_content()
+            self.driver.find_element_by_id("secondBtn").click()
+            question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
+            question_sheet.click()
+            check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
+            self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
+            self.driver.find_element_by_id("thirdhBtn").click()
+            checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult0")))
+            checkResult0.click()
+            self.driver.find_element_by_id("dealMethod0").click()
+            self.driver.find_element_by_id("fourBtn").click()
+            self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
+            self.button.click_confirm_button()
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查已提交，检查企业为%s" % enterprise_name)
+            return enterprise_name
+        except Exception as e:
+            self.common_action.get_screenshot("check_new_random_test")
+            print("根据%s创建针对%s的流程失败" % (plan_name, enterprise_name))
+            print(e)
+
+    def confirm_normal_task_check(self, task_name, enterprise_name):
+        try:
+            url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+            self.driver.get(url)
+            target = self.common_action.find(task_name)
+            finaltarget = target.parent
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.get_text()
+            self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
+            time.sleep(1)
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            self.driver.switch_to.default_content()
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+            self.driver.switch_to.frame(iframe)
+            target = self.common_action.find(enterprise_name)
+            if target != None:
+                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
+                return True
+            else:
+                return False
+        except Exception as e:
+            print(e)
