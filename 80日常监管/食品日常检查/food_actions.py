@@ -367,6 +367,7 @@ class NewNormalTask(object):
                 self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sconfirm_new_normal_task.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
             else:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过，任务名称为：" + plan_name)
+                self.driver.quit()
         except Exception as e:
             print(e)
 
@@ -374,6 +375,7 @@ class NewNormalTask(object):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
         self.driver.find_element_by_id('query').click()
+        time.sleep(2)
         target = self.common_action.find(plan_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
