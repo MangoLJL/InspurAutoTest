@@ -119,7 +119,10 @@ class Button(object):
 
     def click_search_button(self):
         time.sleep(2)
-        self.driver.find_element_by_xpath("//i[@class='fa fa-search']").click()
+        try:
+            self.driver.find_element_by_xpath("//i[@class='fa fa-search']").click()
+        except Exception as e:
+            self.driver.find_element_by_xpath("//span[@class='fa fa-search']").click()
         time.sleep(5)
 
     def click_calendar_start_button(self):
