@@ -313,6 +313,7 @@ class NewNormalTask(object):
     def __init__(self, driver):
         self.driver = driver
         self.button = Button(self.driver)
+        self.common_action = CommonAction(self.driver)
 
     def create_task(self):
         self.button.click_plus_button()
