@@ -117,6 +117,11 @@ class Button(object):
         self.driver.find_element_by_xpath("//i[@class='fa fa-edit']").click()
         time.sleep(5)
 
+    def click_search_button(self):
+        time.sleep(2)
+        self.driver.find_element_by_xpath("//i[@class='fa fa-search']").click()
+        time.sleep(5)
+
     def click_calendar_start_button(self):
         self.driver.find_element_by_id("checkStartDate").click()
 

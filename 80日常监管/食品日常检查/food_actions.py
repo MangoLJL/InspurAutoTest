@@ -374,7 +374,7 @@ class NewNormalTask(object):
     def create_normal_task_check(self, plan_name):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
-        self.driver.find_element_by_id('query').click()
+        self.button.click_search_button()
         time.sleep(2)
         target = self.common_action.find(plan_name)
         finaltarget = target.parent
