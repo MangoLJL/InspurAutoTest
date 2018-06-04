@@ -541,6 +541,7 @@ class NewTemplate(object):
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[7]/input').send_keys('sunhr测试检查要求')
         self.driver.find_element_by_id('defaultConclusion').click()
         self.driver.find_element_by_xpath('//*[@id="defaultConclusion"]/option[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[11]/input').send_keys('100')
         iframe = self.driver.find_element_by_id('frameName')
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('bts').click()
