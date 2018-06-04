@@ -500,6 +500,9 @@ class NewTemplate(object):
         self.driver.switch_to.frame(iframe2)
         self.driver.find_element_by_id("organTree_1_check").click()
         self.driver.find_element_by_id("save").click()  # 选择部门之后点击保存\
+        self.driver.switch_to.default_content()
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
         self.button.click_edit_button()
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
