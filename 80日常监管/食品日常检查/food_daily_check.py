@@ -170,7 +170,7 @@ class FoodDailyCheck(object):
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
     def new_template(self):
-        NewTemplate
+
         food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
         try:
