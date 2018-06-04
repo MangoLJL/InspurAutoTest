@@ -175,7 +175,7 @@ def new_template():
     food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
-        food_new_random_task_setup.choose_menu('食品监督检查', '检查表管理', '食品监督检查表制定')
+        food_new_template_setup.choose_menu('食品监督检查', '检查表管理', '食品监督检查表制定')
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()
         new_template = NewTemplate(driver)
