@@ -545,4 +545,5 @@ class NewTemplate(object):
         iframe = self.driver.find_element_by_id('frameName')
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('bts').click()
+        self.button.click_confirm_button()
         return template_name
