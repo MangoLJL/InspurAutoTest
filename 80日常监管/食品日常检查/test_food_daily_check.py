@@ -9,21 +9,21 @@ class TestNewCheck(unittest.TestCase):
     @unittest.skip("I don't want to run this case.")
     def test_new_check(self):
         """Test method new_check()"""
-        self.assertEqual(True, FDC.new_check())
+        self.assertEqual(True, FDC.new_check(self))
 
 
 class TestDoubleRandomTask(unittest.TestCase):
     """测试双随机任务"""
     @unittest.skip("I don't want to run this case.")
     def test_double_random_task(self):
-        self.assertEqual(True, FDC.double_random_task())
+        self.assertEqual(True, FDC.double_random_task(self))
 
 
 class TestNormalTask(unittest.TestCase):
     """测试普通任务.py"""
     @unittest.skip("I don't want to run this case.")
     def test_normal_task(self):
-        self.assertEqual(True, FDC.normal_task())
+        self.assertEqual(True, FDC.normal_task(self))
 
 
 class TestNewTemplate(unittest.TestCase):
@@ -31,6 +31,6 @@ class TestNewTemplate(unittest.TestCase):
 #    @unittest.skip("I don't want to run this case.")
 
     def test_new_template(self):
-        self.assertEqual(True, FDC.new_template())
+        self.assertEqual(True, FDC.new_template(self))
 if __name__ == '__main__':
     unittest.main()
