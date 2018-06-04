@@ -525,7 +525,7 @@ class NewTemplate(object):
         self.driver.switch_to.default_content()
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
-        self.driver.find_element_by_id('modelTree_1_check').click()
+        self.driver.find_element_by_id('modelTree_2_check').click()
         self.button.click_save_button()
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[4]/input').send_keys('1')
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[5]/div/span/i').click()
