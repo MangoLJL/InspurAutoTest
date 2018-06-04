@@ -468,3 +468,40 @@ class NewNormalTask(object):
                 return False
         except Exception as e:
             print(e)
+
+
+class NewTemplate(object):
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.button = Button(self.driver)
+        self.common_action = CommonAction(self.driver)
+
+    def create_template(self):
+        self.button.click_plus_button()
+        template_name = ("%ssunhr测试模板" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        self.driver.find_element_by_id('templateName').send_keys(template_name)
+        self.driver.find_element_by_id('radio1').click()
+        self.driver.find_element_by_id('radio3').click()
+        self.driver.find_element_by_id('radio4').click()
+        self.driver.find_element_by_id('radio5').click()
+        self.driver.find_element_by_id('radio6').click()
+        self.driver.find_element_by_id('radio7').click()
+        self.driver.find_element_by_id('checkTableType0').click()
+        self.driver.find_element_by_id('isPeriod1').click()
+        self.driver.find_element_by_id('checkProgramNum').click()
+        self.driver.find_element_by_id('displayColumn0').click()
+        self.driver.find_element_by_id('displayColumn1').click()
+        self.driver.find_element_by_id('displayColumn2').click()
+        self.driver.find_element_by_id('displayColumn3').click()
+        self.driver.find_element_by_id('displayColumn4').click()
+        self.driver.find_element_by_id('displayColumn5').click()
+        self.driver.find_element_by_id('displayColumn6').click()
+        self.driver.find_element_by_id('displayColumn7').click()
+        iframe = self.driver.find_element_by_id('frameName')
+        self.driver.switch_to.frame(iframe)
+        self.button.click_plus_button()
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame("mainFrame")
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[3]/div/span/i').click()
+        return template_name

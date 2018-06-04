@@ -2,8 +2,7 @@
 import re
 import time
 from functools import reduce
-from common_action import Setup, SwitchToFrame, CommonAction
-from food_actions import NewCheck, NewDoubleRandom, NewNormalTask
+from food_actions import NewCheck, NewDoubleRandom, NewNormalTask, NewTemplate
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -16,6 +15,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 
 def new_check():
+    # 新建检查
     def true_plus_false(a, b):
         return (a and b)
     try:
@@ -118,6 +118,7 @@ def new_check():
 
 
 def double_random_task():
+    # 双随机任务新建并针对此任务发起检查
     try:
         food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
@@ -145,6 +146,7 @@ def double_random_task():
 
 
 def normal_task():
+    # 普通任务新建并针对此任务发起检查
     food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
@@ -166,3 +168,16 @@ def normal_task():
         print("测试未通过，截图已保存至normal_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snormal_task_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
+
+
+def new_template():
+    NewTemplate
+    food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
+    driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
+    try:
+        food_new_random_task_setup.choose_menu('食品监督检查', '检查表管理', '食品监督检查表制定')
+        switch_to_frame = SwitchToFrame(driver)
+        switch_to_frame.switch_to_main_frame()
+        new_template = NewTemplate(driver)
+        new_template_name = new_template.create_template()
+        print(new_template_name)

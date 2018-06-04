@@ -109,7 +109,10 @@ class Button(object):
 
     def click_plus_button(self):
         time.sleep(2)
-        self.driver.find_element_by_xpath("//i[@class='fa fa-plus']").click()
+        try:
+            self.driver.find_element_by_xpath("//i[@class='fa fa-plus']").click()
+        except Exception as e:
+            self.driver.find_element_by_xpath("//i[@class='fa fa-plus fa-fw']").click()
         time.sleep(5)
 
     def click_edit_button(self):
