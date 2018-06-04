@@ -12,7 +12,7 @@ from HTMLTestRunner import HTMLTestRunner
 def job():
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
-    tests = [TestNewCheck("test_new_check"), TestDoubleRandomTask("test_double_random_task"), TestNormalTask("test_normal_task")]
+    tests = [TestNewCheck("test_new_check"), TestDoubleRandomTask("test_double_random_task"), TestNormalTask("test_normal_task"), TestNewTemplate("test_new_template")]
     suite.addTests(tests)
 
     with open('%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), 'wb') as f:
