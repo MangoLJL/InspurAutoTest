@@ -527,6 +527,8 @@ class NewTemplate(object):
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('modelTree_2_check').click()
         self.button.click_save_button()
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[4]/input').send_keys('1')
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[5]/div/span/i').click()
         self.common_action.scroll_and_switch_to_iframe()
