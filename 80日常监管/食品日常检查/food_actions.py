@@ -534,7 +534,7 @@ class NewTemplate(object):
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[5]/div/span/i').click()
         self.common_action.scroll_and_switch_to_iframe()
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[3]/td[2]/input').click()
-        self.button.click_confirm_button()
+        self.button.click_save_button()
         time.sleep(1)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
