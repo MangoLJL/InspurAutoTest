@@ -3,7 +3,7 @@ import schedule
 import threading
 import time
 
-from test_food_daily_check import TestNewCheck, TestDoubleRandomTask, TestNormalTask
+from test_food_daily_check import TestNewCheck, TestDoubleRandomTask, TestNormalTask, TestNewTemplate
 from HTMLTestRunner import HTMLTestRunner
 
 # if __name__ == '__main__':
