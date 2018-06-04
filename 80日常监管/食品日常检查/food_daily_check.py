@@ -181,3 +181,7 @@ def new_template():
         new_template = NewTemplate(driver)
         new_template_name = new_template.create_template()
         print(new_template_name)
+    except Exception as e:
+        print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snew_template_error.png" %
+                                      time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
