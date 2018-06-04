@@ -527,6 +527,7 @@ class NewTemplate(object):
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('modelTree_2_check').click()
         self.button.click_save_button()
+        time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[4]/input').send_keys('1')
