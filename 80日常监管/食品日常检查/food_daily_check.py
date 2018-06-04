@@ -16,7 +16,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 class FoodDailyCheck(object):
 
-    def new_check():
+    def new_check(self):
         # 新建检查
         def true_plus_false(a, b):
             return (a and b)
@@ -118,7 +118,7 @@ class FoodDailyCheck(object):
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snew_check.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
-    def double_random_task():
+    def double_random_task(self):
         # 双随机任务新建并针对此任务发起检查
         try:
             food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
@@ -145,7 +145,7 @@ class FoodDailyCheck(object):
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sdouble_random_task_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
-    def normal_task():
+    def normal_task(self):
         # 普通任务新建并针对此任务发起检查
         food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
@@ -169,7 +169,7 @@ class FoodDailyCheck(object):
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snormal_task_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
-    def new_template():
+    def new_template(self):
         NewTemplate
         food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
