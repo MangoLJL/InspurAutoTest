@@ -194,3 +194,10 @@ class CommonAction(object):
             except Exception as e:
                 print(e)
                 break
+
+    def scroll_and_switch_to_iframe(self):
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(2)
+        self.driver.switch_to.default_content()
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
