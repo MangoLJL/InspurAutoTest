@@ -17,7 +17,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 class FoodDailyCheck(object):
 
     def __init__(self):
-        self.new_template_name
+        self.new_template_name = None
 
     def new_check(self):
         # 新建检查
