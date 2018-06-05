@@ -16,6 +16,9 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 class FoodDailyCheck(object):
 
+    def __init__(self):
+        self.new_template_name
+
     def new_check(self):
         # 新建检查
         def true_plus_false(a, b):
@@ -75,7 +78,6 @@ class FoodDailyCheck(object):
                             switch_to_frame.switch_to_main_frame()
                             new_check = NewCheck(driver)
                             new_check.first_step(y)
-
                             enterprise_selector = driver.find_element_by_id("enterpriseName")
                             ActionChains(driver).double_click(enterprise_selector).perform()
                             driver.switch_to.default_content()
@@ -178,10 +180,13 @@ class FoodDailyCheck(object):
             switch_to_frame = SwitchToFrame(driver)
             switch_to_frame.switch_to_main_frame()
             new_template = NewTemplate(driver)
-            new_template_name = new_template.create_template()
+            self.new_template_name = new_template.create_template()
             if new_template_name != True:
                 return True
             else:
+                print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
+                driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snew_template_error.png" %
+                                              time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
                 return False
         except Exception as e:
             print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))

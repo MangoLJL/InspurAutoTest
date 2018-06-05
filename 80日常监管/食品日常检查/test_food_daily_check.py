@@ -6,7 +6,8 @@ FDC = FoodDailyCheck()
 
 class TestNewCheck(unittest.TestCase):
     """测试新建检查"""
-    @unittest.skip("I don't want to run this case.")
+#    @unittest.skip("I don't want to run this case.")
+
     def test_new_check(self):
         """Test method new_check()"""
         self.assertEqual(True, FDC.new_check())

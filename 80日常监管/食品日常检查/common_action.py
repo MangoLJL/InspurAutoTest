@@ -164,7 +164,7 @@ class CommonAction(object):
                 target = soup.find('a', string=re.compile(find_target))
                 if target == None:
                     # 如果本页没有查询到，则查询下一页
-                    next_page_status = soup.find(class_='paginate_button next disabled')
+                    next_page_status = soup.find(class_='paginate_button next disabled')  # 判断是否已经到最后一页：即下一页按钮没法点了
                     if next_page_status == None:
                         try:
                             self.driver.find_element_by_xpath("//a[@href='#'][contains(text(),'下一页')]").click()
@@ -187,7 +187,7 @@ class CommonAction(object):
                 current_html = self.driver.page_source
                 soup = BeautifulSoup(current_html, 'lxml')
                 target = soup.find('span', string=re.compile('没有查询到数据'))
-                if target == None:
+                if target == None:  # 没有查到“没有查询到数据字样，证明有数据”
                     return True
                 else:
                     return False
