@@ -67,21 +67,11 @@ class NewCheck(object):
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_id("thirdhBtn").click()
 
-    def fourth_step(self):  # ，template_name
-        '''
-        #此处注释字段为输入检查情况，而非使用模板
+    def fourth_step(self):
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
-        '''
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        time.sleep(2)
-        current_html = self.driver.page_source
-        soup = BeautifulSoup(current_html, 'lxml')
-        target = soup.find('a', string=re.compile('20180604213038sunhr测试模板'))
-        print(target)
-
         self.driver.find_element_by_id("fourBtn").click()
         return check_situation
 
