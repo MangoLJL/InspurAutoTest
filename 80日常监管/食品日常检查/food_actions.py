@@ -79,7 +79,7 @@ class NewCheck(object):
         time.sleep(2)
         current_html = self.driver.page_source
         soup = BeautifulSoup(current_html, 'lxml')
-        target = soup.find('a', string=re.compile(self，'20180604213038sunhr测试模板'))
+        target = soup.find('a', string=re.compile(self, '20180604213038sunhr测试模板'))
         print(target)
 
         self.driver.find_element_by_id("fourBtn").click()
