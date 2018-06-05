@@ -2,7 +2,6 @@ import unittest
 from food_daily_check import FoodDailyCheck
 
 FDC = FoodDailyCheck()
-new_template_name = None
 
 
 class TestNewCheck(unittest.TestCase):
