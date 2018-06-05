@@ -16,8 +16,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 class FoodDailyCheck(object):
 
-    def __init__(self):
-        self.new_template_name = None
+    new_template_name = None
 
     def new_check(self):
         # 新建检查
@@ -44,7 +43,7 @@ class FoodDailyCheck(object):
                             if data_exsists:
                                 checkTypeCode = 'checkTypeCode' + str(i)
                                 new_check.third_step(checkTypeCode)
-                                check_situation = new_check.fourth_step(self.new_template_name)
+                                check_situation = new_check.fourth_step(new_template_name)
                                 new_check.fifth_step()
                                 new_check.final_step()
                                 new_check_confirmer = NewCheck(driver)
@@ -172,7 +171,7 @@ class FoodDailyCheck(object):
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
     def new_template(self):
-
+        print(new_template_name)
         food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
         try:
@@ -180,15 +179,18 @@ class FoodDailyCheck(object):
             switch_to_frame = SwitchToFrame(driver)
             switch_to_frame.switch_to_main_frame()
             new_template = NewTemplate(driver)
-            self.new_template_name = new_template.create_template()
+            new_template_name = new_template.create_template()
             if new_template_name != True:
                 return True
+                driver.quit()
             else:
                 print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
                 driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snew_template_error.png" %
                                               time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
                 return False
+                driver.quit()
         except Exception as e:
             print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snew_template_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
+            driver.quit()
