@@ -44,7 +44,7 @@ class FoodDailyCheck(object):
                             if data_exsists:
                                 checkTypeCode = 'checkTypeCode' + str(i)
                                 new_check.third_step(checkTypeCode)
-                                check_situation = new_check.fourth_step()
+                                check_situation = new_check.fourth_step(self.new_template_name)
                                 new_check.fifth_step()
                                 new_check.final_step()
                                 new_check_confirmer = NewCheck(driver)

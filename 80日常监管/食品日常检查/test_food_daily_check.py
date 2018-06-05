@@ -29,7 +29,8 @@ class TestNormalTask(unittest.TestCase):
 
 class TestNewTemplate(unittest.TestCase):
     """测试普通任务.py"""
-    @unittest.skip("I don't want to run this case.")
+#    @unittest.skip("I don't want to run this case.")
+
     def test_new_template(self):
         self.assertEqual(True, FDC.new_template())
 if __name__ == '__main__':
