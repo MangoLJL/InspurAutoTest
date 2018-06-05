@@ -67,7 +67,7 @@ class NewCheck(object):
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_id("thirdhBtn").click()
 
-    def fourth_step(self，template_name):
+    def fourth_step(self):  # ，template_name
         '''
         #此处注释字段为输入检查情况，而非使用模板
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
