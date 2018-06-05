@@ -11,7 +11,7 @@ from HTMLTestRunner import HTMLTestRunner
 
 def job():
     global new_template_name
-    new_template_name = None
+    new_template_name = 'None'
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
     tests = [TestNewTemplate("test_new_template"), TestNewCheck("test_new_check"), TestDoubleRandomTask("test_double_random_task"), TestNormalTask("test_normal_task")]
