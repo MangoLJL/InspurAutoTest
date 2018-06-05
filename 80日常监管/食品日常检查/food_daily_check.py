@@ -16,10 +16,10 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 class FoodDailyCheck(object):
 
-    new_template_name = None
-
     def new_check(self):
+        print(new_template_name)
         # 新建检查
+
         def true_plus_false(a, b):
             return (a and b)
         try:
