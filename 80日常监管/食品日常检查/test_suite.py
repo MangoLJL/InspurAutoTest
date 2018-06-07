@@ -17,7 +17,7 @@ def job():
     tests = [TestNewTemplate("test_new_template"), TestNewCheck("test_new_check"), TestDoubleRandomTask("test_double_random_task"), TestNormalTask("test_normal_task")]
     suite.addTests(tests)
 
-    with open('%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), 'wb') as f:
+    with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), 'wb') as f:
         runner = HTMLTestRunner(stream=f,
                                 title='Test Report',
                                 verbosity=2

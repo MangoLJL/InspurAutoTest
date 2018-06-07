@@ -300,26 +300,29 @@ class NewDoubleRandom(object):
 
     def confirm_random_enterprise_check(self, task_name, enterprise_name):
         # 确定根据双随机任务发起的检查建立成功
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
-        self.driver.get(url)
-        target = self.common_action.find(task_name)
-        finaltarget = target.parent
-        finaltarget = finaltarget.previous_sibling
-        finaltarget = finaltarget.previous_sibling
-        finaltarget = finaltarget.get_text()
-        self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
-        time.sleep(1)
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.driver.switch_to.default_content()
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-        self.driver.switch_to.frame(iframe)
-        target = self.common_action.find(enterprise_name)
-        if target != None:
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
-            return True
-        else:
-            return False
+        try:
+            url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
+            self.driver.get(url)
+            target = self.common_action.find(task_name)
+            finaltarget = target.parent
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.get_text()
+            self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
+            time.sleep(1)
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            self.driver.switch_to.default_content()
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+            self.driver.switch_to.frame(iframe)
+            target = self.common_action.find(enterprise_name)
+            if target != None:
+                print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
+                return True
+            else:
+                return False
+        except Exception as e:
+            print(e)
 
 
 class NewNormalTask(object):
@@ -560,6 +563,7 @@ class NewTemplate(object):
 
     def confirm_new_template(self, template_name):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food')
+        self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
             globalvar.set_value('template_name', template_name)

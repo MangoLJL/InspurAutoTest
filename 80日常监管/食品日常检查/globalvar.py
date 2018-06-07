@@ -7,7 +7,7 @@ def set_value(name, value):
     _global_dict[name] = value
 
 
-def get_value(name, default_value):
+def get_value(name, default_value='None'):
     try:
         return _global_dict[name]
     except KeyError:
