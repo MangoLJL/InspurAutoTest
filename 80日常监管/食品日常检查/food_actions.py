@@ -1,6 +1,7 @@
 # coding=utf-8
 import time
 import re
+import globalvar
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -10,6 +11,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 #from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from common_action import Setup, SwitchToFrame, Button, CommonAction
+
+globalvar._init()
 
 
 class NewCheck(object):
@@ -69,7 +72,7 @@ class NewCheck(object):
 
     def fourth_step(self, template_name):
         '''
-        # 此处为使用检查情况而非检查模板
+        # 注释部分为使用检查情况而非检查模板
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
@@ -82,7 +85,6 @@ class NewCheck(object):
         target = soup.find('a', string=re.compile(template_name))
         print(target)
         self.driver.find_element_by_id("fourBtn").click()
-        return check_situation
 
     def fifth_step(self):
         checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult1")))
@@ -555,3 +557,16 @@ class NewTemplate(object):
         self.driver.find_element_by_id('bts').click()
         self.button.click_confirm_button()
         return template_name
+
+    def confirm_new_template(self, template_name)
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food')
+        current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
+        if current_template_name == template_name:
+            globalvar.set_value('template_name', template_name)
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
+            return True
+        else:
+            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % driver.template_name)
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sconfirm_new_template_error.png" %
+                                          time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
+            return False
