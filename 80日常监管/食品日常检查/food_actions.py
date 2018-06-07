@@ -156,9 +156,7 @@ class NewCheck(object):
         current_describe = self.driver.find_element_by_id("gridClause").text
         print(current_describe)
         check_describe_suits = check_describe.split('$')
-
-        for i in check_describe_suits:
-            print(i)
+        check_describe = check_describe_suits[0]
         if current_describe == check_describe:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
             return True
