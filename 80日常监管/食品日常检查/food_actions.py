@@ -134,6 +134,7 @@ class NewCheck(object):
 
     def confirm_new_check_check_template(self, check_describe, checktype):
         # 确认使用检查模板进行检查的事项的情况
+        pass
 
 
 class NewDoubleRandom(object):
