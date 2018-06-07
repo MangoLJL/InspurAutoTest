@@ -558,7 +558,7 @@ class NewTemplate(object):
         self.button.click_confirm_button()
         return template_name
 
-    def confirm_new_template(self, template_name)
+    def confirm_new_template(self, template_name):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food')
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
