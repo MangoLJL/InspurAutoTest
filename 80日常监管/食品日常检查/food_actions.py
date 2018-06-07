@@ -78,7 +78,7 @@ class NewCheck(object):
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
         self.common_action.scroll_and_switch_to_iframe()
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
-        self.driver.find_element_by_id("checkDescribe").send_keys(check_describe)
+        self.driver.find_element_by_id("checkDescribe").send_keys('$' + check_describe + '$')
         self.button.click_save_button()
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
@@ -108,7 +108,7 @@ class NewCheck(object):
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
 
-    def confirm_new_check_check_situation(self, check_situation, checktype):
+    def confirm_new_check_check_situation(self, check_situation):
         # 确认使用检查情况来检查的事项的情况
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
         self.driver.get(url)
@@ -133,7 +133,7 @@ class NewCheck(object):
         else:
             return False
 
-    def confirm_new_check_check_template(self, check_describe, checktype):
+    def confirm_new_check_check_template(self, check_describe):
         # 确认使用检查模板进行检查的事项的情况
         pass
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
@@ -152,8 +152,12 @@ class NewCheck(object):
         time.sleep(5)
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
-        current_situation = self.driver.find_element_by_id("basicSituation").text
-        if current_situation == check_situation:
+
+        current_describe = self.driver.find_element_by_id("gridClause").text
+        print(current_describe)
+        check_describe_suits = check_describe.split('$')
+        check_describe = check_describe_suits[1]
+        if current_describe == check_describe:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
             return True
         else:
