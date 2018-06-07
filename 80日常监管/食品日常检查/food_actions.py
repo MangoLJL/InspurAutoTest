@@ -86,7 +86,7 @@ class NewCheck(object):
         self.driver.find_element_by_id("fourBtn").click()
         return check_describe
 
-    def fourth_step_check_situation(self, template_name):
+    def fourth_step_check_situation(self):
         # 使用检查情况
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
@@ -153,8 +153,8 @@ class NewCheck(object):
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
         current_describe = self.driver.find_element_by_id("gridClause").text
-        check_describe_suits = check_describe.split('$')
-        check_describe = check_describe_suits[0]
+        current_describe_suits = current_describe.split('$')
+        current_describe = current_describe_suits[0]
         print(current_describe)
         print(check_describe)
         if current_describe == check_describe:
