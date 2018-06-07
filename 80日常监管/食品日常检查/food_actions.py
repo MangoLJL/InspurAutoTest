@@ -92,7 +92,7 @@ class NewCheck(object):
         print(target)
         print(finalID)
         '''
-        self.driver.find_element_by_id("template_name").click()
+        self.driver.find_element_by_id(template_name).click()
         self.driver.find_element_by_id("fourBtn").click()
 
     def fifth_step(self):
