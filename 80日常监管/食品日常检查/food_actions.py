@@ -73,6 +73,7 @@ class NewCheck(object):
     def fourth_step_check_template(self, template_name):
         # 使用检查模板
         self.driver.find_element_by_id(template_name).click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
         self.common_action.scroll_and_switch_to_iframe()
@@ -135,6 +136,28 @@ class NewCheck(object):
     def confirm_new_check_check_template(self, check_describe, checktype):
         # 确认使用检查模板进行检查的事项的情况
         pass
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
+        self.driver.get(url)
+        self.driver.find_element_by_id("grid_length").click()
+        self.driver.find_element_by_xpath("//option[@value='100']").click()
+        current_html = self.driver.page_source
+        soup = BeautifulSoup(current_html, 'lxml')
+        target = soup.find('span', string=re.compile('提交'))
+        finaltarget = target.parent
+        for i in range(0, 10):
+            finaltarget = finaltarget.previous_sibling
+        self.driver.find_element_by_xpath("//html//tr[%s]/td[3]/a[1]" % finaltarget.get_text()).click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.switch_to.default_content()
+        time.sleep(5)
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
+        current_situation = self.driver.find_element_by_id("basicSituation").text
+        if current_situation == check_situation:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
+            return True
+        else:
+            return False
 
 
 class NewDoubleRandom(object):
