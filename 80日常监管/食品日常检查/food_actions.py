@@ -70,15 +70,8 @@ class NewCheck(object):
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_id("thirdhBtn").click()
 
-    def fourth_step(self, template_name):
-        '''
-        # 注释部分为使用检查情况而非检查模板
-        question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
-        question_sheet.click()
-        check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
-        self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
-        '''
-        print(template_name)
+    def fourth_step_check_template(self, template_name):
+        # 使用检查模板
         self.driver.find_element_by_id(template_name).click()
         self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
@@ -90,6 +83,16 @@ class NewCheck(object):
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
         self.driver.find_element_by_id("fourBtn").click()
+        return check_describe
+
+    def fourth_step_check_situation(self, template_name):
+        # 使用检查情况
+        question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
+        question_sheet.click()
+        check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
+        self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
+        self.driver.find_element_by_id("fourBtn").click()
+        return check_situation
 
     def fifth_step(self):
         checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult1")))
@@ -104,7 +107,8 @@ class NewCheck(object):
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
 
-    def confirm_new_check(self, check_situation, checktype):
+    def confirm_new_check_check_situation(self, check_situation, checktype):
+        # 确认使用检查情况来检查的事项的情况
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
@@ -127,6 +131,9 @@ class NewCheck(object):
             return True
         else:
             return False
+
+    def confirm_new_check_check_template(self, check_describe, checktype):
+        # 确认使用检查模板进行检查的事项的情况
 
 
 class NewDoubleRandom(object):

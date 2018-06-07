@@ -44,11 +44,11 @@ class FoodDailyCheck(object):
                             if data_exsists:
                                 checkTypeCode = 'checkTypeCode' + str(i)
                                 new_check.third_step(checkTypeCode)
-                                check_situation = new_check.fourth_step(new_template_ID)
+                                check_situation = new_check.fourth_step_check_template(new_template_ID)
                                 new_check.fifth_step()
                                 new_check.final_step()
                                 new_check_confirmer = NewCheck(driver)
-                                ture_or_false[i] = new_check_confirmer.confirm_new_check(check_situation, checkTypeCode)  # 共五个
+                                ture_or_false[i] = new_check_confirmer.confirm_new_check_check_template(check_situation)  # 共五个, checkTypeCode
                                 driver.quit()
                             else:
                                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过【%s】类别企业...' % (enterprise_type[y], enterprise_type[y]))
@@ -102,11 +102,11 @@ class FoodDailyCheck(object):
                                 break
                             checkTypeCode = 'checkTypeCode' + str(i)
                             new_check.third_step(checkTypeCode)
-                            check_situation = new_check.fourth_step()
+                            check_situation = new_check.fourth_step_check_template()
                             new_check.fifth_step()
                             new_check.final_step()
                             new_check_confirmer = NewCheck(driver)
-                            food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check(check_situation, checkTypeCode))  # 每组五个
+                            food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_template(check_situation))  # 每组五个, checkTypeCode
                             driver.quit()
                     food_bussiness_middle_ture_or_false = []
                     for z in range(0, 3):
