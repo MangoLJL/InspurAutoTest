@@ -154,8 +154,9 @@ class NewCheck(object):
         self.driver.switch_to.frame(iframe)
         current_describe = self.driver.find_element_by_id("gridClause").text
         current_describe_suits = current_describe.split('$')
-        current_describe = current_describe_suits[0]
+        current_describe = current_describe_suits[1]
         print(current_describe)
+        print('----')
         print(check_describe)
         if current_describe == check_describe:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
