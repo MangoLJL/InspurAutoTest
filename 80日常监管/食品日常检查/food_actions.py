@@ -572,6 +572,8 @@ class NewTemplate(object):
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
+            current_template_ID = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href')
+            print(current_template_ID)
             globalvar.set_value('template_name', template_name)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
