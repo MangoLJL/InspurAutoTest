@@ -78,9 +78,11 @@ class NewCheck(object):
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
         '''
+        print(template_name)
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
         current_html = self.driver.page_source
+        print(current_html)
         soup = BeautifulSoup(current_html, 'lxml')
         target = soup.find('a', string=re.compile(template_name))
         finaltarget = target.parent
