@@ -84,7 +84,7 @@ class NewCheck(object):
         current_html = self.driver.page_source
         print(current_html)
         soup = BeautifulSoup(current_html, 'lxml')
-        target = soup.find('a', string=re.compile(template_name))
+        target = soup.find('a', string=re.compile((template_name + '<font style="color:orange;"></font>')))
         finaltarget = target.parent
         finalID = finaltarget.get('id')
 
