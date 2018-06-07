@@ -86,6 +86,8 @@ class NewCheck(object):
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("checkDescribe").send_keys(check_describe)
         self.button.click_save_button()
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
         self.driver.find_element_by_id("fourBtn").click()
 
