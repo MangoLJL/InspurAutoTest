@@ -20,10 +20,16 @@ def qqq():
     driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food&cancelUser=null')
     driver.get(url)
-    self.driver.find_element_by_id("grid_length").click()
-    self.driver.find_element_by_xpath("//option[@value='100']").click()
+    driver.find_element_by_id("grid_length").click()
+    driver.find_element_by_xpath("//option[@value='100']").click()
     i = 1
     while 1:
-        driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[i]/td[8]/button[4]')
+        driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[4]' % i).click()
         driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+        try:
+            time.sleep(1)
+            driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+        except:
+            pass
         i += 1
+qqq()

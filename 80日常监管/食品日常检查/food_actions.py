@@ -536,7 +536,7 @@ class NewTemplate(object):
         self.driver.find_element_by_id('radio5').click()
         self.driver.find_element_by_id('radio6').click()
         self.driver.find_element_by_id('radio7').click()
-        self.driver.find_element_by_id('checkTableType0').click()
+        # self.driver.find_element_by_id('checkTableType0').click()
         self.driver.find_element_by_id('isPeriod1').click()
         self.driver.find_element_by_id('checkProgramNum').send_keys('1')
         self.driver.find_element_by_id('DeptName').click()
