@@ -25,7 +25,6 @@ class FoodDailyCheck(object):
             return (a and b)
         try:
             for flag in range(0, 2):
-                    # start
                 final_true_or_false = [True, True, True, True, True, True, True, True]
                 ture_or_false = [True, True, True, True, True]
                 enterprise_type = ['小作坊', '食品摊贩', '小餐饮', '食品生产', '食品流通', '餐饮服务', '食品经营', '校外托管']
@@ -122,7 +121,6 @@ class FoodDailyCheck(object):
                         food_bussiness_final_ture_or_false = reduce(true_plus_false, food_bussiness_middle_ture_or_false)  # 食品经营最终结果，一个
                         final_true_or_false[y] = food_bussiness_final_ture_or_false
                 return (reduce(true_plus_false, final_true_or_false))
-                # end
         except Exception as e:
             return False
             print("【%s】-【%s】测试未通过，截图已保存至new_check.png，当前url为：【%s】错误信息为：" % (enterprise_type[y], check_type_name[i], driver.current_url, e))
