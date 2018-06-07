@@ -83,7 +83,11 @@ class NewCheck(object):
         current_html = self.driver.page_source
         soup = BeautifulSoup(current_html, 'lxml')
         target = soup.find('a', string=re.compile(template_name))
+        finaltarget = target.parent
+        finalID = finaltarget.get('id')
+
         print(target)
+        print(finalID)
         self.driver.find_element_by_id("fourBtn").click()
 
     def fifth_step(self):
