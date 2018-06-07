@@ -79,20 +79,14 @@ class NewCheck(object):
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
         '''
         print(template_name)
-        '''
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        time.sleep(2)
-        current_html = self.driver.page_source
-        print(current_html)
-        soup = BeautifulSoup(current_html, 'lxml')
-        target = soup.find('a', string=re.compile(' %s<font style="color:orange;"></font> ' % template_name))
-        finaltarget = target.parent
-        finalID = finaltarget.get('id')
-
-        print(target)
-        print(finalID)
-        '''
         self.driver.find_element_by_id(template_name).click()
+        self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
+        self.common_action.scroll_and_switch_to_iframe()
+        check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        self.driver.find_element_by_id("checkDescribe").send_keys(check_describe)
+        self.button.click_save_button()
+        self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
         self.driver.find_element_by_id("fourBtn").click()
 
     def fifth_step(self):
@@ -580,7 +574,6 @@ class NewTemplate(object):
             template_ID_suits = current_template_ID.split('\'')
             template_ID = template_ID_suits[1]
             print(template_ID)
-            globalvar.set_value('template_name', template_name)
             globalvar.set_value('template_ID', template_ID)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True

@@ -18,8 +18,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 class FoodDailyCheck(object):
 
     def new_check(self):
-        new_template_name = globalvar.get_value('template_ID')
-        print(new_template_name)
+        new_template_ID = globalvar.get_value('template_ID')
         # 新建检查
 
         def true_plus_false(a, b):
@@ -45,7 +44,7 @@ class FoodDailyCheck(object):
                             if data_exsists:
                                 checkTypeCode = 'checkTypeCode' + str(i)
                                 new_check.third_step(checkTypeCode)
-                                check_situation = new_check.fourth_step(new_template_name)
+                                check_situation = new_check.fourth_step(new_template_ID)
                                 new_check.fifth_step()
                                 new_check.final_step()
                                 new_check_confirmer = NewCheck(driver)
