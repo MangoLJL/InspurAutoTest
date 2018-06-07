@@ -79,6 +79,7 @@ class NewCheck(object):
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
         '''
         print(template_name)
+        '''
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
         current_html = self.driver.page_source
@@ -90,6 +91,8 @@ class NewCheck(object):
 
         print(target)
         print(finalID)
+        '''
+        self.driver.find_element_by_id("template_name").click()
         self.driver.find_element_by_id("fourBtn").click()
 
     def fifth_step(self):
@@ -572,9 +575,13 @@ class NewTemplate(object):
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
-            current_template_ID = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href')
+            current_template_ID = str(self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href'))
             print(current_template_ID)
+            template_ID_suits = current_template_ID.split('\'')
+            template_ID = template_ID_suits[1]
+            print(template_ID)
             globalvar.set_value('template_name', template_name)
+            globalvar.set_value('template_ID', template_ID)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
         else:

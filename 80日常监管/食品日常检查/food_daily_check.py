@@ -18,7 +18,7 @@ from common_action import Setup, SwitchToFrame, Button, CommonAction
 class FoodDailyCheck(object):
 
     def new_check(self):
-        new_template_name = globalvar.get_value('template_name')
+        new_template_name = globalvar.get_value('template_ID')
         print(new_template_name)
         # 新建检查
 
