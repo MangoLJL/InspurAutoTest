@@ -152,11 +152,11 @@ class NewCheck(object):
         time.sleep(5)
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
-
         current_describe = self.driver.find_element_by_id("gridClause").text
-        print(current_describe)
         check_describe_suits = check_describe.split('$')
         check_describe = check_describe_suits[0]
+        print(current_describe)
+        print(check_describe)
         if current_describe == check_describe:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
             return True
