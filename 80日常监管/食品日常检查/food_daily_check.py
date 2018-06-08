@@ -25,8 +25,8 @@ class FoodDailyCheck(object):
             return (a and b)
         try:
             for flag in range(0, 2):
-                final_true_or_false = [True, True, True, True, True, True, True, True]
-                ture_or_false = [True, True, True, True, True]
+                final_true_or_false = [False, False, False, False, False, False, False, False]
+                ture_or_false = [False, False, False, False, False]
                 enterprise_type = ['小作坊', '食品摊贩', '小餐饮', '食品生产', '食品流通', '餐饮服务', '食品经营', '校外托管']
                 check_type_name = ['日常检查', '专项检查', '量化评级', '学校季度检查', '飞行检查']
                 for y in range(0, 8):
@@ -112,11 +112,18 @@ class FoodDailyCheck(object):
                                     break
                                 checkTypeCode = 'checkTypeCode' + str(i)
                                 new_check.third_step(checkTypeCode)
-                                check_situation = new_check.fourth_step_check_template()
+                                if flag == 0:
+                                    check_describe = new_check.fourth_step_check_template(new_template_ID)
+                                else:
+                                    check_situation = new_check.fourth_step_check_situation()
                                 new_check.fifth_step()
                                 new_check.final_step()
                                 new_check_confirmer = NewCheck(driver)
-                                food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_template(check_situation))  # 每组五个, checkTypeCode
+                                if flag == 0:
+                                    food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_template(check_describe))
+                                else:
+                                    food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_situation(check_situation))
+                                # food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_template(check_situation))  # 每组五个, checkTypeCode
                                 driver.quit()
                         food_bussiness_middle_ture_or_false = []
                         for z in range(0, 3):
