@@ -31,8 +31,6 @@ class FoodDailyCheck(object):
                 check_type_name = ['日常检查', '专项检查', '量化评级', '学校季度检查', '飞行检查']
                 for y in range(0, 8):
                     if y != 6:  # 食品经营特殊化
-                        pass
-                        '''
                         for i in range(0, 5):
                             try:
                                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行%s-%s测试' % (enterprise_type[y], check_type_name[i]))
@@ -72,7 +70,6 @@ class FoodDailyCheck(object):
                                 continue
                         ture_or_false_suite = reduce(true_plus_false, ture_or_false)
                         final_true_or_false[y] = ture_or_false_suite
-                        '''
                     else:
                         food_bussiness_type = ['食品销售经营者', '餐饮服务经营者', '单位食堂']
                         print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行食品经营大类三个小类的测试，共15个事项')
@@ -138,7 +135,8 @@ class FoodDailyCheck(object):
                             food_bussiness_middle_ture_or_false.append(reduce(true_plus_false, food_bussiness_suite_true_or_false[z]))  # 每组三个
                         food_bussiness_final_ture_or_false = reduce(true_plus_false, food_bussiness_middle_ture_or_false)  # 食品经营最终结果，一个
                         final_true_or_false[y] = food_bussiness_final_ture_or_false
-                return (reduce(true_plus_false, final_true_or_false))
+            return (reduce(true_plus_false, final_true_or_false))
+
         except Exception as e:
             return False
             print("【%s】-【%s】测试未通过，截图已保存至new_check.png，当前url为：【%s】错误信息为：" % (enterprise_type[y], check_type_name[i], driver.current_url, e))

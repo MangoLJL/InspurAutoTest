@@ -273,14 +273,6 @@ class NewDoubleRandom(object):
             time.sleep(1)
             print(self.driver.find_element_by_xpath("//div[@class='layui-layer-content layui-layer-padding']").text)
             self.button.click_confirm_button()
-            '''
-            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-            self.driver.switch_to.frame(iframe)
-            self.driver.find_element_by_id("checkNumber").send_keys("1")
-            self.driver.find_element_by_xpath("//button[@class='btn btn-success btn-xs']").click()
-            self.button.click_confirm_button()
-            '''
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "双随机任务接收成功")
 
     def check_new_random_test(self, task_name):
