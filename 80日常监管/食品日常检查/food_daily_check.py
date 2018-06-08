@@ -31,8 +31,6 @@ class FoodDailyCheck(object):
                 check_type_name = ['日常检查', '专项检查', '量化评级', '学校季度检查', '飞行检查']
                 for y in range(0, 8):
                     if y != 6:  # 食品经营特殊化
-                        pass
-                        '''
                         for i in range(0, 5):
                             try:
                                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行%s-%s测试' % (enterprise_type[y], check_type_name[i]))
@@ -70,7 +68,6 @@ class FoodDailyCheck(object):
                                 driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s%snew_check.png" % (
                                     time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
                                 continue
-                        '''
                         ture_or_false_suite = reduce(true_plus_false, ture_or_false)
                         final_true_or_false[y] = ture_or_false_suite
                     else:
