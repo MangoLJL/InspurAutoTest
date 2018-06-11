@@ -515,7 +515,7 @@ class NewNormalTask(object):
             print(e)
 
 
-class NewTemplate(object):
+class Template(object):
 
     def __init__(self, driver):
         self.driver = driver
@@ -611,3 +611,27 @@ class NewTemplate(object):
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sconfirm_new_template_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             return False
+
+    def clean_template(self):
+        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food'
+        driver.get(url)
+        template_ID = globalvar.get_value('template_ID')
+        self.driver.find_element_by_id("grid_length").click()
+        self.driver.find_element_by_xpath("//option[@value='100']").click()
+        target = self.common_action.find(template_ID)
+        finaltarget = target.parent
+        finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.get_text()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[4]' % finaltarget).click()
+        self.button.click_confirm_button()
+        time.sleep(0.5)
+        self.button.click_confirm_button()
+        driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[2]' % finaltarget).click()
+        self.button.click_confirm_button()
+        driver.find_element_by_id("btt").click()
+        driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[5]' % finaltarget).click()
+        self.button.click_confirm_button()
+        time.sleep(0.5)
+        self.button.click_confirm_button()
+        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理模板完成')
