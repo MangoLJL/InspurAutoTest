@@ -15,7 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from common_action import Setup, SwitchToFrame, Button, CommonAction
 
 
-def new_check(self):
+def new_check():
     new_template_ID = globalvar.get_value('template_ID')
     # 新建检查
 
@@ -142,7 +142,7 @@ def new_check(self):
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 
-def simple_check(self):
+def simple_check():
     def true_plus_false(a, b):
         return (a and b)
     new_template_ID = globalvar.get_value('template_ID')
@@ -247,7 +247,7 @@ def simple_check(self):
     return (reduce(true_plus_false, true_or_false))
 
 
-def double_random_task(self):
+def double_random_task():
     # 双随机任务新建并针对此任务发起检查
     try:
         food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
@@ -275,7 +275,7 @@ def double_random_task(self):
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 
-def normal_task(self):
+def normal_task():
     # 普通任务新建并针对此任务发起检查
     food_new_random_task_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = food_new_random_task_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
@@ -300,7 +300,7 @@ def normal_task(self):
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 
-def new_template(self):
+def new_template():
     food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
