@@ -9,8 +9,6 @@ from HTMLTestRunner import HTMLTestRunner
 
 
 def job():
-    global new_template_name
-    new_template_name = 'None'
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
     tests = [TestFoodDailyCheck("test_new_template"), TestFoodDailyCheck("test_simple_check"), TestFoodDailyCheck("test_new_check"),
@@ -24,7 +22,8 @@ def job():
                                 )
         runner.run(suite)
 job()
-schedule.every(4).hours.do(job)
+
+# schedule.every(4).hours.do(job)
 '''
 def job_task23():
     threading.Thread(target=job).start()
