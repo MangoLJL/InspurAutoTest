@@ -1,6 +1,7 @@
 # coding=utf-8
 import time
 import re
+import random
 import globalvar
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -619,6 +620,8 @@ class Template(object):
         url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food'
         self.driver.get(url)
         template_ID = globalvar.get_value('template_ID')
+        current_html = self.driver.page_source
+        print(current_html)
         print(template_ID)
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()

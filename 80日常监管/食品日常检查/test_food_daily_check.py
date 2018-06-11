@@ -18,30 +18,28 @@ class TestFoodDailyCheck(unittest.TestCase):
         """测试新建检查"""
         self.assertEqual(True, new_check())
 
-
-#    @unittest.skip("I don't want to run this case.")
-
+    @unittest.skip("I don't want to run this case.")
     def test_double_random_task(self):
         """测试双随机任务"""
         self.assertEqual(True, double_random_task())
 
-    #@unittest.skip("I don't want to run this case.")
+    @unittest.skip("I don't want to run this case.")
     def test_normal_task(self):
-        """测试普通任务.py"""
+        """测试普通任务"""
         self.assertEqual(True, normal_task())
 
 
 #    @unittest.skip("I don't want to run this case.")
 
     def test_simple_check(self):
-        """测试简略检查.py"""
+        """测试简略检查"""
         self.assertEqual(True, simple_check())
 
 
 #    @unittest.skip("I don't want to run this case.")
 
     def test_new_template(self):
-        """测试普通任务.py"""
+        """测试新建模板"""
         self.assertEqual(True, new_template())
 if __name__ == '__main__':
     unittest.main()
