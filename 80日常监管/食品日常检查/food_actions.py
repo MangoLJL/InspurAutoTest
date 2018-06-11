@@ -39,7 +39,8 @@ class NewCheck(object):
         time.sleep(3)
         data_exsists = self.common_action.data_exsists()
         if data_exsists:
-            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
+            random_enterprise = random.randint(1, 5)
+            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[%s]/td[2]/input[1]" % random_enterprise)))
             enterprise_radio_button.click()
             self.driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
             time.sleep(1)
