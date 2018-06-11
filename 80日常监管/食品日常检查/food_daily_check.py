@@ -149,10 +149,10 @@ def simple_check():
     check_type_name = ['日常检查', '专项检查', '量化评级', '学校季度检查', '飞行检查']
     enterprise_type = ['小作坊', '食品摊贩', '小餐饮', '食品生产', '食品流通', '餐饮服务', '食品经营', '校外托管']
     food_bussiness_type = ['食品销售经营者', '餐饮服务经营者', '单位食堂']
-    true_or_false = [False, False, False, False, False]
+    true_or_false = [False, False, False, False, True]
     for flag in range(0, 2):
         try:
-            i = 1  # 日常检查
+            i = 0  # 日常检查
             y = 3  # 食品生产
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】测试' % (enterprise_type[y], check_type_name[i]))
             food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
@@ -174,7 +174,7 @@ def simple_check():
                 new_check.final_step()
                 new_check_confirmer = NewCheck(driver)
                 if flag == 0:
-                    true_or_false[1] = new_check_confirmer.confirm_new_check_check_template(check_describe)  # 共五个, checkTypeCode
+                    true_or_false[1] = new_check_confirmer.confirm_new_check_check_template(check_describe)
                 else:
                     true_or_false[2] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
                 driver.quit()
@@ -183,12 +183,12 @@ def simple_check():
                 driver.quit()
                 break
         except Exception as e:
-            true_or_false[3] = False
+            true_or_false[5] = False
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                   (enterprise_type[y], check_type_name[i], driver.current_url, e))
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s%snew_check.png" % (
                 time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
-        i = 1  # 日常检查
+        i = 0  # 日常检查
         y = 6  # 食品经营
         food_bussiness_suite_true_or_false = [[], [], []]
         z = 1  # 食品销售经营者
