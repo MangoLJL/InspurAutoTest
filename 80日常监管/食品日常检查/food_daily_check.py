@@ -3,7 +3,7 @@ import re
 import time
 import globalvar
 from functools import reduce
-from food_actions import NewCheck, NewDoubleRandom, NewNormalTask, NewTemplate
+from food_actions import NewCheck, NewDoubleRandom, NewNormalTask, Template
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
