@@ -614,7 +614,7 @@ class Template(object):
 
     def clean_template(self):
         url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food'
-        driver.get(url)
+        self.driver.get(url)
         template_ID = globalvar.get_value('template_ID')
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()

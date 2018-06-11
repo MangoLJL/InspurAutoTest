@@ -174,9 +174,9 @@ def simple_check():
                 new_check.final_step()
                 new_check_confirmer = NewCheck(driver)
                 if flag == 0:
-                    true_or_false[1] = new_check_confirmer.confirm_new_check_check_template(check_describe)
+                    true_or_false[0] = new_check_confirmer.confirm_new_check_check_template(check_describe)
                 else:
-                    true_or_false[2] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
+                    true_or_false[1] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
                 driver.quit()
             else:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过【%s】类别企业...' % (enterprise_type[y], enterprise_type[y]))
@@ -234,12 +234,12 @@ def simple_check():
             new_check.final_step()
             new_check_confirmer = NewCheck(driver)
             if flag == 0:
-                true_or_false[3] = new_check_confirmer.confirm_new_check_check_template(check_describe)
+                true_or_false[2] = new_check_confirmer.confirm_new_check_check_template(check_describe)
             else:
-                true_or_false[4] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
+                true_or_false[3] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
             driver.quit()
         except Exception as e:
-            true_or_false[5] = False
+            true_or_false[4] = False
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                   (enterprise_type[y], food_bussiness_type[z], check_type_name[i], driver.current_url, e))
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s%s%snew_check.png" % (
