@@ -1,6 +1,6 @@
 import unittest
 import globalvar
-from food_daily_check import FoodDailyCheck
+from food_daily_check import *
 from food_actions import Template
 
 
