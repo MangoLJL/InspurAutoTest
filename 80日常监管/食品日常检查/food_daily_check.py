@@ -183,7 +183,7 @@ def simple_check():
                 driver.quit()
                 break
         except Exception as e:
-            true_or_false[5] = False
+            true_or_false[4] = False
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                   (enterprise_type[y], check_type_name[i], driver.current_url, e))
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s%snew_check.png" % (
