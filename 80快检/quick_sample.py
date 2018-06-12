@@ -12,4 +12,6 @@ def new_sample():
         switch_to_frame.switch_to_main_frame()
         sample_actions = SampleActions(driver)
         sample_actions.new_sample()
+    except Exception as e:
+        print(e)
 new_sample()
