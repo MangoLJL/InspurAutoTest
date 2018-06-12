@@ -12,3 +12,4 @@ def new_sample():
         switch_to_frame.switch_to_main_frame()
         sample_actions = SampleActions(driver)
         sample_actions.new_sample()
+new_sample()
