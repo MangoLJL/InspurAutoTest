@@ -105,7 +105,7 @@ class Time(object):
         return time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 
 
-class SendKeys(object)
+class SendKeys(object):
 
     def __init__(self, driver):
         self.driver = driver
