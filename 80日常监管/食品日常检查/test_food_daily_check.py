@@ -7,11 +7,16 @@ class TestFoodDailyCheck(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理模板...')
-        clean_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
-        driver = clean_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-        template = Template(driver)
-        template.clean_template()
+        try:
+            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理模板...')
+            clean_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
+            driver = clean_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
+            template = Template(driver)
+            template.clean_template()
+        except Exception as e:
+            print("清理模板失败，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sdelete_template_error.png" %
+                                          time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
     @unittest.skip("I don't want to run this case.")
     def test_new_check(self):
