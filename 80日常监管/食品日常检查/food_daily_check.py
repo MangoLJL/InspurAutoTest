@@ -267,8 +267,8 @@ def double_random_task():
         new_random_test_checker = NewDoubleRandom(driver)
         enterprise_name = new_random_test_checker.check_new_random_test(task_name)
         true_or_false = new_random_test_checker.confirm_random_enterprise_check(task_name, enterprise_name)
-        return true_or_false
         driver.quit()
+        return true_or_false
     except Exception as e:
         print("测试未通过，截图已保存至double_random_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sdouble_random_task_error.png" %
