@@ -607,10 +607,8 @@ class Template(object):
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
             current_template_ID = str(self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href'))
-            print(current_template_ID)
             template_ID_suits = current_template_ID.split('\'')
             template_ID = template_ID_suits[1]
-            print(template_ID)
             globalvar.set_value('template_ID', template_ID)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
@@ -637,6 +635,8 @@ class Template(object):
         time.sleep(0.5)
         self.button.click_confirm_button()
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[2]' % finaltarget).click()
+        iframe = self.driver.find_element_by_xpath('/html/body/iframe[1]')
+        self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id("btt").click()
         self.button.click_confirm_button()
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[5]' % finaltarget).click()
