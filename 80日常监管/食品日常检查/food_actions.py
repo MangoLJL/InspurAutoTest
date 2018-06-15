@@ -175,7 +175,7 @@ class NewDoubleRandom(object):
 
     def create_new_random_task(self):
         # 新建双随机任务
-        self.button.click_plus_button()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-primary btn-sm']").click()
         task_name = ("%ssunhr测试双随机" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("planName").send_keys(task_name)
         self.driver.find_element_by_id("planCode").send_keys(time.strftime('%Y%m%d', time.localtime(time.time())))
