@@ -287,8 +287,9 @@ class NewDoubleRandom(object):
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.get_text()
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button' % finaltarget).click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[12]/button' % finaltarget).click()
         try:
             enterprise_name = '未选择'
             enterprise_selector = self.driver.find_element_by_id("enterpriseName")
