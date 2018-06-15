@@ -430,7 +430,6 @@ class NewNormalTask(object):
                 self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sconfirm_new_normal_task.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
             else:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过，任务名称为：" + plan_name)
-                self.driver.quit()
         except Exception as e:
             print(e)
 
