@@ -448,6 +448,9 @@ class NewNormalTask(object):
             self.common_action.scroll_and_switch_to_iframe()
             self.driver.find_element_by_id('checkNumber').send_keys('1')
             self.button.click_save_button()
+            self.button.click_confirm_button()
+            time.sleep(1)
+            self.button.click_confirm_button()
         except Exception as e:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "签收失败，错误为：" + e)
             self.driver.quit()
