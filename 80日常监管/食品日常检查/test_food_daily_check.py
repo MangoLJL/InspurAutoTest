@@ -38,7 +38,7 @@ class TestFoodDailyCheck(unittest.TestCase):
         """测试简略检查"""
         self.assertEqual(True, simple_check())
 
-    @unittest.skip("I don't want to run this case.")
+#    @unittest.skip("I don't want to run this case.")
     def test_new_template(self):
         """测试新建模板"""
         self.assertEqual(True, new_template())
