@@ -176,6 +176,7 @@ class NewDoubleRandom(object):
     def create_new_random_task(self):
         # 新建双随机任务
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary btn-sm']").click()
+        time.sleep(3)
         task_name = ("%ssunhr测试双随机" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("planName").send_keys(task_name)
         self.driver.find_element_by_id("planCode").send_keys(time.strftime('%Y%m%d', time.localtime(time.time())))
@@ -466,7 +467,7 @@ class NewNormalTask(object):
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.get_text()
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button' % finaltarget).click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[12]/button' % finaltarget).click()
         try:
             enterprise_name = '未选择'
             enterprise_selector = self.driver.find_element_by_id("enterpriseName")
