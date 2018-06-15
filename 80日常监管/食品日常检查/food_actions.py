@@ -244,7 +244,7 @@ class NewDoubleRandom(object):
         except Exception as e:
             print('员工列表可能加载有误，错误信息：', e)
         time.sleep(1)
-        self.button.click_save_button()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-success'][last()]").click()
         time.sleep(5)
         # 此处应该增加错误判断====================
         self.button.click_confirm_button()
