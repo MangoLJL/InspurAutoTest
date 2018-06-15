@@ -286,14 +286,15 @@ def normal_task():
         new_normal_task = NewNormalTask(driver)
         normal_plan_name = new_normal_task.create_task()
         new_normal_task_confirmer = NewNormalTask(driver)
-        true_or_false = new_normal_task_confirmer.confirm_new_normal_task(normal_plan_name)
+        new_normal_task_true_or_false = new_normal_task_confirmer.confirm_new_normal_task(normal_plan_name)
+        new_normal_task.receive_new_normal_task(normal_plan_name)
         new_random_test_confirmer_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = new_random_test_confirmer_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
         new_normal_task_check_creater = NewNormalTask(driver)
         enterprise_name = new_normal_task_check_creater.create_normal_task_check(normal_plan_name)
-        true_or_false = new_normal_task_check_creater.confirm_normal_task_check(normal_plan_name, enterprise_name)
+        new_normal_task_check_true_or_false = new_normal_task_check_creater.confirm_normal_task_check(normal_plan_name, enterprise_name)
         driver.quit()
-        return true_or_false
+        return new_normal_task_true_or_false and new_normal_task_check_true_or_false
     except Exception as e:
         print("测试未通过，截图已保存至normal_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%snormal_task_error.png" %

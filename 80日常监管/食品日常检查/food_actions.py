@@ -434,6 +434,25 @@ class NewNormalTask(object):
         except Exception as e:
             print(e)
 
+    def receive_new_normal_task(self, plan_name):
+        try:
+            url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplan_receive_list.jsp?entParentId=food')
+            self.driver.get(url)
+            time.sleep(2)
+            target = self.common_action.find(plan_name)
+            finaltarget = target.parent
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.previous_sibling
+            finaltarget = finaltarget.get_text()
+            self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[13]/button' % finaltarget).click()
+            self.common_action.scroll_and_switch_to_iframe()
+            self.driver.find_element_by_id('checkNumber').send_keys('1')
+            self.button.click_save_button()
+        except Exception as e:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "签收失败，错误为：" + e)
+            self.driver.quit()
+
     def create_normal_task_check(self, plan_name):
         # 针对新建的普通任务发起检查
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
