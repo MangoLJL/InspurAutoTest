@@ -284,6 +284,7 @@ class NewDoubleRandom(object):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
         target = self.common_action.find(task_name)
+        print(target)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
