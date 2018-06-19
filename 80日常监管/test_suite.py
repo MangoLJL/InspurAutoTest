@@ -1,8 +1,12 @@
+# coding=utf-8
+import sys
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
 import unittest
 import schedule
 import threading
 import time
-from test_food_daily_check import TestFoodDailyCheck
+from food.test_food_daily_check import TestFoodDailyCheck
 from common_modules.HTMLTestRunner import HTMLTestRunner
 
 # if __name__ == '__main__':
