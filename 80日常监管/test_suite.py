@@ -3,7 +3,7 @@ import schedule
 import threading
 import time
 from test_food_daily_check import TestFoodDailyCheck
-from HTMLTestRunner import HTMLTestRunner
+from common_modules.HTMLTestRunner import HTMLTestRunner
 
 # if __name__ == '__main__':
 

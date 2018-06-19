@@ -1,7 +1,9 @@
 # coding=utf-8
+import sys
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
 import re
 import time
-import globalvar
+import common_modules.globalvar
 from functools import reduce
 from food_actions import NewCheck, NewDoubleRandom, NewNormalTask, Template
 from bs4 import BeautifulSoup
@@ -10,9 +12,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
-#from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-from common_action import Setup, SwitchToFrame, Button, CommonAction
+from common_modules.common_action import *
 
 
 def new_check():
