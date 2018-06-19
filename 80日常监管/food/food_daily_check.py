@@ -3,7 +3,7 @@ import sys
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
 import re
 import time
-import common_modules.globalvar
+import common_modules.globalvar as globalvar
 from functools import reduce
 from food_actions import NewCheck, NewDoubleRandom, NewNormalTask, Template
 from bs4 import BeautifulSoup

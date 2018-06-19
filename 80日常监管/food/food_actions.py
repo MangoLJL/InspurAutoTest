@@ -4,7 +4,7 @@ sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常�
 import time
 import re
 import random
-from common_modules.globalvar import *
+import common_modules.globalvar as globalvar
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
