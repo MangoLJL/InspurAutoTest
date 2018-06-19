@@ -467,9 +467,13 @@ class NewNormalTask(object):
         time.sleep(2)
         target = self.common_action.find(plan_name)
         finaltarget = target.parent
+        print(finaltarget)
         finaltarget = finaltarget.previous_sibling
+        print(finaltarget)
         finaltarget = finaltarget.previous_sibling
+        print(finaltarget)
         finaltarget = finaltarget.get_text()
+        print(finaltarget)
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[12]/button' % finaltarget).click()
         try:
             enterprise_name = '未选择'
