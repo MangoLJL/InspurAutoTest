@@ -4,7 +4,7 @@ sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常�
 import time
 import re
 import random
-import common_modules.globalvar
+from common_modules.globalvar import *
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
-from common_modules.common_action import *
+from common_modules.common_action import Setup, SwitchToFrame, Time, Button, CommonAction
 
 globalvar._init()
 
