@@ -355,7 +355,7 @@ class NewDoubleRandom(object):
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.get_text()
-            self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
+            self.driver.find_element_by_xpath('//html//tr[%s]/td[11]/a[1]' % finaltarget).click()
             time.sleep(1)
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             self.driver.switch_to.default_content()
@@ -535,7 +535,7 @@ class NewNormalTask(object):
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.get_text()
-            self.driver.find_element_by_xpath('//html//tr[%s]/td[9]/a[1]' % finaltarget).click()
+            self.driver.find_element_by_xpath('//html//tr[%s]/td[11]/a[1]' % finaltarget).click()
             time.sleep(1)
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             self.driver.switch_to.default_content()
