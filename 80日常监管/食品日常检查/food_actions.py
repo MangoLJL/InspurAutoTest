@@ -285,7 +285,6 @@ class NewDoubleRandom(object):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
         target = self.common_action.find(task_name)
-        print(target)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
@@ -300,7 +299,8 @@ class NewDoubleRandom(object):
             time.sleep(1)
             iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
             self.driver.switch_to.frame(iframe)
-            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
+            random_enterprise = random.randint(1, 5)
+            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[%s]/td[2]/input[1]" % random_enterprise)))
             enterprise_name = self.driver.find_element_by_xpath("//html//tr[1]/td[3]").text
             enterprise_radio_button.click()
             try:
@@ -470,6 +470,7 @@ class NewNormalTask(object):
         print(finaltarget)
         finaltarget = finaltarget.previous_sibling
         print(finaltarget)
+        finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
         print(finaltarget)
         finaltarget = finaltarget.get_text()
