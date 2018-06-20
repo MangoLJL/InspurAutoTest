@@ -486,15 +486,14 @@ class NewNormalTask(object):
             enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
             enterprise_name = self.driver.find_element_by_xpath("//html//tr[1]/td[3]").text
             enterprise_radio_button.click()
-            time.sleep(2)
+            self.driver.switch_to.default_content()
+            self.button.click_save_button()
+            time.sleep(1)
             self.driver.switch_to.default_content()
             try:
                 self.driver.find_element_by_id("radio0").click()  # 选择食品经营企业时会出现两个radio button
             except:
                 pass
-            self.button.click_save_button()
-            time.sleep(1)
-            self.driver.switch_to.default_content()
             self.driver.find_element_by_id("firstBtn").click()
             check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "checkTypeCode0")))
             check_type_button.click()
