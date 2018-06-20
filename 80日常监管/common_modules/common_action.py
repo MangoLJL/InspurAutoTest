@@ -24,12 +24,13 @@ class Setup(object):
         chrome_option = Options()
         # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
-        '''
+
         chrome_option.add_argument('--log-level=3')
         driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         '''
         driver = webdriver.Ie()
-        driver.maximize_window(executable_path=(r'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\WebDriver\\IEDriverServer.exe'))
+        driver.maximize_window(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\IEDriverServer.exe'))
+        '''
         self.driver = driver
         self.driver.get(self.url)
         self.driver.find_element_by_id("j_username").send_keys("%s" % username)
@@ -106,10 +107,40 @@ class Time(object):
         return time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 
 
+class SendKeys(object):
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def send(self, id_or_xpath, text):
+        if id_or_xpath.find('/'):
+            try:
+                self.driver.find_element_by_xpath(id_or_xpath).send_keys(text)
+            except Exception as e:
+                print(e)
+        else:
+            try:
+                self.driver.find_element_by_id(id_or_xpath).send_keys(text)
+            except Exception as e:
+                print(e)
+
+
 class Button(object):
 
     def __init__(self, driver):
         self.driver = driver
+
+    def click(self, id_or_xpath):
+        if id_or_xpath.find('/'):
+            try:
+                self.driver.find_element_by_xpath(id_or_xpath).click()
+            except Exception as e:
+                print(e)
+        else:
+            try:
+                self.driver.find_element_by_id(id_or_xpath).click()
+            except Exception as e:
+                print(e)
 
     def click_plus_button(self):
         time.sleep(2)
@@ -131,6 +162,10 @@ class Button(object):
         except Exception as e:
             self.driver.find_element_by_xpath("//span[@class='fa fa-search']").click()
         time.sleep(5)
+
+    def click_right_arrow_button(self):
+        time.sleep(2)
+        self.driver.find_element_by_xpath("//i[@class='fa fa-chevron-right fa-fw']").click()
 
     def click_calendar_start_button(self):
         self.driver.find_element_by_id("checkStartDate").click()

@@ -390,6 +390,7 @@ class NewNormalTask(object):
         self.driver.find_element_by_id("select2-chosen-1").click()
         self.driver.find_element_by_id("select2-results-1").click()
         self.driver.find_element_by_id("radio3").click()
+        self.driver.find_element_by_id("checkNumber").send_keys('66')
         self.button.click_calendar_start_button()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_xpath("//html//div[3]/div[3]/table[1]/tbody[1]/tr[1]/td[1]").click()
