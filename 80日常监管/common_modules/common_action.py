@@ -24,9 +24,12 @@ class Setup(object):
         chrome_option = Options()
         # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
+        '''
         chrome_option.add_argument('--log-level=3')
         driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
-        driver.maximize_window()
+        '''
+        driver = webdriver.Ie()
+        driver.maximize_window(executable_path=(r'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\WebDriver\\IEDriverServer.exe'))
         self.driver = driver
         self.driver.get(self.url)
         self.driver.find_element_by_id("j_username").send_keys("%s" % username)
