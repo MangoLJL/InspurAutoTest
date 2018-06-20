@@ -28,9 +28,9 @@ class Setup(object):
         chrome_option.add_argument('--log-level=3')
         driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         '''
-        driver = webdriver.Ie()
-        driver.maximize_window(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\IEDriverServer.exe'))
+        driver = webdriver.Ie(executable_path=(r'C:\\Program Files (x86)\\Google\\Chrome\\Application\\IEDriverServer.exe'))
         '''
+        driver.maximize_window()
         self.driver = driver
         self.driver.get(self.url)
         self.driver.find_element_by_id("j_username").send_keys("%s" % username)
