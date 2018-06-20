@@ -64,7 +64,7 @@ def new_check():
                             true_or_false[i] = False
                             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                                   (enterprise_type[y], check_type_name[i], driver.current_url, e))
-                            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%snew_check.png" % (
+                            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%sfood_new_check.png" % (
                                 time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
                             continue
                     true_or_false_suite = reduce(true_plus_false, true_or_false)
@@ -126,7 +126,7 @@ def new_check():
                                 food_bussiness_suite_true_or_false[z].append(False)
                                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                                       (enterprise_type[y], check_type_name[i], driver.current_url, e))
-                                driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%snew_check.png" % (
+                                driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%sfood_new_check.png" % (
                                     time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
                                 continue
                     food_bussiness_middle_true_or_false = []
@@ -187,7 +187,7 @@ def simple_check():
             true_or_false[4] = False
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                   (enterprise_type[y], check_type_name[i], driver.current_url, e))
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%snew_check.png" % (
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%sfood_new_check.png" % (
                 time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
         i = 0  # 日常检查
         y = 6  # 食品经营
@@ -243,7 +243,7 @@ def simple_check():
             true_or_false[4] = False
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                   (enterprise_type[y], food_bussiness_type[z], check_type_name[i], driver.current_url, e))
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%s%snew_check.png" % (
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%s%sfood_new_check.png" % (
                 time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y],  food_bussiness_type[z], check_type_name[i]))
     return (reduce(true_plus_false, true_or_false))
 
@@ -272,7 +272,7 @@ def double_random_task():
         return true_or_false
     except Exception as e:
         print("测试未通过，截图已保存至double_random_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
-        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sdouble_random_task_error.png" %
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sfood_double_random_task_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 
@@ -298,7 +298,7 @@ def normal_task():
         return new_normal_task_true_or_false and new_normal_task_check_true_or_false
     except Exception as e:
         print("测试未通过，截图已保存至normal_task_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
-        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%snormal_task_error.png" %
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sfood_normal_task_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 
@@ -316,6 +316,6 @@ def new_template():
         return ture_or_false
     except Exception as e:
         print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
-        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%snew_template_error.png" %
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sfood_new_template_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
         driver.quit()
