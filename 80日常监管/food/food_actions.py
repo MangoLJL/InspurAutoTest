@@ -435,8 +435,10 @@ class NewNormalTask(object):
             if target == None:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "获取普通任务%s失败，任务可能没有创建成功,当前页面截图已保存至confirm_new_normal_task.png" % plan_name)
                 self.driver.get_screenshot_as_file("C:\\Users\\sunhaoran\\Desktop\\%sconfirm_new_normal_task.png" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+                return False
             else:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "普通任务创建成功,测试通过，任务名称为：" + plan_name)
+                return True
         except Exception as e:
             print(e)
 
