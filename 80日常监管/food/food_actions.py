@@ -633,7 +633,7 @@ class Template(object):
         time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[7]/input').send_keys('sunhr测试检查要求')
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[7]/input').send_keys(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + 'sunhr测试检查要求')
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[11]/input').send_keys('100')
         iframe = self.driver.find_element_by_id('frameName')
         self.driver.switch_to.frame(iframe)
