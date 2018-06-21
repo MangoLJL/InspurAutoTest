@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from common_modules.common_action import Setup, SwitchToFrame, Time, Button, CommonAction, SendKeys
+globalvar._init()
 
 
 class NewCheck(object):
@@ -222,16 +223,15 @@ class Template(object):
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[7]/input').send_keys('sunhr测试检查要求')
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[11]/input').send_keys('100')
         iframe = self.driver.find_element_by_id('frameName')
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('bts').click()
         self.button.click_confirm_button()
-        globalvar.set_value('template_name', template_name)
+        globalvar.set_value('makeup_template_name', template_name)
         return template_name
 
     def confirm_new_template(self, template_name):
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food')
+        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
