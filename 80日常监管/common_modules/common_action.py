@@ -131,14 +131,14 @@ class Button(object):
         self.driver = driver
 
     def click(self, id_or_xpath):
-        if id_or_xpath.find('/'):
+        if id_or_xpath.find('/') == -1:
             try:
-                self.driver.find_element_by_xpath(id_or_xpath).click()
+                self.driver.find_element_by_id(id_or_xpath).click()
             except Exception as e:
                 print(e)
         else:
             try:
-                self.driver.find_element_by_id(id_or_xpath).click()
+                self.driver.find_element_by_xpath(id_or_xpath).click()
             except Exception as e:
                 print(e)
 
