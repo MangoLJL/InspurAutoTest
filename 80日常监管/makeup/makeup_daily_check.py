@@ -1,11 +1,12 @@
 # coding=utf-8
 import sys
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\makeup')
 import re
 import time
 import common_modules.globalvar as globalvar
 from functools import reduce
-from makeup_actions import NewCheck, Template
+from makeup.makeup_actions import NewCheck, Template
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options

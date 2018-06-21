@@ -1,6 +1,8 @@
+import sys
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\makeup')
 import unittest
-from makeup_daily_check import *
-from makeup_actions import Template
+from makeup.makeup_daily_check import *
+from makeup.makeup_actions import Template
 
 
 class TestMakeupDailyCheck(unittest.TestCase):

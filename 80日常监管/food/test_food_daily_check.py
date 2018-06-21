@@ -1,6 +1,8 @@
+import sys
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
 import unittest
-from food_daily_check import *
-from food_actions import Template
+import food.food_daily_check
+from food.food_actions import Template
 
 
 class TestFoodDailyCheck(unittest.TestCase):
