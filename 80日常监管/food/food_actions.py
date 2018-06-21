@@ -79,7 +79,7 @@ class NewCheck(object):
         # 使用检查模板
         self.driver.find_element_by_id(template_name).click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]")
+        self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]").click()
         # self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
 
