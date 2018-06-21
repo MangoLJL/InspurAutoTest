@@ -79,8 +79,10 @@ class NewCheck(object):
         # 使用检查模板
         self.driver.find_element_by_id(template_name).click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
+        self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]")
+        # self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
+
         time.sleep(1)
         self.common_action.scroll_and_switch_to_iframe()
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
