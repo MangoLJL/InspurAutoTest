@@ -11,3 +11,4 @@ Desktop.ini
 *.pyc
 dist
 build
+__pycache__
