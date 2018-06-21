@@ -11,4 +11,4 @@ Desktop.ini
 *.pyc
 dist
 build
-80日常监管/food/__pycache__/
+/**/__pycache__/
