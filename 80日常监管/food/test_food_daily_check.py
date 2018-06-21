@@ -1,9 +1,11 @@
 import sys
 import time
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
 import unittest
 import food.food_daily_check as food_daily_check
 from food.food_actions import Template
+from common_modules.common_action import Setup
 
 
 class TestFoodDailyCheck(unittest.TestCase):
