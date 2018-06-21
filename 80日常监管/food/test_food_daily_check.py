@@ -1,7 +1,8 @@
 import sys
+import time
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
 import unittest
-import food.food_daily_check
+import food.food_daily_check as food_daily_check
 from food.food_actions import Template
 
 
@@ -23,26 +24,26 @@ class TestFoodDailyCheck(unittest.TestCase):
     @unittest.skip("I don't want to run this case.")
     def test_new_check(self):
         """测试新建检查"""
-        self.assertEqual(True, new_check())
+        self.assertEqual(True, food_daily_check.new_check())
 
 #    @unittest.skip("I don't want to run this case.")
     def test_double_random_task(self):
         """测试双随机任务"""
-        self.assertEqual(True, double_random_task())
+        self.assertEqual(True, food_daily_check.double_random_task())
 
 #    @unittest.skip("I don't want to run this case.")
     def test_normal_task(self):
         """测试普通任务"""
-        self.assertEqual(True, normal_task())
+        self.assertEqual(True, food_daily_check.normal_task())
 
 #    @unittest.skip("I don't want to run this case.")
     def test_simple_check(self):
         """测试简略检查"""
-        self.assertEqual(True, simple_check())
+        self.assertEqual(True, food_daily_check.simple_check())
 
 #    @unittest.skip("I don't want to run this case.")
     def test_new_template(self):
         """测试新建模板"""
-        self.assertEqual(True, new_template())
+        self.assertEqual(True, food_daily_check.new_template())
 if __name__ == '__main__':
     unittest.main()
