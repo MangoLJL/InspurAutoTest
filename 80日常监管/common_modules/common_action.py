@@ -45,8 +45,7 @@ class Setup(object):
                 second_menu_class = 'pic-font'
             ActionChains(self.driver).move_to_element(locate_first_menu).perform()  # IE浏览器需要移植元素上
             locate_first_menu.click()  # chorme浏览器只需要点一下就可以
-            if driver == webdriver.Ie():
-                time.sleep(10)
+            time.sleep(5)
             self.driver.find_element_by_xpath("//span[@class='%s'][contains(text(),'%s')]" % (second_menu_class, second_menu)).click()
         except Exception as e:
             self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%ssetup_driver.png" %
