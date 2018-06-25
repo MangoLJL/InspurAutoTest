@@ -39,7 +39,9 @@ class Setup(object):
         self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
         time.sleep(2)
         try:
-            self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu).click()
+            locate_first_menu = self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu)
+            locate_first_menu.click()  # chorme浏览器只需要点一下就可以
+            ActionChains(self.driver).move_to_element(locate_first_menu).perform()  # IE浏览器需要移植元素上
             if second_menu == '行政执法' or second_menu == '投诉举报' or second_menu == '风险预警' or second_menu == '分析标准' or second_menu == '移动服务' or second_menu == '考试信息':
                 second_menu_class = 'extApply'
             else:
