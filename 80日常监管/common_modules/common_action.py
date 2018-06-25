@@ -24,12 +24,12 @@ class Setup(object):
         chrome_option = Options()
         # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
-        '''
+
         chrome_option.add_argument('--log-level=3')
         driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         '''
         driver = webdriver.Ie()
-
+        '''
         driver.maximize_window()
         self.driver = driver
         self.driver.get(self.url)
@@ -40,7 +40,7 @@ class Setup(object):
         time.sleep(2)
         try:
             locate_first_menu = self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu)
-            locate_first_menu.click()  # chorme浏览器只需要点一下就可以
+            # locate_first_menu.click()  # chorme浏览器只需要点一下就可以
             ActionChains(self.driver).move_to_element(locate_first_menu).perform()  # IE浏览器需要移植元素上
             if second_menu == '行政执法' or second_menu == '投诉举报' or second_menu == '风险预警' or second_menu == '分析标准' or second_menu == '移动服务' or second_menu == '考试信息':
                 second_menu_class = 'extApply'
