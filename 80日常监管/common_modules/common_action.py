@@ -24,11 +24,12 @@ class Setup(object):
         chrome_option = Options()
         # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
-        '''
+
         chrome_option.add_argument('--log-level=3')
         driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         '''
         driver = webdriver.Ie()
+        '''
         driver.maximize_window()
         self.driver = driver
         self.driver.get(self.url)
@@ -45,7 +46,6 @@ class Setup(object):
                 second_menu_class = 'pic-font'
             ActionChains(self.driver).move_to_element(locate_first_menu).perform()  # IE浏览器需要移植元素上
             locate_first_menu.click()  # chorme浏览器只需要点一下就可以
-            time.sleep(5)
             self.driver.find_element_by_xpath("//span[@class='%s'][contains(text(),'%s')]" % (second_menu_class, second_menu)).click()
         except Exception as e:
             self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%ssetup_driver.png" %
