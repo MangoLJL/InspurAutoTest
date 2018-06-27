@@ -35,7 +35,7 @@ class AutoTestGUI(BaseWidget):
         self.test.value = result.read()
 
     def run_daily_check_test_suite_action(self):
-        os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管")
+        os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管")
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
         os.popen("python test_suite.py")
