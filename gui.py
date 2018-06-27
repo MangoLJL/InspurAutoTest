@@ -41,7 +41,7 @@ class AutoTestGUI(BaseWidget):
         os.popen("python test_suite")
 
     def open_test_report_action(self):
-        file_name = self.current_hour + '-'self.current_minute
+        file_name = self.current_hour + '-' + self.current_minute
         try:
             os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % self.file_name)
         except Exception:
