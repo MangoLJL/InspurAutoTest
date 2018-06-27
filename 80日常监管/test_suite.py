@@ -20,7 +20,7 @@ def job():
              TestFoodDailyCheck("test_double_random_task"), TestFoodDailyCheck("test_normal_task"), TestMakeupDailyCheck("test_new_template")]
     suite.addTests(tests)
 
-    with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), 'wb') as f:
+    with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())), 'wb') as f:
         runner = HTMLTestRunner(stream=f,
                                 title='Test Report',
                                 verbosity=2
