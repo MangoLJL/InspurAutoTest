@@ -38,16 +38,16 @@ class AutoTestGUI(BaseWidget):
         os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管")
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
-        os.popen("python test_suite")
+        os.popen("python test_suite.py")
 
     def open_test_report_action(self):
         file_name = self.current_hour + '-' + self.current_minute
         try:
-            os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % self.file_name)
+            os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
         except Exception:
             self.current_minute = str(int(self.current_minute) + 1)
             file_name = self.current_hour + '-' + self.current_minute
-            os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % self.file_name)
+            os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)
