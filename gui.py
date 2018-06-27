@@ -46,7 +46,7 @@ class AutoTestGUI(BaseWidget):
             os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % self.file_name)
         except Exception:
             self.current_minute = str(int(self.current_minute) + 1)
-            file_name = self.current_hour + '-'self.current_minute
+            file_name = self.current_hour + '-' + self.current_minute
             os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % self.file_name)
 
 if __name__ == "__main__":
