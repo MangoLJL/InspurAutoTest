@@ -16,34 +16,29 @@ class AutoTestGUI(BaseWidget):
         self.current_hour = None
         self.current_minute = None
 
-        self.pull_from_github = ControlButton('pull from github')
+        self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action
 
-        self.run_daily_check_test_suite = ControlButton('run daily check test suite')
+        self.run_daily_check_test_suite = ControlButton('Run Daily Check Test Suite')
         self.run_daily_check_test_suite.value = self.run_daily_check_test_suite_action
 
-        self.open_test_report = ControlButton('open test report')
+        self.open_test_report = ControlButton('Open Test Report')
         self.open_test_report.value = self.open_test_report_action
 
-        self.test = ControlLabel('结果将在此处显示...')
+        self.lable = ControlLabel('运行结果:')
+        self.result_text = ControlLabel('结果将在此处显示...')
 
-        self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), 'test']
+        self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), 'lable', 'result_text']
 
     def pull_from_github_action(self):
         result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest&&git pull")
-        '''
-        os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest")
-        result = os.popen("git pull")
-        '''
-        self.test.value = result.read()
+        self.result_text.value = result.read()
 
     def run_daily_check_test_suite_action(self):
-        '''
-        os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管")
-        '''
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
-        os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py")
+        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py")
+        self.result_text.value = result.read()
 
     def open_test_report_action(self):
         file_name = self.current_hour + '-' + self.current_minute
