@@ -88,6 +88,7 @@ class NewCheck(object):
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("checkDescribe").send_keys('$' + check_describe + '$')
         self.button.click_save_button()
+        time.sleep(1)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
@@ -143,7 +144,6 @@ class NewCheck(object):
 
     def confirm_new_check_check_template(self, check_describe):
         # 确认使用检查模板进行检查的事项的情况
-        pass
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
@@ -462,6 +462,8 @@ class NewNormalTask(object):
             self.button.click_confirm_button()
             time.sleep(1)
             self.button.click_confirm_button()
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "签收成功")
+            self.driver.quit()
         except Exception as e:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "签收失败，错误为：" + e)
             self.driver.quit()
