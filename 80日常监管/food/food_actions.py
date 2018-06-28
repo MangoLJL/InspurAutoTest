@@ -194,7 +194,8 @@ class NewDoubleRandom(object):
         self.button.click_calendar_end_button()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_xpath("//html//div[4]/div[3]/table[1]/tbody[1]/tr[5]/td[7]").click()
-        # self.driver.find_element_by_id("DeptName").click()  # 被检查单位/部门
+        '''
+        self.driver.find_element_by_id("DeptName").click()  # 被检查单位/部门
         self.driver.switch_to.default_content()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(3)
@@ -208,6 +209,7 @@ class NewDoubleRandom(object):
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(3)
         self.driver.switch_to.frame("mainFrame")
+        '''
         self.driver.find_element_by_id("planTemplateName").click()  # 指定检查表模板
         self.driver.switch_to.default_content()
         time.sleep(1)
