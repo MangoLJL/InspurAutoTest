@@ -30,20 +30,20 @@ class AutoTestGUI(BaseWidget):
         self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), 'test']
 
     def pull_from_github_action(self):
-        result = os.popen(“cd C:\\Users\\Administrator\\Documents\\PythonAutoTest&& git pull”)
-        ‘’’
+        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest&&git pull")
+        '''
         os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest")
         result = os.popen("git pull")
-        ‘’’
+        '''
         self.test.value = result.read()
 
     def run_daily_check_test_suite_action(self):
-        ‘’’
+        '''
         os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管")
-        ‘’’
+        '''
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
-        os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管 &&python test_suite.py")
+        os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py")
 
     def open_test_report_action(self):
         file_name = self.current_hour + '-' + self.current_minute
