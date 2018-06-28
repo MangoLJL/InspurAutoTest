@@ -73,6 +73,7 @@ class NewCheck(object):
         time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
+        time.sleep(1)
         self.button.click_right_arrow_button()
 
     def fourth_step_check_template(self, template_ID):
