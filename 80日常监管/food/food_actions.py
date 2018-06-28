@@ -34,7 +34,7 @@ class NewCheck(object):
     def second_step(self):
         enterprise_selector = self.driver.find_element_by_id("enterpriseName")
         ActionChains(self.driver).double_click(enterprise_selector).perform()
-        self.driver.switch_to.default_content()
+        # self.driver.switch_to.default_content()
         time.sleep(1)
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
@@ -46,11 +46,11 @@ class NewCheck(object):
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '检查的企业为' + enterprise_name)
             enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[%s]/td[2]/input[1]" % random_enterprise)))
             enterprise_radio_button.click()
-            self.driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
+            self.button.click_save_button()
             time.sleep(1)
             self.driver.switch_to.default_content()
             self.driver.switch_to.frame("mainFrame")
-            self.driver.find_element_by_id("secondBtn").click()
+            self.button.click_right_arrow_button()
             return True
         else:
             return False
@@ -73,11 +73,11 @@ class NewCheck(object):
         time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
-        self.driver.find_element_by_id("thirdhBtn").click()
+        self.button.click_right_arrow_button()
 
-    def fourth_step_check_template(self, template_name):
+    def fourth_step_check_template(self, template_ID):
         # 使用检查模板
-        self.driver.find_element_by_id(template_name).click()
+        self.driver.find_element_by_id(template_ID).click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]").click()
         # self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
@@ -92,7 +92,7 @@ class NewCheck(object):
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
-        self.driver.find_element_by_id("fourBtn").click()
+        self.button.click_right_arrow_button()
         return check_describe
 
     def fourth_step_check_situation(self):
@@ -101,7 +101,7 @@ class NewCheck(object):
         question_sheet.click()
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
-        self.driver.find_element_by_id("fourBtn").click()
+        self.button.click_right_arrow_button()
         return check_situation
 
     def fifth_step(self):
@@ -110,7 +110,7 @@ class NewCheck(object):
         self.driver.find_element_by_id("dealMethod5").click()
         self.driver.find_element_by_id("isShowInfo1").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.driver.find_element_by_id("fithBtn").click()
+        self.button.click_right_arrow_button()
 
     def final_step(self):
         self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
@@ -194,7 +194,7 @@ class NewDoubleRandom(object):
         self.button.click_calendar_end_button()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_xpath("//html//div[4]/div[3]/table[1]/tbody[1]/tr[5]/td[7]").click()
-        self.driver.find_element_by_id("DeptName").click()  # 被检查单位/部门
+        # self.driver.find_element_by_id("DeptName").click()  # 被检查单位/部门
         self.driver.switch_to.default_content()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(3)
@@ -658,7 +658,7 @@ class Template(object):
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
         else:
-            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % driver.template_name)
+            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % template_name)
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sconfirm_new_template_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             return False

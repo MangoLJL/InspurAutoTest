@@ -200,6 +200,8 @@ class CommonAction(object):
             try:
                 self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
                 time.sleep(2)
+                self.driver.find_element_by_id("grid_length").click()
+                self.driver.find_element_by_xpath("//option[@value='100']").click()
                 current_html = self.driver.page_source
                 soup = BeautifulSoup(current_html, 'lxml')
                 target = soup.find('a', string=re.compile(find_target))
