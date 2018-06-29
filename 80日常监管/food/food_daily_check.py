@@ -190,6 +190,7 @@ def simple_check():
             true_or_false[4] = False
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为%s' %
                   (enterprise_type[y], check_type_name[i], driver.current_url, e))
+            traceback.print_exc()
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%sfood_new_check.png" % (
                 time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
         i = 0  # 日常检查
