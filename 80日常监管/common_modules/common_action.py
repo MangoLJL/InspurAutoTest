@@ -19,12 +19,11 @@ class Setup(object):
     def __init__(self, url):
         self.url = url
 
-        # 连接浏览器驱动并选择所需要测试的系统
     def setup_driver(self, username, password, first_menu, second_menu):
+        # 连接浏览器驱动并选择所需要测试的系统
         chrome_option = Options()
         # 是否选择以无头模式运行：可能使用不太正常
         # chrome_option.add_argument("--headless")
-
         chrome_option.add_argument('--log-level=3')
         driver = webdriver.Chrome(executable_path=(r'C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe'), chrome_options=chrome_option)
         '''
@@ -38,6 +37,27 @@ class Setup(object):
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
         time.sleep(2)
+        x = 0
+        while x < 6:
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            time.sleep(2)
+            current_html = self.driver.page_source
+            soup = BeautifulSoup(current_html, 'lxml')
+            target = soup.find('h1', string=re.compile('404 Not Found'))
+            if target == None:  # 没有查到“没有查询到数据字样，证明有数据”
+                true_or_false = True
+            else:
+                true_or_false = False
+            if true_or_false:
+                break
+            else:
+                self.driver.get(self.url)
+                self.driver.find_element_by_id("j_username").send_keys("%s" % username)
+                self.driver.find_element_by_id("j_password").send_keys("%s" % password)
+                time.sleep(1)
+                self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
+                time.sleep(2)
+                x += 1
         try:
             locate_first_menu = self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu)
             if second_menu == '行政执法' or second_menu == '投诉举报' or second_menu == '风险预警' or second_menu == '分析标准' or second_menu == '移动服务' or second_menu == '考试信息':
@@ -76,10 +96,25 @@ class Setup(object):
             self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
             time.sleep(5)
 
-# 切换Frame：MainFrame/default_content
+    def find404(self):
+        while 1:
+            try:
+                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+                time.sleep(2)
+                current_html = self.driver.page_source
+                soup = BeautifulSoup(current_html, 'lxml')
+                target = soup.find('h1', string=re.compile('404 Not Found'))
+                if target == None:  # 没有查到“没有查询到数据字样，证明有数据”
+                    return True
+                else:
+                    return False
+            except Exception as e:
+                print(e)
+                break
 
 
 class SwitchToFrame(object):
+    # 切换Frame：MainFrame/default_content
 
     def __init__(self, driver):
         self.driver = driver

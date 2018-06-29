@@ -51,7 +51,7 @@ class NewCheck(object):
             time.sleep(1)
             self.driver.switch_to.default_content()
             self.driver.switch_to.frame("mainFrame")
-            self.button.click_right_arrow_button()
+            self.driver.find_element_by_id("secondBtn").click()
             return True
         else:
             return False
