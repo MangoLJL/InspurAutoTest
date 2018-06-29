@@ -35,7 +35,7 @@ class NewCheck(object):
     def second_step(self):
         enterprise_selector = self.driver.find_element_by_id("enterpriseName")
         ActionChains(self.driver).double_click(enterprise_selector).perform()
-        # self.driver.switch_to.default_content()
+        self.driver.switch_to.default_content()
         time.sleep(1)
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
