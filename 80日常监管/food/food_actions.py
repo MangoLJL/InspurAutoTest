@@ -4,6 +4,7 @@ sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常�
 import time
 import re
 import random
+import traceback
 import common_modules.globalvar as globalvar
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -233,6 +234,7 @@ class NewDoubleRandom(object):
             self.driver.find_element_by_xpath("//a[@href='#planPersonInfo']").click()
         except Exception as e:
             print('企业列表未正确加载或有报错，错误信息：', e)
+            traceback.print_exc()
         time.sleep(3)
         self.driver.find_element_by_id("checkPersonAmount").send_keys("387")
         self.driver.find_element_by_id("groupingNum").send_keys("1")
@@ -251,6 +253,7 @@ class NewDoubleRandom(object):
             self.driver.find_element_by_xpath("//html//tr[%s]/td[8]/button[1]" % employee_number).click()  # 根据获取到编号的XPATH点击设为组长按钮
         except Exception as e:
             print('员工列表可能加载有误，错误信息：', e)
+            traceback.print_exc()
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@class='btn btn-success'][last()]").click()
         time.sleep(5)
@@ -351,6 +354,7 @@ class NewDoubleRandom(object):
             self.common_action.get_screenshot("check_new_random_test")
             print("根据%s创建针对%s的流程失败" % (task_name, enterprise_name))
             print(e)
+            traceback.print_exc()
 
     def confirm_random_enterprise_check(self, task_name, enterprise_name):
         # 确定根据双随机任务发起的检查建立成功
@@ -377,6 +381,7 @@ class NewDoubleRandom(object):
                 return False
         except Exception as e:
             print(e)
+            traceback.print_exc()
 
 
 class NewNormalTask(object):
@@ -446,6 +451,7 @@ class NewNormalTask(object):
                 return True
         except Exception as e:
             print(e)
+            traceback.print_exc()
 
     def receive_new_normal_task(self, plan_name):
         try:
@@ -469,6 +475,7 @@ class NewNormalTask(object):
             self.driver.quit()
         except Exception as e:
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "签收失败，错误为：" + e)
+            traceback.print_exc()
             self.driver.quit()
 
     def create_normal_task_check(self, plan_name):
@@ -536,6 +543,7 @@ class NewNormalTask(object):
             self.common_action.get_screenshot("check_new_random_test")
             print("根据普通任务【%s】创建针对【%s】的流程失败" % (plan_name, enterprise_name))
             print(e)
+            traceback.print_exc()
 
     def confirm_normal_task_check(self, task_name, enterprise_name):
         # 确认针对普通任务发起的检查新建成功
@@ -562,6 +570,7 @@ class NewNormalTask(object):
                 return False
         except Exception as e:
             print(e)
+            traceback.print_exc()
 
 
 class Template(object):
