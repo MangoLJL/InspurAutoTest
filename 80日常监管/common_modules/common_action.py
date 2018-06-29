@@ -38,7 +38,7 @@ class Setup(object):
         self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
         time.sleep(2)
         x = 0
-        while x < 6:
+        while x < 10:
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(2)
             current_html = self.driver.page_source
