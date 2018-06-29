@@ -310,7 +310,7 @@ class NewDoubleRandom(object):
             self.driver.switch_to.frame(iframe)
             random_enterprise = random.randint(1, 5)
             enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[%s]/td[2]/input[1]" % random_enterprise)))
-            enterprise_name = self.driver.find_element_by_xpath("//html//tr[1]/td[3]").text
+            enterprise_name = self.driver.find_element_by_xpath("//html//tr[%s]/td[3]" % random_enterprise).text
             enterprise_radio_button.click()
             self.button.click_save_button()
             time.sleep(1)

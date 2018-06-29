@@ -122,7 +122,7 @@ def new_check():
                                     food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_template(check_describe))
                                 else:
                                     food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_situation(check_situation))
-                                # food_bussiness_suite_true_or_false[z].append(new_check_confirmer.confirm_new_check_check_template(check_situation))  # 每组五个, checkTypeCode
+
                                 driver.quit()
                             except Exception as e:
                                 food_bussiness_suite_true_or_false[z].append(False)
