@@ -84,7 +84,6 @@ class NewCheck(object):
         self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]").click()
         # self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
-
         time.sleep(1)
         self.common_action.scroll_and_switch_to_iframe()
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
@@ -94,7 +93,7 @@ class NewCheck(object):
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
-        self.button.click_right_arrow_button()
+        self.driver.find_element_by_id("fourBtn").click()
         return check_describe
 
     def fourth_step_check_situation(self):
@@ -103,7 +102,7 @@ class NewCheck(object):
         question_sheet.click()
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
-        self.button.click_right_arrow_button()
+        self.driver.find_element_by_id("fourBtn").click()
         return check_situation
 
     def fifth_step(self):
@@ -112,7 +111,7 @@ class NewCheck(object):
         self.driver.find_element_by_id("dealMethod5").click()
         self.driver.find_element_by_id("isShowInfo1").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.button.click_right_arrow_button()
+        self.driver.find_element_by_id("fithBtn").click()
 
     def final_step(self):
         self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()
