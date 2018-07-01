@@ -22,7 +22,8 @@ def new_template():
     makeup_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = makeup_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
-        makeup_new_template_setup.choose_menu('化妆品监督检查', '检查表管理', '检查项目管理')
+        #makeup_new_template_setup.choose_menu('化妆品监督检查', '检查表管理', '检查项目管理')
+        makeup_new_template_setup.choose_menu('食品监督检查', '检查表管理', '食品监督检查表制定')
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()
         new_template = Template(driver)

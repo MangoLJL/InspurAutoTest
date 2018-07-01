@@ -90,10 +90,8 @@ class Setup(object):
             self.driver.find_element_by_id("menu-toggler").click()
             time.sleep(1)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
-            time.sleep(2)
-            print(self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu))
+            time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
-
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
             time.sleep(5)
