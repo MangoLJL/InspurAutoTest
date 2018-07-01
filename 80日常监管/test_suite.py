@@ -16,8 +16,13 @@ from common_modules.HTMLTestRunner import HTMLTestRunner
 def job():
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
-    tests = [TestFoodDailyCheck("test_new_template"), TestFoodDailyCheck("test_simple_check"), TestFoodDailyCheck("test_new_check"),
-             TestFoodDailyCheck("test_double_random_task"), TestFoodDailyCheck("test_normal_task"), TestMakeupDailyCheck("test_new_template")]
+    tests = []
+    tests.append(TestFoodDailyCheck("test_new_template"))
+    tests.append(TestFoodDailyCheck("test_simple_check"))
+    tests.append(TestFoodDailyCheck("test_new_check"))
+    tests.append(TestFoodDailyCheck("test_double_random_task"))
+    tests.append(TestFoodDailyCheck("test_normal_task"))
+    tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品
     suite.addTests(tests)
 
     with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())), 'wb') as f:
