@@ -4,6 +4,7 @@ sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常�
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\makeup')
 import re
 import time
+import traceback
 import common_modules.globalvar as globalvar
 from functools import reduce
 from makeup.makeup_actions import NewCheck, Template
@@ -30,7 +31,8 @@ def new_template():
         driver.quit()
         return ture_or_false
     except Exception as e:
-        print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
+        print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：" % driver.current_url)
+        traceback.print_exc()
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%smakeup_new_template_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
         driver.quit()

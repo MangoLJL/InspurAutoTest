@@ -1,4 +1,5 @@
 import sys
+import traceback
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\makeup')
 import unittest
 from makeup.makeup_daily_check import *

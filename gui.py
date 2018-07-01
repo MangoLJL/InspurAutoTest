@@ -43,11 +43,20 @@ class AutoTestGUI(BaseWidget):
     def open_test_report_action(self):
         file_name = self.current_hour + '-' + self.current_minute
         try:
-            os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
-        except Exception:
+            my_file = ("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
+            if os.path.exists(my_file):
+                os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
+            else:
+                self.current_minute = str(int(self.current_minute) + 1)
+                file_name = self.current_hour + '-' + self.current_minute
+                os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
+        except Exception as e:
+            print('打开文件失败...')
+            '''
             self.current_minute = str(int(self.current_minute) + 1)
             file_name = self.current_hour + '-' + self.current_minute
             os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
+            '''
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)
