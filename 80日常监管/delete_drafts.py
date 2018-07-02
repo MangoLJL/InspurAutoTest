@@ -1,7 +1,6 @@
 # coding=utf-8
 import re
 import time
-# coding=utf-8
 import sys
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
 import time
@@ -19,6 +18,7 @@ from common_modules.common_action import Setup, SwitchToFrame, Time, Button, Com
 
 
 def qqq():
+    # 删除草稿
     food_new_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = food_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')

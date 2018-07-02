@@ -76,7 +76,7 @@ class Setup(object):
         # 选择左侧菜单
     def choose_menu(self, first_menu, second_menu, third_menu):
         button = Button(self.driver)
-        time.sleep(10)
+        time.sleep(5)
         try:
             self.driver.switch_to.default_content()
             self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']")
@@ -90,8 +90,10 @@ class Setup(object):
             self.driver.find_element_by_id("menu-toggler").click()
             time.sleep(1)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
             time.sleep(5)
