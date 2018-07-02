@@ -65,9 +65,10 @@ class AutoTestGUI(BaseWidget):
         if os.path.exists(my_file):
             shutil.rmtree(my_file)
             folder = os.path.exists(my_file)
+            print('Test Report Deleted')
+        else:
             os.makedirs(my_file)
             print('dictionary created...')
-        print('Test Report Deleted')
 
     def delete_screenshot_action(self):
         my_file = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot'
