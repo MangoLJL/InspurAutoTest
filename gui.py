@@ -67,6 +67,7 @@ class AutoTestGUI(BaseWidget):
             folder = os.path.exists(my_file)
             if not folder:  # 判断是否存在文件夹如果不存在则创建为文件夹
                 os.makedirs(my_file)
+                print('dictionary created...')
         print('Test Report Deleted')
 
     def delete_screenshot_action(self):
@@ -76,6 +77,7 @@ class AutoTestGUI(BaseWidget):
             folder = os.path.exists(my_file)
             if not folder:  # 判断是否存在文件夹如果不存在则创建为文件夹
                 os.makedirs(my_file)
+                print('dictionary created...')
         print('Screenshot Deleted...')
 
 if __name__ == "__main__":
