@@ -1,6 +1,7 @@
 # coding=utf-8
 import re
 import time
+import shutil
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -284,3 +285,20 @@ class CommonAction(object):
         self.driver.switch_to.default_content()
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
         self.driver.switch_to.frame(iframe)
+
+    def log(self):
+        # 保存当前html
+        print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + 'logging error...')
+        with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\error_HTML.txt', 'a', encoding='UTF-8')as f:
+            f.write('============================================================')
+            f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+            f.write(self.driver.page_source)
+            f.write('============================================================')
+        print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + 'logged...')
+
+    def clean_log(self):
+        # 删除log
+        my_file = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\error_HTML.txt'
+        if os.path.exists(my_file):
+            shutil.rmtree(my_file)
+        print('error_HTML.txt已被删除')
