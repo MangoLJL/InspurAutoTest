@@ -165,7 +165,7 @@ class Template(object):
         self.driver = driver
         self.button = Button(self.driver)
         self.common_action = CommonAction(self.driver)
-        self.send = SendKeys(self.driver)
+        self.send_keys = SendKeys(self.driver)
 
     def create_template(self):
         self.button.click_plus_button()
@@ -174,7 +174,7 @@ class Template(object):
         self.button.click('radio0')
         self.button.click('radio1')
         self.button.click('radio2')
-        self.send('checkProgramNum', '1')
+        self.send_keys.send('checkProgramNum', '1')
         self.button.click('isPeriod1')
         self.button.click('DeptName')
         self.common_action.scroll_and_switch_to_iframe()
@@ -220,7 +220,7 @@ class Template(object):
         time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[4]/input').send_keys('1')
+        self.send_keys.send('//*[@id="grid"]/tbody/tr/td[4]/input', '1')
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[5]/div/span/i').click()
         self.common_action.scroll_and_switch_to_iframe()
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[3]/td[2]/input').click()
