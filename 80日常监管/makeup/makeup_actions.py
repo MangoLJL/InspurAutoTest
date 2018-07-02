@@ -270,7 +270,7 @@ class Template(object):
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button[2]' % finaltarget).click()
         iframe = self.driver.find_element_by_xpath('/html/body/iframe[1]')
         self.driver.switch_to.frame(iframe)
-        self.driver.find_element_by_id("btt").click()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-success'][1]").click()
         self.button.click_confirm_button()
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button[5]' % finaltarget).click()
         self.button.click_confirm_button()
