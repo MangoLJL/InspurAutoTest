@@ -39,25 +39,24 @@ class AutoTestGUI(BaseWidget):
         self.set_margin(20)
         self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), ('delete_test_report', 'delete_screenshot'), 'lable', 'result_text']
 
-        self.pull_from_github_action_thread = threading.Thread(target=self.pull_from_github_action)
-        self.run_daily_check_test_suite_action_thread = threading.Thread(target=self.run_daily_check_test_suite_action)
-        self.open_test_report_action_thread = threading.Thread(target=self.open_test_report_action)
-        self.delete_test_report_action_thread = threading.Thread(target=self.delete_test_report_action)
-        self.delete_screenshot_action_thread = threading.Thread(target=self.delete_screenshot_action)
-
     def pull_from_github_action_thread_button(self):
+        self.pull_from_github_action_thread = threading.Thread(target=self.pull_from_github_action)
         self.pull_from_github_action_thread.start()
 
     def run_daily_check_test_suite_action_thread_button(self):
+        self.run_daily_check_test_suite_action_thread = threading.Thread(target=self.run_daily_check_test_suite_action)
         self.run_daily_check_test_suite_action_thread.start()
 
     def open_test_report_action_thread_button(self):
+        self.open_test_report_action_thread = threading.Thread(target=self.open_test_report_action)
         self.open_test_report_action_thread.start()
 
     def delete_test_report_action_thread_button(self):
+        self.delete_test_report_action_thread = threading.Thread(target=self.delete_test_report_action)
         self.delete_test_report_action_thread.start()
 
     def delete_screenshot_action_thread_button(self):
+        self.delete_screenshot_action_thread = threading.Thread(target=self.delete_screenshot_action)
         self.delete_screenshot_action_thread.start()
 
     def pull_from_github_action(self):
@@ -105,3 +104,26 @@ class AutoTestGUI(BaseWidget):
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)
+
+
+class main:
+
+    def newThread(self):
+        Thread(target=self.method).start()
+
+    def method(self):
+        for i in range(3):
+            time.sleep(1)
+            print(i)
+
+op = main()
+win = tk.Tk()
+win.title("Python")
+
+
+def click():
+    op.newThread()
+
+action = ttk.Button(win, text="Click Me!", command=click)  # 7
+action.grid(column=0, row=0)
+win.mainloop()
