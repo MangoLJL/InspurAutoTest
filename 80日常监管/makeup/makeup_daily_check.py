@@ -31,10 +31,10 @@ def new_template():
         ture_or_false = new_template.confirm_new_template(new_template_name)
         return ture_or_false
     except Exception as e:
-        print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：" % driver.current_url)
+        print("测试未通过，截图已保存至makeup_new_template_error.png，当前url为：【%s】错误信息为：" % driver.current_url)
         traceback.print_exc()
         common_action = CommonAction(driver)
-        common_action.log_current_HTML()
+        common_action.log()
         driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%smakeup_new_template_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
     finally:
