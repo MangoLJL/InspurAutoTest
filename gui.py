@@ -1,5 +1,6 @@
 import os
 import time
+import shutil
 import pyforms
 from pyforms import BaseWidget
 from pyforms.controls import ControlText
