@@ -168,8 +168,8 @@ class Template(object):
 
     def create_template(self):
         self.button.click_plus_button()
-        template_name = ("%ssunhr测试模板" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
-        self.driver.find_element_by_id('templateName').send_keys(template_name)
+        makeup_template_name = ("%ssunhr测试模板" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        self.driver.find_element_by_id('templateName').send_keys(makeup_template_name)
         self.button.click('radio0')
         self.button.click('radio1')
         self.button.click('radio2')
@@ -223,38 +223,36 @@ class Template(object):
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[7]/input').send_keys('sunhr测试检查要求')
-        iframe = self.driver.find_element_by_id('frameName')
+        iframe = self.driver.find_element_by_xpath('//iframe[1]')
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('bts').click()
         self.button.click_confirm_button()
-        globalvar.set_value('makeup_template_name', template_name)
-        return template_name
+        globalvar.set_value('makeup_template_name', makeup_template_name)
+        return makeup_template_name
 
-    def confirm_new_template(self, template_name):
+    def confirm_new_template(self, makeup_template_name):
         url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
-        if current_template_name == template_name:
+        if current_template_name == makeup_template_name:
             current_template_ID = str(self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href'))
             template_ID_suits = current_template_ID.split('\'')
-            template_ID = template_ID_suits[1]
-            globalvar.set_value('template_ID', template_ID)
+            makeup_template_ID = template_ID_suits[1]
+            globalvar.set_value('makeup_template_ID', makeup_template_ID)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
         else:
-            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % driver.template_name)
+            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % makeup_template_name)
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%sconfirm_new_template_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             return False
 
     def clean_template(self):
-        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food'
+        url = '10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz'
         self.driver.get(url)
-        template_name = globalvar.get_value('template_name')
+        makeup_template_name = globalvar.get_value('makeup_template_name')
         current_html = self.driver.page_source
-        self.driver.find_element_by_id("grid_length").click()
-        self.driver.find_element_by_xpath("//option[@value='100']").click()
-        target = self.common_action.find(template_name)
+        target = self.common_action.find(makeup_template_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
@@ -272,4 +270,4 @@ class Template(object):
         self.button.click_confirm_button()
         time.sleep(0.5)
         self.button.click_confirm_button()
-        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理模板完成')
+        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理化妆品模板完成')

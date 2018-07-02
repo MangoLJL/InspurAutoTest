@@ -19,7 +19,7 @@ from common_modules.common_action import Setup, SwitchToFrame, Time, Button, Com
 
 
 def new_check():
-    new_template_ID = globalvar.get_value('template_ID')
+    new_template_ID = globalvar.get_value('food_template_ID')
     # 新建检查
 
     def true_plus_false(a, b):
@@ -149,7 +149,7 @@ def new_check():
 def simple_check():
     def true_plus_false(a, b):
         return (a and b)
-    new_template_ID = globalvar.get_value('template_ID')
+    new_template_ID = globalvar.get_value('food_template_ID')
     check_type_name = ['日常检查', '专项检查', '量化评级', '学校季度检查', '飞行检查']
     enterprise_type = ['小作坊', '食品摊贩', '小餐饮', '食品生产', '食品流通', '餐饮服务', '食品经营', '校外托管']
     food_bussiness_type = ['食品销售经营者', '餐饮服务经营者', '单位食堂']

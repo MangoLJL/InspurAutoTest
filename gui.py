@@ -75,7 +75,7 @@ class AutoTestGUI(BaseWidget):
         if os.path.exists(my_file):
             shutil.rmtree(my_file)
             os.makedirs(my_file)
-            print('Test Report Deleted')
+            print('Screenshot Deleted')
         else:
             os.makedirs(my_file)
             print('Dictionary Created...')

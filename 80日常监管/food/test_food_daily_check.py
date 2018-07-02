@@ -14,15 +14,15 @@ class TestFoodDailyCheck(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         try:
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理模板...')
+            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理食品模板...')
             clean_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
             driver = clean_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
             template = Template(driver)
             template.clean_template()
         except Exception as e:
-            print("清理模板失败，截图已保存至清理模板失败.png，当前url为：【%s】错误信息为：" % driver.current_url)
+            print("清理模板失败，截图已保存至清理食品模板失败.png，当前url为：【%s】错误信息为：" % driver.current_url)
             traceback.print_exc()
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s清理模板失败.png" %
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s清理食品模板失败.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
     @unittest.skip("跳过新建检查")

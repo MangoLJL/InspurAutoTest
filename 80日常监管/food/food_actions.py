@@ -649,7 +649,7 @@ class Template(object):
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id('bts').click()
         self.button.click_confirm_button()
-        globalvar.set_value('template_name', template_name)
+        globalvar.set_value('food_template_name', template_name)
         return template_name
 
     def confirm_new_template(self, template_name):
@@ -660,7 +660,7 @@ class Template(object):
             current_template_ID = str(self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href'))
             template_ID_suits = current_template_ID.split('\'')
             template_ID = template_ID_suits[1]
-            globalvar.set_value('template_ID', template_ID)
+            globalvar.set_value('food_template_ID', template_ID)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
         else:
@@ -672,10 +672,8 @@ class Template(object):
     def clean_template(self):
         url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food'
         self.driver.get(url)
-        template_name = globalvar.get_value('template_name')
+        template_name = globalvar.get_value('food_template_name')
         current_html = self.driver.page_source
-        self.driver.find_element_by_id("grid_length").click()
-        self.driver.find_element_by_xpath("//option[@value='100']").click()
         target = self.common_action.find(template_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
@@ -694,4 +692,4 @@ class Template(object):
         self.button.click_confirm_button()
         time.sleep(0.5)
         self.button.click_confirm_button()
-        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理模板完成')
+        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理食品模板完成')
