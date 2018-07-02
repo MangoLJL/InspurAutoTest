@@ -177,14 +177,14 @@ class SendKeys(object):
         self.driver = driver
 
     def send(self, id_or_xpath, text):
-        if id_or_xpath.find('/'):
+        if id_or_xpath.find('/') == -1:
             try:
-                self.driver.find_element_by_xpath(id_or_xpath).send_keys(text)
+                self.driver.find_element_by_id(id_or_xpath).send_keys(text)
             except Exception as e:
                 print(e)
         else:
             try:
-                self.driver.find_element_by_id(id_or_xpath).send_keys(text)
+                self.driver.find_element_by_xpath(id_or_xpath).send_keys(text)
             except Exception as e:
                 print(e)
 
