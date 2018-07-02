@@ -245,7 +245,7 @@ class Template(object):
             template_ID_suits = current_template_ID.split('\'')
             makeup_template_ID = template_ID_suits[1]
             globalvar.set_value('makeup_template_ID', makeup_template_ID)
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建化妆品模板成功，测试通过')
             return True
         else:
             print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % makeup_template_name)
@@ -263,16 +263,16 @@ class Template(object):
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.get_text()
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[4]' % finaltarget).click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button[4]' % finaltarget).click()
         self.button.click_confirm_button()
         time.sleep(0.5)
         self.button.click_confirm_button()
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[2]' % finaltarget).click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button[2]' % finaltarget).click()
         iframe = self.driver.find_element_by_xpath('/html/body/iframe[1]')
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_id("btt").click()
         self.button.click_confirm_button()
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[8]/button[5]' % finaltarget).click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[7]/button[5]' % finaltarget).click()
         self.button.click_confirm_button()
         time.sleep(0.5)
         self.button.click_confirm_button()
