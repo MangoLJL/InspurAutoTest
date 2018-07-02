@@ -225,7 +225,7 @@ class Template(object):
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[7]/input').send_keys('sunhr测试检查要求')
         iframe = self.driver.find_element_by_xpath('//iframe[1]')
         self.driver.switch_to.frame(iframe)
-        self.driver.find_element_by_id('bts').click()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-success'][2]").click()
         self.button.click_confirm_button()
         globalvar.set_value('makeup_template_name', makeup_template_name)
         return makeup_template_name
