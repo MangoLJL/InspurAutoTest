@@ -2,6 +2,7 @@ import os
 import time
 import shutil
 import pyforms
+import threading
 from pyforms import BaseWidget
 from pyforms.controls import ControlText
 from pyforms.controls import ControlButton
@@ -18,7 +19,7 @@ class AutoTestGUI(BaseWidget):
         self.current_minute = None
 
         self.pull_from_github = ControlButton('Pull From GitHub')
-        self.pull_from_github.value = self.pull_from_github_action
+        self.pull_from_github.value = self.pull_from_github_action_thread_button
 
         self.run_daily_check_test_suite = ControlButton('Run Daily Check Test Suite')
         self.run_daily_check_test_suite.value = self.run_daily_check_test_suite_action
@@ -35,7 +36,13 @@ class AutoTestGUI(BaseWidget):
         self.lable = ControlLabel('运行结果:')
         self.result_text = ControlLabel('结果将在此处显示...')
 
+        self.set_margin(20)
         self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), ('delete_test_report', 'delete_screenshot'), 'lable', 'result_text']
+
+        self.pull_from_github_action_thread = threading.Thread(target=self.pull_from_github_action)
+
+    def pull_from_github_action_thread_button(self):
+        self.pull_from_github_action_thread.start()
 
     def pull_from_github_action(self):
         result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest&&git pull")
