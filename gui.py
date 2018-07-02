@@ -64,21 +64,21 @@ class AutoTestGUI(BaseWidget):
         my_file = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport'
         if os.path.exists(my_file):
             shutil.rmtree(my_file)
-            folder = os.path.exists(my_file)
+            os.makedirs(my_file)
             print('Test Report Deleted')
         else:
             os.makedirs(my_file)
-            print('dictionary created...')
+            print('Dictionary Created...')
 
     def delete_screenshot_action(self):
         my_file = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot'
         if os.path.exists(my_file):
             shutil.rmtree(my_file)
-            folder = os.path.exists(my_file)
-            if not folder:  # 判断是否存在文件夹如果不存在则创建为文件夹
-                os.makedirs(my_file)
-                print('dictionary created...')
-        print('Screenshot Deleted...')
+            os.makedirs(my_file)
+            print('Test Report Deleted')
+        else:
+            os.makedirs(my_file)
+            print('Dictionary Created...')
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)
