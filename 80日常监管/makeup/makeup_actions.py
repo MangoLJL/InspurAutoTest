@@ -198,7 +198,7 @@ class Template(object):
         self.driver.find_element_by_id('displayColumn3').click()
         self.driver.find_element_by_id('displayColumn4').click()
         self.driver.find_element_by_id('displayColumn5').click()
-        iframe = self.driver.find_element_by_xpath('//iframe[last]')
+        iframe = self.driver.find_element_by_xpath('//iframe[1]')
         self.driver.switch_to.frame(iframe)
         self.button.click_plus_button()
         self.driver.switch_to.default_content()
