@@ -186,7 +186,7 @@ class Template(object):
         self.driver.switch_to.frame(iframe2)
         self.driver.find_element_by_id("organTree_1_check").click()
         self.driver.find_element_by_id("save").click()  # 选择部门之后点击保存\
-        self.driver.common_action.scroll_and_switch_to_iframe()
+        self.common_action.scroll_and_switch_to_iframe()
         '''
         self.driver.switch_to.default_content()
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
@@ -207,7 +207,7 @@ class Template(object):
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[3]/div/span/i').click()
-        self.driver.common_action.scroll_and_switch_to_iframe()
+        self.common_action.scroll_and_switch_to_iframe()
         '''
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
@@ -237,7 +237,7 @@ class Template(object):
         return makeup_template_name
 
     def confirm_new_template(self, makeup_template_name):
-        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == makeup_template_name:
@@ -254,7 +254,7 @@ class Template(object):
             return False
 
     def clean_template(self):
-        url = '10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz'
+        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz'
         self.driver.get(url)
         makeup_template_name = globalvar.get_value('makeup_template_name')
         current_html = self.driver.page_source
