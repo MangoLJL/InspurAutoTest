@@ -74,8 +74,8 @@ class Setup(object):
             print('点击首页功能菜单失败，可能系统首页有报错，导致不能进行流程,截图已保存至setup_driver.png', e)
         return driver
 
-        # 选择左侧菜单
     def choose_menu(self, first_menu, second_menu, third_menu):
+        # 选择左侧菜单(如果出现冲突需要使用下边的分开写的方法)
         button = Button(self.driver)
         time.sleep(5)
         try:
@@ -91,14 +91,37 @@ class Setup(object):
             self.driver.find_element_by_id("menu-toggler").click()
             time.sleep(1)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
-            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
-            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
             time.sleep(5)
 
+    def choose_first_menu(self, first_menu):
+        button = Button(self.driver)
+        time.sleep(5)
+        try:
+            self.driver.switch_to.default_content()
+            self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']")
+            self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%schoose_menu.png" %
+                                               time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
+            button.click_confirm_button()
+            print('系统首页检测到有错误弹窗,截图已保存至choose_menu.png')
+        except:
+            pass
+        finally:
+            self.driver.find_element_by_id("menu-toggler").click()
+            time.sleep(2)
+            self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
+
+    def choose_second_menu(self, second_menu):
+        self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
+        time.sleep(0.5)
+
+    def choose_third_menu(self, third_menu):
+        self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
+        time.sleep(3)
+'''
     def find404(self):
         while 1:
             try:
@@ -114,6 +137,7 @@ class Setup(object):
             except Exception as e:
                 print(e)
                 break
+'''
 
 
 class SwitchToFrame(object):
