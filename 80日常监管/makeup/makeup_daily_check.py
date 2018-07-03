@@ -59,3 +59,10 @@ def makeup_simple_check():
         new_check.final_step()
         true_or_false = new_check.confirm_new_check_check_template(check_describe)
         return true_or_false
+    except Exception as e:
+        print("测试未通过，截图已保存至makeup_simple_check_error.png，当前url为：【%s】错误信息为：" % driver.current_url)
+        traceback.print_exc()
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%smakeup_simple_check_error.png" %
+                                      time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
+    finally:
+        driver.quit()
