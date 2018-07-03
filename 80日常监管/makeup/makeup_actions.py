@@ -45,7 +45,7 @@ class NewCheck(object):
             time.sleep(1)
             self.driver.switch_to.default_content()
             self.driver.switch_to.frame("mainFrame")
-            self.button.click_right_arrow_button()
+            self.driver.find_element_by_id("secondBtn").click()
             return True
         else:
             return False
@@ -64,7 +64,7 @@ class NewCheck(object):
         time.sleep(2)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
-        self.button.click_right_arrow_button()
+        self.driver.find_element_by_id("thirdhBtn").click()
 
     def fourth_step_check_template(self, template_ID):
         # 使用检查模板
@@ -100,7 +100,7 @@ class NewCheck(object):
         self.driver.find_element_by_id("dealMethod5").click()
         self.driver.find_element_by_id("isShowInfo1").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.button.click_right_arrow_button()
+        self.driver.find_element_by_id("fithBtn").click()
 
     def final_step(self):
         self.driver.find_element_by_xpath("//div[@class='common-btn']//button[@class='btn btn-success btn-sm']").click()

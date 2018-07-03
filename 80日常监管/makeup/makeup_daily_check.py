@@ -23,7 +23,9 @@ def new_template():
     driver = makeup_new_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
         makeup_new_template_setup.choose_first_menu('化妆品监督检查')
+        time.sleep(0.5)
         driver.find_element_by_id('000000000000000000000000019468').click()
+        time.sleep(0.5)
         makeup_new_template_setup.choose_third_menu('检查项目管理')
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()
