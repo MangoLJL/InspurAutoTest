@@ -53,7 +53,8 @@ class NewCheck(object):
     def third_step(self, checktype):
         check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, checktype)))
         check_type_button.click()
-        self.driver.find_element_by_xpath("//i[@class='fa fa-search'][2]").click()
+        self.driver.find_element_by_xpath(
+            "//tr[@id='nametr2']//td[@class='fieldInput']//div[@class='input-group']//span[@class='input-group-addon']//i[@class='fa fa-search']").click()
         self.common_action.scroll_and_switch_to_iframe()
         collect_tab = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.XPATH, "//a[@href='#collection']")))
         collect_tab.click()
