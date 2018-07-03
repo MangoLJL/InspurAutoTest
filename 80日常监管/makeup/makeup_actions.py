@@ -108,7 +108,7 @@ class NewCheck(object):
 
     def confirm_new_check_check_situation(self, check_situation):
         # 确认使用检查情况来检查的事项的情况
-        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/cosmetic/publicRecord/my_record_list.jsp?parentId=hz')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/cosmetic/publicRecord/my_record_list.jsp?parentId=hz')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()
