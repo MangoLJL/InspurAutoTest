@@ -82,7 +82,7 @@ class NewCheck(object):
         time.sleep(1)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
-        self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
+        # self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
         self.driver.find_element_by_id("fourBtn").click()
         return check_describe
 
