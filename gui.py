@@ -33,11 +33,11 @@ class AutoTestGUI(BaseWidget):
         self.delete_screenshot = ControlButton('Delete Screenshot')
         self.delete_screenshot.value = self.delete_screenshot_action_thread_button
 
-        self.lable = ControlLabel('运行结果:')
+        self.label = ControlLabel('运行结果:')
         self.result_text = ControlLabel('结果将在此处显示...')
 
         self.set_margin(20)
-        self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), ('delete_test_report', 'delete_screenshot'), 'lable', 'result_text']
+        self.formset = [('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'), ('delete_test_report', 'delete_screenshot'), 'label', 'result_text']
 
     def pull_from_github_action_thread_button(self):
         self.pull_from_github_action_thread = threading.Thread(target=self.pull_from_github_action)

@@ -66,21 +66,23 @@ class NewCheck(object):
         self.driver.switch_to.frame("mainFrame")
         self.button.click_right_arrow_button()
 
-    def fourth_step_check_template(self, template_name):
+    def fourth_step_check_template(self, template_ID):
         # 使用检查模板
-        self.driver.find_element_by_id(template_name).click()
+        self.driver.find_element_by_id(template_ID).click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
+        self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]").click()
+        # self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
         self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
         time.sleep(1)
         self.common_action.scroll_and_switch_to_iframe()
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("checkDescribe").send_keys('$' + check_describe + '$')
         self.button.click_save_button()
+        time.sleep(1)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath("//input[@class='scoreValue']").send_keys('66')
-        self.button.click_right_arrow_button()
+        self.driver.find_element_by_id("fourBtn").click()
         return check_describe
 
     def fourth_step_check_situation(self):
@@ -187,11 +189,6 @@ class Template(object):
         self.driver.find_element_by_id("organTree_1_check").click()
         self.driver.find_element_by_id("save").click()  # 选择部门之后点击保存\
         self.common_action.scroll_and_switch_to_iframe()
-        '''
-        self.driver.switch_to.default_content()
-        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-        self.driver.switch_to.frame(iframe)
-        '''
         self.button.click_edit_button()
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
@@ -208,13 +205,6 @@ class Template(object):
         self.driver.switch_to.frame("mainFrame")
         self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr/td[3]/div/span/i').click()
         self.common_action.scroll_and_switch_to_iframe()
-        '''
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        time.sleep(2)
-        self.driver.switch_to.default_content()
-        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-        self.driver.switch_to.frame(iframe)
-        '''
         self.driver.find_element_by_id('modelTree_2_check').click()
         self.button.click_save_button()
         time.sleep(2)
