@@ -96,9 +96,7 @@ class NewCheck(object):
         return check_situation
 
     def fifth_step(self):
-        checkResult0 = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "checkResult1")))
-        checkResult0.click()
-        self.driver.find_element_by_id("dealMethod5").click()
+        self.driver.find_element_by_id("dealMethod1").click()
         self.driver.find_element_by_id("isShowInfo1").click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_id("fithBtn").click()
@@ -110,7 +108,7 @@ class NewCheck(object):
 
     def confirm_new_check_check_situation(self, check_situation):
         # 确认使用检查情况来检查的事项的情况
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
+        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/cosmetic/publicRecord/my_record_list.jsp?parentId=hz')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()
@@ -136,7 +134,7 @@ class NewCheck(object):
     def confirm_new_check_check_template(self, check_describe):
         # 确认使用检查模板进行检查的事项的情况
         pass
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
+        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/cosmetic/publicRecord/my_record_list.jsp?parentId=hz')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()
