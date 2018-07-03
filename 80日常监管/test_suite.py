@@ -23,6 +23,7 @@ def job():
     tests.append(TestFoodDailyCheck("test_double_random_task"))
     tests.append(TestFoodDailyCheck("test_normal_task"))
     tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品
+    tests.append(TestMakeupDailyCheck("makeup_simple_check"))
     suite.addTests(tests)
 
     with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())), 'wb') as f:
