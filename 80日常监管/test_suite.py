@@ -10,7 +10,7 @@ import threading
 import time
 from food.test_food_daily_check import TestFoodDailyCheck
 from makeup.test_makeup_daily_check import TestMakeupDailyCheck
-from drug.test_makeup_daily_check import TestDrugDailyCheck
+from drug.test_drug_daily_check import TestDrugDailyCheck
 from common_modules.HTMLTestRunner import HTMLTestRunner
 # if __name__ == '__main__':
 
