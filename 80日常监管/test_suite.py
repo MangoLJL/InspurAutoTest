@@ -29,7 +29,7 @@ def job():
     tests.append(TestMakeupDailyCheck("makeup_simple_check"))
     '''
     tests.append(TestDrugDailyCheck("test_new_template"))  # 药品
-    tests.append(TestDrugDailyCheck("makeup_simple_check"))
+    tests.append(TestDrugDailyCheck("drug_simple_check"))
 
     suite.addTests(tests)
 
