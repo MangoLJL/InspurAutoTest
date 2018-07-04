@@ -27,6 +27,6 @@ class TestDrugDailyCheck(unittest.TestCase):
         """测试新建检查"""
         self.assertEqual(True, new_template())
 
-    def drug_simple_check(self):
+    def test_drug_simple_check(self):
         """测试新建检查"""
         self.assertEqual(True, drug_simple_check())
