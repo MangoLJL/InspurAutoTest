@@ -19,7 +19,6 @@ def job():
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
     tests = []
-    '''
     tests.append(TestFoodDailyCheck("test_new_template"))
     tests.append(TestFoodDailyCheck("test_simple_check"))
     tests.append(TestFoodDailyCheck("test_new_check"))
@@ -30,7 +29,7 @@ def job():
     '''
     tests.append(TestDrugDailyCheck("test_new_template"))  # 药品
     tests.append(TestDrugDailyCheck("test_drug_simple_check"))
-
+    '''
     suite.addTests(tests)
 
     with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())), 'wb') as f:

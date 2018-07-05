@@ -255,7 +255,7 @@ class Template(object):
         return drug_template_name
 
     def confirm_new_template(self, drug_template_name):
-        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/drug/checkTemplateSc/dtdcheckftemplate_list.jsp?entParentId=drug')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/drug/checkTemplateSc/dtdcheckftemplate_list.jsp?entParentId=drug')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == drug_template_name:
@@ -272,7 +272,7 @@ class Template(object):
             return False
 
     def clean_template(self):
-        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz'
+        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/drug/checkTemplateSc/dtdcheckftemplate_list.jsp?entParentId=drug'
         self.driver.get(url)
         drug_template_name = globalvar.get_value('drug_template_name')
         current_html = self.driver.page_source
