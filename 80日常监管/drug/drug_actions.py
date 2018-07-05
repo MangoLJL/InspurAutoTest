@@ -53,6 +53,18 @@ class NewCheck(object):
     def third_step(self, checktype):
         check_type_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, checktype)))
         check_type_button.click()
+        self.button.click('checkPinZhongBox0')
+        self.button.click('checkPinZhongBox1')
+        self.button.click('checkPinZhongBox2')
+        self.button.click('checkPinZhongBox3')
+        self.button.click('checkPinZhongBox4')
+        self.button.click('checkPinZhongBox5')
+        self.button.click('checkPinZhongBox6')
+        self.button.click('checkPinZhongBox7')
+        self.button.click('checkPinZhongBox8')
+        self.button.click('checkPinZhongBox9')
+        self.button.click('checkPinZhongBox10')
+        self.button.click('checkPinZhongBox11')
         self.driver.find_element_by_xpath(
             "//tr[@id='nametr2']//td[@class='fieldInput']//div[@class='input-group']//span[@class='input-group-addon']//i[@class='fa fa-search']").click()
         self.common_action.scroll_and_switch_to_iframe()
@@ -69,15 +81,26 @@ class NewCheck(object):
 
     def fourth_step_check_template(self, template_ID):
         # 使用检查模板
+        template_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card2")))
+        template_sheet.click()
         self.driver.find_element_by_id(template_ID).click()
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         self.driver.find_element_by_xpath("//input[@class='clauseRes'][2]").click()
         # self.driver.find_element_by_xpath("//input[@class='clauseRes'][last()]").click()
-        self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs']").click()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs'][1]").click()
         time.sleep(1)
         self.common_action.scroll_and_switch_to_iframe()
         check_describe = ("%ssunhr问题描述" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id("checkDescribe").send_keys('$' + check_describe + '$')
+        self.button.click_save_button()
+        time.sleep(1)
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame("mainFrame")
+        self.button.click("//button[@class='btn btn-default btn-xs'][2]")
+        time.sleep(1)
+        self.common_action.scroll_and_switch_to_iframe()
+        self.button.click('modelTree_1_switch')
+        self.button.click('modelTree_2_check')
         self.button.click_save_button()
         time.sleep(1)
         self.driver.switch_to.default_content()
@@ -88,8 +111,8 @@ class NewCheck(object):
 
     def fourth_step_check_situation(self):
         # 使用检查情况
-        question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
-        question_sheet.click()
+        # question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
+        # question_sheet.click()
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
         self.button.click_right_arrow_button()
@@ -201,7 +224,6 @@ class Template(object):
         self.button.click('displayColumn5')
         self.button.click('displayColumn6')
         self.button.click('displayColumn7')
-
         iframe = self.driver.find_element_by_xpath('//iframe[1]')
         self.driver.switch_to.frame(iframe)
         self.button.click_plus_button()
@@ -233,7 +255,7 @@ class Template(object):
         return drug_template_name
 
     def confirm_new_template(self, drug_template_name):
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
+        url = ('10.12.1.80/checkOfCity/jsp/dtdcheck/drug/checkTemplateSc/dtdcheckftemplate_list.jsp?entParentId=drug')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == drug_template_name:
@@ -241,7 +263,7 @@ class Template(object):
             template_ID_suits = current_template_ID.split('\'')
             drug_template_ID = template_ID_suits[1]
             globalvar.set_value('drug_template_ID', drug_template_ID)
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建化妆品模板成功，测试通过')
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建药品模板成功，测试通过')
             return True
         else:
             print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % drug_template_name)
