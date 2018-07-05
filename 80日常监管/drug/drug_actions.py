@@ -179,6 +179,7 @@ class Template(object):
         self.send_keys.send('checkProgramNum', '1')
         self.button.click('isPeriod1')
         self.button.click('DeptName')
+        time.sleep(2)
         self.common_action.scroll_and_switch_to_iframe()
         self.button.click_plus_button()
         time.sleep(2)
