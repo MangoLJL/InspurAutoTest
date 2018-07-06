@@ -48,8 +48,8 @@ def drug_simple_check():
     driver = drug_simple_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
         drug_simple_check_setup.choose_first_menu('药品检查')
-        driver.find_element_by_id('000000000000000000000000019466').click()
-        driver.find_element_by_id('check0301010001').click()
+        driver.find_element_by_id('000000000000000000000000019460').click()
+        driver.find_element_by_id('check0201010001').click()
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()
         new_check = NewCheck(driver)
