@@ -23,7 +23,7 @@ def job():
     tests.append(TestFoodDailyCheck("test_simple_check"))
     tests.append(TestFoodDailyCheck("test_new_check"))
     tests.append(TestFoodDailyCheck("test_double_random_task"))
-    tests.append(TestFoodDailyCheck("test_normal_task"))
+    # tests.append(TestFoodDailyCheck("test_normal_task"))
     tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品
     tests.append(TestMakeupDailyCheck("makeup_simple_check"))
     '''
