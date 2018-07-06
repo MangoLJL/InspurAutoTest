@@ -224,7 +224,10 @@ class Button(object):
         try:
             self.driver.find_element_by_xpath("//i[@class='fa fa-search']").click()
         except Exception as e:
-            self.driver.find_element_by_xpath("//span[@class='fa fa-search']").click()
+            try:
+                self.driver.find_element_by_xpath("//span[@class='fa fa-search']").click()
+            except Exception as ee:
+                self.driver.find_element_by_xpath("//i[@class='fa fa-search fa-fw']").click()
         time.sleep(5)
 
     def click_right_arrow_button(self):
