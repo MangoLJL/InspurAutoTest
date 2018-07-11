@@ -21,7 +21,7 @@ class AutoTestGUI(BaseWidget):
         self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action_thread_button
 
-        self.run_daily_check_test_suite = ControlButton('Run Daily Check Test Suite')
+        self.run_daily_check_test_suite = ControlButton('Run Test Suite')
         self.run_daily_check_test_suite.value = self.run_daily_check_test_suite_action_thread_button
 
         self.open_test_report = ControlButton('Open Test Report')
@@ -104,7 +104,7 @@ class AutoTestGUI(BaseWidget):
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)
-
+'''
 
 class main:
 
@@ -127,3 +127,4 @@ def click():
 action = ttk.Button(win, text="Click Me!", command=click)  # 7
 action.grid(column=0, row=0)
 win.mainloop()
+'''
