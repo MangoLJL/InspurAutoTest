@@ -293,7 +293,7 @@ class NewDoubleRandom(object):
         # 以下步骤为根据创建的双随机计划建立检查
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/publicRecord/my_record_task_list.jsp?parentId=food')
         self.driver.get(url)
-        target = self.common_action.find(task_name)
+        target = self.common_action.find('a', task_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
@@ -359,7 +359,7 @@ class NewDoubleRandom(object):
         try:
             url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
             self.driver.get(url)
-            target = self.common_action.find(task_name)
+            target = self.common_action.find('a', task_name)
             finaltarget = target.parent
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.previous_sibling
@@ -371,7 +371,7 @@ class NewDoubleRandom(object):
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
             self.driver.switch_to.frame(iframe)
-            target = self.common_action.find(enterprise_name)
+            target = self.common_action.find('a', enterprise_name)
             if target != None:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据双随机任务新建检查成功，检查企业为%s" % enterprise_name)
                 return True
@@ -454,7 +454,7 @@ class NewNormalTask(object):
             url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplan_receive_list.jsp?entParentId=food')
             self.driver.get(url)
             time.sleep(2)
-            target = self.common_action.find(plan_name)
+            target = self.common_action.find('a', plan_name)
             finaltarget = target.parent
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.previous_sibling
@@ -480,7 +480,7 @@ class NewNormalTask(object):
         self.driver.get(url)
         self.button.click_search_button()
         time.sleep(2)
-        target = self.common_action.find(plan_name)
+        target = self.common_action.find('a', plan_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
@@ -545,7 +545,7 @@ class NewNormalTask(object):
         try:
             url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkPlan/dtdcheckplansd_list.jsp?entParentId=food')
             self.driver.get(url)
-            target = self.common_action.find(task_name)
+            target = self.common_action.find('a', task_name)
             finaltarget = target.parent
             finaltarget = finaltarget.previous_sibling
             finaltarget = finaltarget.previous_sibling
@@ -557,7 +557,7 @@ class NewNormalTask(object):
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
             self.driver.switch_to.frame(iframe)
-            target = self.common_action.find(enterprise_name)
+            target = self.common_action.find('a', enterprise_name)
             if target != None:
                 print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + "依据普通任务新建检查成功，检查企业为【%s】" % enterprise_name)
                 return True
@@ -693,3 +693,21 @@ class Template(object):
         time.sleep(0.5)
         self.button.click_confirm_button()
         print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理食品模板完成')
+
+
+class Draft(object):
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.button = Button(self.driver)
+        self.common_action = CommonAction(self.driver)
+
+    def click_save_as_draft(self):
+        url = '10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food'
+        self.driver.get(url)
+        target = self.common_action.find('span', '草稿')
+        finaltarget = target.parent
+        for i in range(10):
+            finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.get_text()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[3]/a' % finaltarget).click()

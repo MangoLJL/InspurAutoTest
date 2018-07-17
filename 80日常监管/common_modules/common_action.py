@@ -260,7 +260,8 @@ class CommonAction(object):
         self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s.png" %
                                            (time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), name))
 
-    def find(self, find_target):
+    def find(self, find_type, find_target):
+        # 输入需要查询的标签类型（如：span/a）和要查询的标签内的文字，返回BS类型的元素，可以用来操作'previous_sibling'等
         while 1:
             try:
                 self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
@@ -272,7 +273,7 @@ class CommonAction(object):
                     pass
                 current_html = self.driver.page_source
                 soup = BeautifulSoup(current_html, 'lxml')
-                target = soup.find('a', string=re.compile(find_target))
+                target = soup.find(find_type, string=re.compile(find_target))
                 if target == None:
                     # 如果本页没有查询到，则查询下一页
                     next_page_status = soup.find(class_='paginate_button next disabled')  # 判断是否已经到最后一页：即下一页按钮没法点了

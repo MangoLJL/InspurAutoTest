@@ -27,6 +27,6 @@ class TestMakeupDailyCheck(unittest.TestCase):
         """测试新建检查"""
         self.assertEqual(True, new_template())
 
-    def makeup_simple_check(self):
+    def test_makeup_simple_check(self):
         """测试新建检查"""
         self.assertEqual(True, makeup_simple_check())
