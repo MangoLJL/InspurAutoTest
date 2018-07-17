@@ -334,7 +334,7 @@ def save_draft():
     try:
         i = 0  # 日常检查
         y = 3  # 食品生产
-        food_save_draft_setup.choose_menu('食品监督检查', '检查表管理', '食品监督检查表制定')
+        food_save_draft_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()
         new_check = NewCheck(driver)
