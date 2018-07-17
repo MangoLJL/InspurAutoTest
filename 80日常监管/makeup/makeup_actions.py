@@ -247,7 +247,7 @@ class Template(object):
         self.driver.get(url)
         makeup_template_name = globalvar.get_value('makeup_template_name')
         current_html = self.driver.page_source
-        target = self.common_action.find(makeup_template_name)
+        target = self.common_action.find('a', makeup_template_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling

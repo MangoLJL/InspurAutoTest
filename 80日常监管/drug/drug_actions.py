@@ -276,7 +276,7 @@ class Template(object):
         self.driver.get(url)
         drug_template_name = globalvar.get_value('drug_template_name')
         current_html = self.driver.page_source
-        target = self.common_action.find(drug_template_name)
+        target = self.common_action.find('a', drug_template_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
