@@ -344,9 +344,10 @@ def save_draft():
             checkTypeCode = 'checkTypeCode' + str(i)
             new_check.third_step(checkTypeCode)
             check_situation = new_check.fourth_step_check_situation()
-            new_check.fifth_step()
+            driver.find_element_by_id("dealMethod5").click()
+            driver.find_element_by_id("isShowInfo1").click()
+            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             common_action = CommonAction(driver)
-            common_action.click_previous_button()
             common_action.click_save_as_draft_button()
             time.sleep(2)
         else:

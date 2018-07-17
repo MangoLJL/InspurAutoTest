@@ -47,6 +47,7 @@ def drug_simple_check():
     drug_simple_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = drug_simple_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
+        driver.find_element_by_id("menu-toggler").click()
         drug_simple_check_setup.choose_first_menu('药品检查')
         driver.find_element_by_id('000000000000000000000000019460').click()
         driver.find_element_by_id('check0201010001').click()
