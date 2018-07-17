@@ -24,7 +24,7 @@ class AutoTestGUI(BaseWidget):
         self.run_daily_check_test_suite = ControlButton('Run Test Suite')
         self.run_daily_check_test_suite.value = self.run_daily_check_test_suite_action_thread_button
 
-        self.open_test_report = ControlButton('Open Test Report')
+        self.open_test_report = ControlButton('Open Latest Test Report')
         self.open_test_report.value = self.open_test_report_action_thread_button
 
         self.delete_test_report = ControlButton('Delete Test Report')
@@ -70,15 +70,12 @@ class AutoTestGUI(BaseWidget):
         self.result_text.value = result.read()
 
     def open_test_report_action(self):
-        file_name = self.current_hour + '-' + self.current_minute
         try:
-            my_file = ("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
-            if os.path.exists(my_file):
-                os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
-            else:
-                self.current_minute = str(int(self.current_minute) + 1)
-                file_name = self.current_hour + '-' + self.current_minute
-                os.popen("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html" % file_name)
+            file_path = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport'
+            lists = os.listdir(file_path)
+            lists.sort(key=lambda fn: os.path.getmtime(file_path + '/' + fn))
+            latest_file_path = file_path + '\\' + lists[-1]
+            os.popen(latest_file_path)
         except Exception as e:
             print('打开文件失败...')
 

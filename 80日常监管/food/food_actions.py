@@ -170,6 +170,36 @@ class NewCheck(object):
         else:
             return False
 
+    def click_save_as_draft_button(self):
+        # 点击【存草稿按钮】
+        self.driver.find_element_by_xpath("//button[@class='btn btn-info btn-sm']")
+
+    def confirm_save_as_draft(self, check_situation):
+        # 确认草稿保存成功
+        url = '10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food'
+        self.driver.get(url)
+        target = self.common_action.find('span', '草稿')
+        finaltarget = target.parent
+        for i in range(10):
+            finaltarget = finaltarget.previous_sibling
+        finaltarget = finaltarget.get_text()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[3]/a' % finaltarget).click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.switch_to.default_content()
+        time.sleep(5)
+        iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+        self.driver.switch_to.frame(iframe)
+        current_situation = self.driver.find_element_by_id("basicSituation").text
+        if current_situation == check_situation:
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '测试通过')
+            return True
+        else:
+            return False
+
+    def delete_draft(self):
+        # 删除草稿保存成功
+        pass
+
 
 class NewDoubleRandom(object):
     # 双随机任务新建并发起检查
@@ -693,21 +723,3 @@ class Template(object):
         time.sleep(0.5)
         self.button.click_confirm_button()
         print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理食品模板完成')
-
-
-class Draft(object):
-
-    def __init__(self, driver):
-        self.driver = driver
-        self.button = Button(self.driver)
-        self.common_action = CommonAction(self.driver)
-
-    def click_save_as_draft(self):
-        url = '10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food'
-        self.driver.get(url)
-        target = self.common_action.find('span', '草稿')
-        finaltarget = target.parent
-        for i in range(10):
-            finaltarget = finaltarget.previous_sibling
-        finaltarget = finaltarget.get_text()
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[3]/a' % finaltarget).click()
