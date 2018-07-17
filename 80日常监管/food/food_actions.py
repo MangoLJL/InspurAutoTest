@@ -170,10 +170,6 @@ class NewCheck(object):
         else:
             return False
 
-    def click_save_as_draft_button(self):
-        # 点击【存草稿按钮】
-        self.driver.find_element_by_xpath("//button[@class='btn btn-info btn-sm']")
-
     def confirm_save_as_draft(self, check_situation):
         # 确认草稿保存成功
         url = '10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food'
@@ -704,7 +700,7 @@ class Template(object):
         self.driver.get(url)
         template_name = globalvar.get_value('food_template_name')
         current_html = self.driver.page_source
-        target = self.common_action.find(template_name)
+        target = self.common_action.find('a', template_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling
