@@ -50,5 +50,9 @@ class TestFoodDailyCheck(unittest.TestCase):
         """测试新建模板"""
         self.assertEqual(True, food_daily_check.new_template())
 
+#    @unittest.skip("跳过暂存草稿")
+    def test_save_draft(self):
+        """测试暂存草稿"""
+        self.assertEqual(True, food_daily_check.save_draft())
 if __name__ == '__main__':
     unittest.main()

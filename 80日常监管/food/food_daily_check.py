@@ -345,10 +345,12 @@ def save_draft():
             new_check.third_step(checkTypeCode)
             check_situation = new_check.fourth_step_check_situation()
             new_check.fifth_step()
+            new_check.click_save_as_draft_button()
+            time.sleep(2)
         else:
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
             driver.quit()
-        ture_or_false = new_template.confirm_new_template(new_template_name)
+        ture_or_false = new_check.confirm_save_as_draft(check_situation)
         driver.quit()
         return ture_or_false
     except Exception as e:
