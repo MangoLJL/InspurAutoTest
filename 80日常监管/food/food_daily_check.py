@@ -347,8 +347,8 @@ def save_draft():
             driver.find_element_by_id("dealMethod5").click()
             driver.find_element_by_id("isShowInfo1").click()
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            common_action = CommonAction(driver)
-            common_action.click_save_as_draft_button()
+            button = Button(driver)
+            button.click_save_as_draft_button()
             time.sleep(2)
         else:
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
