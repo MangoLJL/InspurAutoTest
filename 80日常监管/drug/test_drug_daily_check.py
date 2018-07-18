@@ -13,7 +13,7 @@ class TestDrugDailyCheck(unittest.TestCase):
     def tearDownClass(cls):
         try:
             template_ID = globalvar.get_value('drug_template_ID')
-            if template_ID = None:
+            if template_ID == None:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有需要清理的药品模板...')
             else:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理药品模板...')

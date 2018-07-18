@@ -13,7 +13,7 @@ class TestMakeupDailyCheck(unittest.TestCase):
     def tearDownClass(cls):
         try:
             template_ID = globalvar.get_value('makeup_template_ID')
-            if template_ID = None:
+            if template_ID == None:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有需要清理的化妆品模板...')
             else:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理化妆品模板...')
