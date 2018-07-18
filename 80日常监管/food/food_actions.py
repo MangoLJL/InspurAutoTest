@@ -172,7 +172,7 @@ class NewCheck(object):
 
     def confirm_save_as_draft(self, check_situation):
         # 确认草稿保存成功
-        url = '10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food'
+        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food'
         self.driver.get(url)
         target = self.common_action.find('span', '草稿')
         finaltarget = target.parent
