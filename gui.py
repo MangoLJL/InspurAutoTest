@@ -77,27 +77,27 @@ class AutoTestGUI(BaseWidget):
             latest_file_path = file_path + '\\' + lists[-1]
             os.popen(latest_file_path)
         except Exception as e:
-            print('打开文件失败...')
+            self.result_text.value = '打开文件失败...'
 
     def delete_test_report_action(self):
         my_file = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport'
         if os.path.exists(my_file):
             shutil.rmtree(my_file)
             os.makedirs(my_file)
-            print('Test Report Deleted')
+            self.result_text.value = 'Test Report Deleted'
         else:
             os.makedirs(my_file)
-            print('Dictionary Created...')
+            self.result_text.value = 'Dictionary Created...'
 
     def delete_screenshot_action(self):
         my_file = 'C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot'
         if os.path.exists(my_file):
             shutil.rmtree(my_file)
             os.makedirs(my_file)
-            print('Screenshot Deleted')
+            self.result_text.value = 'Screenshot Deleted'
         else:
             os.makedirs(my_file)
-            print('Dictionary Created...')
+            self.result_text.value = 'Dictionary Created...'
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)

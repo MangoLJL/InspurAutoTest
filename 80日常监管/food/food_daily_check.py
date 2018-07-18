@@ -347,7 +347,7 @@ def save_draft():
             driver.find_element_by_id("dealMethod5").click()
             driver.find_element_by_id("isShowInfo1").click()
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            driver.find_element_by_xpath("//i[@class='fa fa-save1 fa-fw'][last()]").click()
+            driver.find_element_by_xpath("//button[@class='btn btn-info btn-sm'][last()]").click()
             time.sleep(2)
         else:
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
