@@ -252,7 +252,7 @@ class Button(object):
 
     def click_save_as_draft_button(self):
         # 点击【存草稿按钮】
-        self.driver.find_element_by_xpath("//button[@class='btn btn-info btn-sm']").click()
+        self.driver.find_element_by_xpath("//i[@class='fa fa-save1 fa-fw']").click()
 
     def click_previous_button(self):
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary btn-sm nap-step-pre']").click()
