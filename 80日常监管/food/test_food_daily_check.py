@@ -16,6 +16,7 @@ class TestFoodDailyCheck(unittest.TestCase):
     def tearDownClass(cls):
         try:
             template_ID = globalvar.get_value('food_template_ID')
+            print(template_ID)
             if template_ID == None:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有需要清理的食品模板...')
             else:
