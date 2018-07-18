@@ -347,8 +347,7 @@ def save_draft():
             driver.find_element_by_id("dealMethod5").click()
             driver.find_element_by_id("isShowInfo1").click()
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            button = Button(driver)
-            button.click_save_as_draft_button()
+            driver.find_element_by_xpath("//i[@class='fa fa-save1 fa-fw'][last]").click()
             time.sleep(2)
         else:
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
@@ -357,8 +356,8 @@ def save_draft():
         driver.quit()
         return ture_or_false
     except Exception as e:
-        print("测试未通过，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：" % (driver.current_url))
+        print("测试未通过，截图已保存至save_draft_error.png，当前url为：【%s】错误信息为：" % (driver.current_url))
         traceback.print_exc()
-        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sfood_new_template_error.png" %
+        driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sfood_save_draft_error.png" %
                                       time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
         driver.quit()
