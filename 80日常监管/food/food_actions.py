@@ -193,7 +193,7 @@ class NewCheck(object):
             return False
 
     def delete_draft(self):
-        # 删除草稿保存成功
+        # 删除草稿
         pass
 
 

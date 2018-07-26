@@ -344,10 +344,11 @@ def save_draft():
             checkTypeCode = 'checkTypeCode' + str(i)
             new_check.third_step(checkTypeCode)
             check_situation = new_check.fourth_step_check_situation()
+            common_action = CommonAction(driver)
+            common_action.click_error_button()
             driver.find_element_by_id("dealMethod5").click()
             driver.find_element_by_id("isShowInfo1").click()
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            #driver.find_element_by_xpath("//button[@class='btn btn-info btn-sm'][last()]").click()
             driver.find_element_by_xpath("//*[@id='fithBtn']/parent::div/preceding-sibling::div/button[@class='btn btn-info btn-sm']").click()
             time.sleep(2)
         else:
