@@ -340,11 +340,13 @@ class CommonAction(object):
 
     def click_error_button(self):
         try:
+            time.sleep(5)
             self.driver.switch_to.default_content()
             self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']")
             self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%schoose_menu.png" %
                                                time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             button.click_confirm_button()
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '系统首页检测到有错误弹窗,截图已保存至choose_menu.png')
-        except Exception:
+            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '检测到有错误弹窗,截图已保存至choose_menu.png')
+        except Exception as e:
+            print(e)
             pass

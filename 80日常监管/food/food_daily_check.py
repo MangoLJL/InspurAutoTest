@@ -345,7 +345,6 @@ def save_draft():
             new_check.third_step(checkTypeCode)
             check_situation = new_check.fourth_step_check_situation()
             common_action = CommonAction(driver)
-            time.sleep(2)
             common_action.click_error_button()
             switch_to_frame.switch_to_main_frame()
             driver.find_element_by_id("dealMethod5").click()
