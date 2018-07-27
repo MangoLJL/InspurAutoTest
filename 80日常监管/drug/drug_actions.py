@@ -96,7 +96,7 @@ class NewCheck(object):
         time.sleep(1)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame("mainFrame")
-        self.button.click_search_button()
+        self.driver.find_element_by_xpath("//button[@class='btn btn-default btn-xs'][2]").click()
         time.sleep(1)
         self.common_action.scroll_and_switch_to_iframe()
         self.button.click('modelTree_1_switch')
