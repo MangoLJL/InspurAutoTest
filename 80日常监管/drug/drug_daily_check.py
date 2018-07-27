@@ -32,6 +32,7 @@ def new_template():
         new_template = Template(driver)
         new_template_name = new_template.create_template()
         ture_or_false = new_template.confirm_new_template(new_template_name)
+        driver.quit()
         return ture_or_false
     except Exception as e:
         print("测试未通过，截图已保存至drug_new_template_error.png，当前url为：【%s】错误信息为：" % driver.current_url)
@@ -60,6 +61,7 @@ def drug_simple_check():
         new_check.fifth_step()
         new_check.final_step()
         true_or_false = new_check.confirm_new_check_check_template(check_describe)
+        driver.quit()
         return true_or_false
     except Exception as e:
         print("测试未通过，截图已保存至drug_simple_check_error.png，当前url为：【%s】错误信息为：" % driver.current_url)
