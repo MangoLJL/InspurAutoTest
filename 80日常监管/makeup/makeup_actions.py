@@ -34,10 +34,12 @@ class NewCheck(object):
         enterprise_selector = self.driver.find_element_by_id("enterpriseName")
         ActionChains(self.driver).double_click(enterprise_selector).perform()
         self.common_action.scroll_and_switch_to_iframe()
+        time.sleep(1)
+        self.button.click_search_button()
+        time.sleep(1)
         data_exsists = self.common_action.data_exsists()
         if data_exsists:
             random_enterprise = random.randint(1, 5)
-            self.button.click_search_button()
             time.sleep(1)
             enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[%s]/td[2]/input[1]" % random_enterprise)))
             enterprise_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[3]/span' % random_enterprise).text
@@ -50,6 +52,7 @@ class NewCheck(object):
             self.driver.find_element_by_id("secondBtn").click()
             return True
         else:
+            print('化妆品无企业数据')
             return False
 
     def third_step(self, checktype):
