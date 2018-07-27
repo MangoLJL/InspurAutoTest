@@ -256,7 +256,7 @@ class NewDoubleRandom(object):
         self.button.click('s2id_mainEntCityRegion')
         self.button.click("//li[@class='select2-results-dept-0 select2-result select2-result-selectable'][4]")
         time.sleep(1)
-        self.driver.find_element_by_id("mainEntAmount").send_keys("50")
+        self.driver.find_element_by_id("mainEntAmount").send_keys("10")
         self.driver.find_element_by_id("mainEntRadomButton").click()
         try:
             self.driver.find_element_by_xpath("//a[@href='#planPersonInfo']").click()
