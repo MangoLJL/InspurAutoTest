@@ -121,23 +121,6 @@ class Setup(object):
     def choose_third_menu(self, third_menu):
         self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
         time.sleep(3)
-'''
-    def find404(self):
-        while 1:
-            try:
-                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-                time.sleep(2)
-                current_html = self.driver.page_source
-                soup = BeautifulSoup(current_html, 'lxml')
-                target = soup.find('h1', string=re.compile('404 Not Found'))
-                if target == None:  # 没有查到“没有查询到数据字样，证明有数据”
-                    return True
-                else:
-                    return False
-            except Exception as e:
-                print(e)
-                break
-'''
 
 
 class SwitchToFrame(object):
@@ -156,10 +139,9 @@ class SwitchToFrame(object):
         self.driver.switch_to.default_content()
         time.sleep(1)
 
-# 获取当前日期，获取当前星期，获取当前日期和详细时间
-
 
 class Time(object):
+    # 获取当前日期，获取当前星期，获取当前日期和详细时间
 
     def get_current_date(self):
         return time.strftime('%Y%m%d', time.localtime(time.time()))
@@ -306,7 +288,7 @@ class CommonAction(object):
                 current_html = self.driver.page_source
                 soup = BeautifulSoup(current_html, 'lxml')
                 target = soup.find('span', string=re.compile('没有查询到数据'))
-                if target == None:  # 没有查到“没有查询到数据字样，证明有数据”
+                if target == None:  # 没有查到“没有查询到数据”字样，证明有数据
                     return True
                 else:
                     return False
@@ -325,10 +307,10 @@ class CommonAction(object):
         # 保存当前html
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + 'logging error...')
         with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\error_HTML.txt', 'a', encoding='UTF-8')as f:
-            f.write('============================================================')
+            f.write('=' * 50)
             f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             f.write(self.driver.page_source)
-            f.write('============================================================')
+            f.write('=' * 50)
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + 'logged...')
 
     def clean_log(self):
@@ -346,7 +328,7 @@ class CommonAction(object):
             self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%schoose_menu.png" %
                                                time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             button.click_confirm_button()
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '检测到有错误弹窗,截图已保存至choose_menu.png')
+            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '检测到有错误弹窗')
         except Exception as e:
             print(e)
             pass
