@@ -356,6 +356,7 @@ def save_draft():
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
             driver.quit()
         ture_or_false = new_check.confirm_save_as_draft(check_situation)
+        new_check.delete_draft()
         driver.quit()
         return ture_or_false
     except Exception as e:
