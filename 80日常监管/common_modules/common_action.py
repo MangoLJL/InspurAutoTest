@@ -12,11 +12,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 
 
-# 建立驱动，选择系统，选择菜单
-
-
 class Setup(object):
 
+    # 建立驱动，选择系统，选择菜单
     def __init__(self, url):
         self.url = url
 
