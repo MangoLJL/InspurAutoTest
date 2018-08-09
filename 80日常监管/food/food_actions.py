@@ -200,7 +200,7 @@ class NewCheck(object):
         driver.find_element_by_id("grid_length").click()
         driver.find_element_by_xpath("//option[@value='100']").click()
         '''
-        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[12]/button[2]' % i).click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[12]/button[2]').click()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
         try:
             time.sleep(1)
