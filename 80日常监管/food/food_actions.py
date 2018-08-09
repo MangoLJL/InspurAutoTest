@@ -195,16 +195,16 @@ class NewCheck(object):
     def delete_draft(self):
         # 删除草稿
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/publicRecord/my_record_list.jsp?parentId=food')
-        driver.get(url)
+        self.driver.get(url)
         '''
         driver.find_element_by_id("grid_length").click()
         driver.find_element_by_xpath("//option[@value='100']").click()
         '''
-        driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[12]/button[2]' % i).click()
-        driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+        self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[12]/button[2]' % i).click()
+        self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
         try:
             time.sleep(1)
-            driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
+            self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
         except:
             pass
 

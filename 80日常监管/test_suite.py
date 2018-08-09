@@ -25,8 +25,8 @@ def job():
     tests.append(TestFoodDailyCheck("test_double_random_task"))  # 食品双随机
     tests.append(TestFoodDailyCheck("test_normal_task"))  # 食品普通计划
     tests.append(TestFoodDailyCheck("test_save_draft"))  # 食品暂存草稿
-    tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品新建模板
-    tests.append(TestMakeupDailyCheck("test_makeup_simple_check"))  # 化妆品现场录入简易版本
+    # tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品新建模板
+    # tests.append(TestMakeupDailyCheck("test_makeup_simple_check"))  # 化妆品现场录入简易版本
     tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
     tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
 
@@ -39,30 +39,3 @@ def job():
                                 )
         runner.run(suite)
 job()
-
-# schedule.every(4).hours.do(job)
-'''
-def job_task23():
-    threading.Thread(target=job).start()
-
-
-def job_task01():
-    threading.Thread(target=job).start()
-
-
-def job_task03():
-    threading.Thread(target=job).start()
-
-
-def job_task05():
-    threading.Thread(target=job).start()
-
-schedule.every().day.at("23:00").do(job_task23)
-schedule.every().day.at("01:00").do(job_task01)
-schedule.every().day.at("03:00").do(job_task03)
-schedule.every().day.at("05:00").do(job_task05)
-while True:
-
-    schedule.run_pending()
-    time.sleep(1)
-'''
