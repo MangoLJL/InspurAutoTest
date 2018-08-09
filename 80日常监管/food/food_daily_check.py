@@ -347,6 +347,7 @@ def save_draft():
             common_action = CommonAction(driver)
             common_action.click_error_button()
             switch_to_frame.switch_to_main_frame()
+            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             driver.find_element_by_id("dealMethod5").click()
             driver.find_element_by_id("isShowInfo1").click()
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
