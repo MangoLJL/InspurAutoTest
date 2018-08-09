@@ -19,7 +19,7 @@ def job():
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
     tests = []
-    tests.append(TestFoodDailyCheck("test_new_template"))  # 食品新建模板
+    # tests.append(TestFoodDailyCheck("test_new_template"))  # 食品新建模板
     # tests.append(TestFoodDailyCheck("test_simple_check"))  # 食品现场录入简易版本
     # tests.append(TestFoodDailyCheck("test_new_check"))  # 食品现场录入全覆盖版本
     # tests.append(TestFoodDailyCheck("test_double_random_task"))  # 食品双随机

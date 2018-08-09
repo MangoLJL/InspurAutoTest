@@ -279,8 +279,9 @@ class NewDoubleRandom(object):
         self.driver.find_element_by_id("checkPersonAmount").send_keys("387")
         self.driver.find_element_by_id("groupingNum").send_keys("1")
         self.driver.find_element_by_id("checkPersonRadomButton").click()
+        self.button.click_confirm_button()
+        self.driver.switch_to.frame("mainFrame")
         queryMoreCountMainLi = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.ID, "queryMoreCountMainLi")))
-
         queryMoreCountMainLi.click()
         current_html = self.driver.page_source
         soup = BeautifulSoup(current_html, 'lxml')
