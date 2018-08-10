@@ -20,16 +20,16 @@ class AutoTestGUI(BaseWidget):
         self.current_minute = None
 
         self.check_box_list = ControlCheckBoxList('Choose Tests:')
-        self.check_box_list += ('Food New Template', False)
-        self.check_box_list += ('Food Simple Template', False)
-        self.check_box_list += ('Food New Check', False)
-        self.check_box_list += ('Food Double Random Check', False)
-        self.check_box_list += ('Food Normal Task', False)
-        self.check_box_list += ('Food Save Draft', False)
-        self.check_box_list += ('Makeup New Template', False)
-        self.check_box_list += ('Makeup Simple Template', False)
-        self.check_box_list += ('Drug New Template', False)
-        self.check_box_list += ('Drug Simple Template', False)
+        self.check_box_list += ('Food_New_Template', False)
+        self.check_box_list += ('Food_Simple_Template', False)
+        self.check_box_list += ('Food_New_Check', False)
+        self.check_box_list += ('Food_Double_Random_Check', False)
+        self.check_box_list += ('Food_Normal_Task', False)
+        self.check_box_list += ('Food_Save_Draft', False)
+        self.check_box_list += ('Makeup_New_Template', False)
+        self.check_box_list += ('Makeup_Simple_Template', False)
+        self.check_box_list += ('Drug_New_Template', False)
+        self.check_box_list += ('Drug_Simple_Template', False)
 
         self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action_thread_button

@@ -20,25 +20,25 @@ def job(test_str):
     suite = unittest.TestSuite()
     tests = []
     print(test_str)
-    if 'Food New Template' in test_str:
+    if 'Food_New_Template' in test_str:
         tests.append(TestFoodDailyCheck("test_new_template"))  # 食品新建模板
-    if 'Food Simple Template' in test_str:
+    if 'Food_Simple_Template' in test_str:
         tests.append(TestFoodDailyCheck("test_simple_check"))  # 食品现场录入简易版本
-    if 'Food New Check' in test_str:
+    if 'Food_New_Check' in test_str:
         tests.append(TestFoodDailyCheck("test_new_check"))  # 食品现场录入全覆盖版本
-    if 'Food Double Random Check' in test_str:
+    if 'Food_Double_Random Check' in test_str:
         tests.append(TestFoodDailyCheck("test_double_random_task"))  # 食品双随机
-    if 'Food Normal Task' in test_str:
+    if 'Food_Normal_Task' in test_str:
         tests.append(TestFoodDailyCheck("test_normal_task"))  # 食品普通计划
-    if 'Food Save Draft' in test_str:
+    if 'Food_Save_Draft' in test_str:
         tests.append(TestFoodDailyCheck("test_save_draft"))  # 食品暂存草稿
-    if 'Makeup New Template' in test_str:
+    if 'Makeup_New_Template' in test_str:
         tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品新建模板
-    if 'Makeup Simple Template' in test_str:
+    if 'Makeup_Simple_Template' in test_str:
         tests.append(TestMakeupDailyCheck("test_makeup_simple_check"))  # 化妆品现场录入简易版本
-    if 'Drug New Template' in test_str:
+    if 'Drug_New_Template' in test_str:
         tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
-    if 'Drug Simple Template' in test_str:
+    if 'Drug_Simple_Template' in test_str:
         tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
     print(tests)
     '''
