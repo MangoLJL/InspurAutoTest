@@ -16,10 +16,12 @@ from common_modules.HTMLTestRunner import HTMLTestRunner
 
 
 def job(test_str):
-    print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
+    def notice(test_str):
+        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
+        print('本次将测试：' + test_str)
+    threading.Thread(target=self.notice, args=(test_str,)).start()
     suite = unittest.TestSuite()
     tests = []
-    print('本次将测试：' + test_str)
     if 'Food_New_Template' in test_str:
         tests.append(TestFoodDailyCheck("test_new_template"))  # 食品新建模板
     if 'Food_Simple_Template' in test_str:
