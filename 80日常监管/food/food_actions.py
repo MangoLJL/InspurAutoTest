@@ -98,6 +98,7 @@ class NewCheck(object):
 
     def fourth_step_check_situation(self):
         # 使用检查情况
+        WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card2"))).click()
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
