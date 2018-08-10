@@ -84,15 +84,10 @@ class AutoTestGUI(BaseWidget):
             test_str = test_str + test_list[i] + ';'
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
-        self.t = threading.Thread(target=self.refresh_notice).start()
-        self.t.setDaemon(True)
+        self.result_text.value = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...\n' + \
+            time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '本次将测试：' + test_str
         result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py %s" % test_str)
         self.result_text.value = result.read()
-
-    def refresh_notice(self):
-        self.result_text.value = result.read()
-        self.refresh_notice_thread = threading.Timer(5, self.refresh_notice)
-        self.refresh_notice_thread.start()
 
     def open_test_report_action(self):
         try:

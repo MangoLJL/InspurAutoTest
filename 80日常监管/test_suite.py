@@ -16,10 +16,6 @@ from common_modules.HTMLTestRunner import HTMLTestRunner
 
 
 def job(test_str):
-    def notice(test_str):
-        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
-        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '本次将测试：' + test_str)
-    threading.Thread(target=notice, args=(test_str,)).start()
     suite = unittest.TestSuite()
     tests = []
     if 'Food_New_Template' in test_str:
