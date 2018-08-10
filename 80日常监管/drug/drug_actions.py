@@ -36,8 +36,7 @@ class NewCheck(object):
         self.common_action.scroll_and_switch_to_iframe()
         data_exsists = self.common_action.data_exsists()
         if data_exsists:
-            random_enterprise = random.randint(1, 3)
-            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[%s]/td[2]/input[1]" % random_enterprise)))
+            enterprise_radio_button = WebDriverWait(self.driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
             enterprise_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[%s]/td[3]/span' % random_enterprise).text
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '检查的企业为' + enterprise_name)
             enterprise_radio_button.click()
