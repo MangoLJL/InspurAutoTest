@@ -19,7 +19,7 @@ class AutoTestGUI(BaseWidget):
         self.current_hour = None
         self.current_minute = None
 
-        self.check_box_list = ControlCheckBoxList('Test')
+        self.check_box_list = ControlCheckBoxList('Choose Tests:')
         self.check_box_list += ('Food New Template', False)
         self.check_box_list += ('Food Simple Template', False)
         self.check_box_list += ('Food New Check', False)
@@ -78,10 +78,13 @@ class AutoTestGUI(BaseWidget):
         self.result_text.value = result.read()
 
     def run_daily_check_test_suite_action(self):
-        self.check_box_list.value
+        test_list = self.check_box_list.value
+        test_str = ''
+        for i in range(len(test_list)):
+            test_str = test_str + test_list[i] + ';'
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
-        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py")
+        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py %s" % test_str)
         self.result_text.value = result.read()
 
     def open_test_report_action(self):
