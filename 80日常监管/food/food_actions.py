@@ -99,8 +99,13 @@ class NewCheck(object):
     def fourth_step_check_situation(self):
         # 使用检查情况
         WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card2"))).click()
+        self.driver.find_element_by_id(template_ID).click()
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
+        self.driver.find_element_by_id("basicSituation").click()
+        time.sleep(0.8)
+        self.button.click_confirm_button()
+        self.driver.switch_to.frame("mainFrame")
         check_situation = ("【" + time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())) + "】sunhr测试用文字")
         self.driver.find_element_by_id("basicSituation").send_keys(check_situation)
         self.driver.find_element_by_id("fourBtn").click()
