@@ -19,7 +19,7 @@ def job(test_str):
     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...')
     suite = unittest.TestSuite()
     tests = []
-    print(test_str)
+    print('本次将测试：' + test_str)
     if 'Food_New_Template' in test_str:
         tests.append(TestFoodDailyCheck("test_new_template"))  # 食品新建模板
     if 'Food_Simple_Template' in test_str:
@@ -40,8 +40,6 @@ def job(test_str):
         tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
     if 'Drug_Simple_Template' in test_str:
         tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
-    print(tests)
-    '''
     suite.addTests(tests)
 
     with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())), 'wb') as f:
@@ -50,6 +48,6 @@ def job(test_str):
                                 verbosity=2
                                 )
         runner.run(suite)
-    '''
+
 test_str = sys.argv[1]
 job(test_str)
