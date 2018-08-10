@@ -156,7 +156,7 @@ class NewCheck(object):
     def confirm_new_check_check_template(self, check_describe):
         # 确认使用检查模板进行检查的事项的情况
         pass
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/cosmetic/publicRecord/my_record_list.jsp?parentId=hz')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/drug/publicRecord/my_record_list.jsp')
         self.driver.get(url)
         self.driver.find_element_by_id("grid_length").click()
         self.driver.find_element_by_xpath("//option[@value='100']").click()
