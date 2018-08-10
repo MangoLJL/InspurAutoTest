@@ -20,7 +20,7 @@ def job(test_str):
     tests = []
     if 'Food_New_Template' in test_str:
         tests.append(TestFoodDailyCheck("test_new_template"))  # 食品新建模板
-    if 'Food_Simple_Template' in test_str:
+    if 'Food_Simple_Check' in test_str:
         tests.append(TestFoodDailyCheck("test_simple_check"))  # 食品现场录入简易版本
     if 'Food_New_Check' in test_str:
         tests.append(TestFoodDailyCheck("test_new_check"))  # 食品现场录入全覆盖版本

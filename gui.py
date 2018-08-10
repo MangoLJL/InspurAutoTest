@@ -21,7 +21,7 @@ class AutoTestGUI(BaseWidget):
 
         self.check_box_list = ControlCheckBoxList('Choose Tests:')
         self.check_box_list += ('Food_New_Template', False)
-        self.check_box_list += ('Food_Simple_Template', False)
+        self.check_box_list += ('Food_Simple_Check', False)
         self.check_box_list += ('Food_New_Check', False)
         self.check_box_list += ('Food_Double_Random_Check', False)
         self.check_box_list += ('Food_Normal_Task', False)
