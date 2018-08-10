@@ -32,11 +32,11 @@ def job(test_str):
         tests.append(TestFoodDailyCheck("test_save_draft"))  # 食品暂存草稿
     if 'Makeup_New_Template' in test_str:
         tests.append(TestMakeupDailyCheck("test_new_template"))  # 化妆品新建模板
-    if 'Makeup_Simple_Template' in test_str:
+    if 'Makeup_Simple_Check' in test_str:
         tests.append(TestMakeupDailyCheck("test_makeup_simple_check"))  # 化妆品现场录入简易版本
     if 'Drug_New_Template' in test_str:
         tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
-    if 'Drug_Simple_Template' in test_str:
+    if 'Drug_Simple_Check' in test_str:
         tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
     suite.addTests(tests)
 

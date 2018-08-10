@@ -27,9 +27,9 @@ class AutoTestGUI(BaseWidget):
         self.check_box_list += ('Food_Normal_Task', False)
         self.check_box_list += ('Food_Save_Draft', False)
         self.check_box_list += ('Makeup_New_Template', False)
-        self.check_box_list += ('Makeup_Simple_Template', False)
+        self.check_box_list += ('Makeup_Simple_Check', False)
         self.check_box_list += ('Drug_New_Template', False)
-        self.check_box_list += ('Drug_Simple_Template', False)
+        self.check_box_list += ('Drug_Simple_Check', False)
 
         self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action_thread_button
