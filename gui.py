@@ -84,8 +84,15 @@ class AutoTestGUI(BaseWidget):
             test_str = test_str + test_list[i] + ';'
         self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
+        self.t = threading.Thread(target=self.refresh_notice).start()
+        self.t.setDaemon(True)
         result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管&&python test_suite.py %s" % test_str)
         self.result_text.value = result.read()
+
+    def refresh_notice(self):
+        self.result_text.value = result.read()
+        self.refresh_notice_thread = threading.Timer(5, self.refresh_notice)
+        self.refresh_notice_thread.start()
 
     def open_test_report_action(self):
         try:
@@ -119,27 +126,3 @@ class AutoTestGUI(BaseWidget):
 
 if __name__ == "__main__":
     pyforms.start_app(AutoTestGUI)
-'''
-
-class main:
-
-    def newThread(self):
-        Thread(target=self.method).start()
-
-    def method(self):
-        for i in range(3):
-            time.sleep(1)
-            print(i)
-
-op = main()
-win = tk.Tk()
-win.title("Python")
-
-
-def click():
-    op.newThread()
-
-action = ttk.Button(win, text="Click Me!", command=click)  # 7
-action.grid(column=0, row=0)
-win.mainloop()
-'''
