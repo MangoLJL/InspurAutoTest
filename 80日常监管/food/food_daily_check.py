@@ -156,6 +156,8 @@ def simple_check():
     for flag in range(0, 2):
         if new_template_ID == 'None'and flag == 0:
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有查询到食品检查模板，跳过使用检查模板测试...')
+            true_or_false[0] = True
+            true_or_false[2] = True
         else:
             try:
                 i = 0  # 日常检查
