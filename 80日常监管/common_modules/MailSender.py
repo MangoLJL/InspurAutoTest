@@ -26,3 +26,16 @@ class MailSender(object):
         server.quit()
         print(time.strftime('%Y-%m-%d %H:%M:%S',
                             time.localtime(time.time())) + '邮件发送成功')
+
+    def send_html(self, path):
+        with open(path)as f:
+            mail_body = f.read()
+        msg = MIMEText(, _subtype='html', _charset='utf-8')
+        msg['to'] = '管理员'
+        msg['Subject'] = self.subject
+        server = smtplib.SMTP_SSL("smtp.qq.com", 465)
+        server.login(self.my_sender, self.my_pass)
+        server.sendmail(self.my_sender, self.receiver_addr, msg.as_string())
+        server.quit()
+        print(time.strftime('%Y-%m-%d %H:%M:%S',
+                            time.localtime(time.time())) + '邮件发送成功')

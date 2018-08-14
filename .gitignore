@@ -12,3 +12,4 @@ Desktop.ini
 dist
 build
 /**/__pycache__/
+send_text_report.py

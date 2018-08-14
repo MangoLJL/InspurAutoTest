@@ -8,6 +8,7 @@ import unittest
 import schedule
 import threading
 import time
+import send_test_report
 from food.test_food_daily_check import TestFoodDailyCheck
 from makeup.test_makeup_daily_check import TestMakeupDailyCheck
 from drug.test_drug_daily_check import TestDrugDailyCheck
@@ -39,13 +40,14 @@ def job(test_str):
     if 'Drug_Simple_Check' in test_str:
         tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
     suite.addTests(tests)
-
-    with open('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())), 'wb') as f:
+    test_report_path = ('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())))
+    with open(test_report_path, 'wb') as f:
         runner = HTMLTestRunner(stream=f,
                                 title='Test Report',
                                 verbosity=2
                                 )
         runner.run(suite)
+    send_test_report(test_report_path)
 
 test_str = sys.argv[1]
 job(test_str)
