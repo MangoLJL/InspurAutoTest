@@ -154,19 +154,83 @@ def simple_check():
     food_bussiness_type = ['食品销售经营者', '餐饮服务经营者', '单位食堂']
     true_or_false = [False, False, False, False, True]
     for flag in range(0, 2):
-        try:
+        if new_template_ID == 'None'and flag == 0:
+            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有查询到食品检查模板，跳过使用检查模板测试...')
+        else:
+            try:
+                i = 0  # 日常检查
+                y = 3  # 食品生产
+                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】测试' % (enterprise_type[y], check_type_name[i]))
+                food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/publadic/login.jsp')
+                driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
+                food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
+                switch_to_frame = SwitchToFrame(driver)
+                switch_to_frame.switch_to_main_frame()
+                new_check = NewCheck(driver)
+                new_check.first_step(y)
+                data_exsists = new_check.second_step()
+                if data_exsists:
+                    checkTypeCode = 'checkTypeCode' + str(i)
+                    new_check.third_step(checkTypeCode)
+                    if flag == 0:
+                        check_describe = new_check.fourth_step_check_template(new_template_ID)
+                    else:
+                        check_situation = new_check.fourth_step_check_situation()
+                    new_check.fifth_step()
+                    new_check.final_step()
+                    new_check_confirmer = NewCheck(driver)
+                    if flag == 0
+                        true_or_false[0] = new_check_confirmer.confirm_new_check_check_template(check_describe)
+                    else:
+                        true_or_false[1] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
+                    driver.quit()
+                else:
+                    print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过【%s】类别企业...' % (enterprise_type[y], enterprise_type[y]))
+                    driver.quit()
+                    break
+            except Exception as e:
+                true_or_false[4] = False
+                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为' %
+                      (enterprise_type[y], check_type_name[i], driver.current_url))
+                traceback.print_exc()
+                driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%sfood_new_check.png" % (
+                    time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
             i = 0  # 日常检查
-            y = 3  # 食品生产
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】测试' % (enterprise_type[y], check_type_name[i]))
-            food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
-            driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-            food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
-            switch_to_frame = SwitchToFrame(driver)
-            switch_to_frame.switch_to_main_frame()
-            new_check = NewCheck(driver)
-            new_check.first_step(y)
-            data_exsists = new_check.second_step()
-            if data_exsists:
+            y = 6  # 食品经营
+            food_bussiness_suite_true_or_false = [[], [], []]
+            z = 1  # 食品销售经营者
+            try:
+                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】-【%s】测试' % (enterprise_type[y], food_bussiness_type[z], check_type_name[i]))
+                food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
+                driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
+                common_action = CommonAction(driver)
+                food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
+                switch_to_frame = SwitchToFrame(driver)
+                switch_to_frame.switch_to_main_frame()
+                new_check = NewCheck(driver)
+                new_check.first_step(y)
+                enterprise_selector = driver.find_element_by_id("enterpriseName")
+                ActionChains(driver).double_click(enterprise_selector).perform()
+                driver.switch_to.default_content()
+                time.sleep(1)
+                iframe = driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
+                driver.switch_to.frame(iframe)
+                time.sleep(3)
+                data_exsists = common_action.data_exsists()
+                if data_exsists:
+                    enterprise_radio_button = WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
+                    enterprise_radio_button.click()
+                    driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
+                    time.sleep(1)
+                    driver.switch_to.default_content()
+                    driver.switch_to.frame("mainFrame")
+                    businessItem = "businessItem" + str(z)  # 拼食品经营小类
+                    driver.find_element_by_id(businessItem).click()
+                    driver.find_element_by_id("secondBtn").click()
+                else:
+                    print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
+                    driver.quit()
+                    break
                 checkTypeCode = 'checkTypeCode' + str(i)
                 new_check.third_step(checkTypeCode)
                 if flag == 0:
@@ -177,78 +241,17 @@ def simple_check():
                 new_check.final_step()
                 new_check_confirmer = NewCheck(driver)
                 if flag == 0:
-                    true_or_false[0] = new_check_confirmer.confirm_new_check_check_template(check_describe)
+                    true_or_false[2] = new_check_confirmer.confirm_new_check_check_template(check_describe)
                 else:
-                    true_or_false[1] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
+                    true_or_false[3] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
                 driver.quit()
-            else:
-                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过【%s】类别企业...' % (enterprise_type[y], enterprise_type[y]))
-                driver.quit()
-                break
-        except Exception as e:
-            true_or_false[4] = False
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为' %
-                  (enterprise_type[y], check_type_name[i], driver.current_url))
-            traceback.print_exc()
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%sfood_new_check.png" % (
-                time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y], check_type_name[i]))
-        i = 0  # 日常检查
-        y = 6  # 食品经营
-        food_bussiness_suite_true_or_false = [[], [], []]
-        z = 1  # 食品销售经营者
-        try:
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】-【%s】测试' % (enterprise_type[y], food_bussiness_type[z], check_type_name[i]))
-            food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
-            driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
-            common_action = CommonAction(driver)
-            food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
-            switch_to_frame = SwitchToFrame(driver)
-            switch_to_frame.switch_to_main_frame()
-            new_check = NewCheck(driver)
-            new_check.first_step(y)
-            enterprise_selector = driver.find_element_by_id("enterpriseName")
-            ActionChains(driver).double_click(enterprise_selector).perform()
-            driver.switch_to.default_content()
-            time.sleep(1)
-            iframe = driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
-            driver.switch_to.frame(iframe)
-            time.sleep(3)
-            data_exsists = common_action.data_exsists()
-            if data_exsists:
-                enterprise_radio_button = WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, "//html//tr[1]/td[2]/input[1]")))
-                enterprise_radio_button.click()
-                driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
-                time.sleep(1)
-                driver.switch_to.default_content()
-                driver.switch_to.frame("mainFrame")
-                businessItem = "businessItem" + str(z)  # 拼食品经营小类
-                driver.find_element_by_id(businessItem).click()
-                driver.find_element_by_id("secondBtn").click()
-            else:
-                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
-                driver.quit()
-                break
-            checkTypeCode = 'checkTypeCode' + str(i)
-            new_check.third_step(checkTypeCode)
-            if flag == 0:
-                check_describe = new_check.fourth_step_check_template(new_template_ID)
-            else:
-                check_situation = new_check.fourth_step_check_situation()
-            new_check.fifth_step()
-            new_check.final_step()
-            new_check_confirmer = NewCheck(driver)
-            if flag == 0:
-                true_or_false[2] = new_check_confirmer.confirm_new_check_check_template(check_describe)
-            else:
-                true_or_false[3] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
-            driver.quit()
-        except Exception as e:
-            true_or_false[4] = False
-            print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为：' %
-                  (enterprise_type[y], food_bussiness_type[z], check_type_name[i], driver.current_url))
-            traceback.print_exc()
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%s%sfood_new_check.png" % (
-                time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y],  food_bussiness_type[z], check_type_name[i]))
+            except Exception as e:
+                true_or_false[4] = False
+                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '测试【%s】-【%s】-【%s】出错，截图已保存,当前url为：【%s】错误信息为：' %
+                      (enterprise_type[y], food_bussiness_type[z], check_type_name[i], driver.current_url))
+                traceback.print_exc()
+                driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%s%s%s%sfood_new_check.png" % (
+                    time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), enterprise_type[y],  food_bussiness_type[z], check_type_name[i]))
     return (reduce(true_plus_false, true_or_false))
 
 
