@@ -179,7 +179,7 @@ def simple_check():
                     new_check.fifth_step()
                     new_check.final_step()
                     new_check_confirmer = NewCheck(driver)
-                    if flag == 0
+                    if flag == 0:
                         true_or_false[0] = new_check_confirmer.confirm_new_check_check_template(check_describe)
                     else:
                         true_or_false[1] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
