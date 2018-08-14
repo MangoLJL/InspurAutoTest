@@ -161,7 +161,7 @@ def simple_check():
                 i = 0  # 日常检查
                 y = 3  # 食品生产
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】测试' % (enterprise_type[y], check_type_name[i]))
-                food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/publadic/login.jsp')
+                food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
                 driver = food_new_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
                 food_new_check_setup.choose_menu('食品监督检查', '新建检查', '现场录入')
                 switch_to_frame = SwitchToFrame(driver)
