@@ -175,8 +175,10 @@ def simple_check():
                     checkTypeCode = 'checkTypeCode' + str(i)
                     new_check.third_step(checkTypeCode)
                     if flag == 0:
+                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '使用检查模板进行检查...')
                         check_describe = new_check.fourth_step_check_template(new_template_ID)
                     else:
+                        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '使用检查情况说明进行检查...')
                         check_situation = new_check.fourth_step_check_situation()
                     new_check.fifth_step()
                     new_check.final_step()
@@ -243,8 +245,10 @@ def simple_check():
                 new_check.final_step()
                 new_check_confirmer = NewCheck(driver)
                 if flag == 0:
+                    print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '使用检查模板进行检查...')
                     true_or_false[2] = new_check_confirmer.confirm_new_check_check_template(check_describe)
                 else:
+                    print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '使用检查情况说明进行检查...')
                     true_or_false[3] = new_check_confirmer.confirm_new_check_check_situation(check_situation)
                 driver.quit()
             except Exception as e:
