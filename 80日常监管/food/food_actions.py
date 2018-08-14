@@ -98,9 +98,8 @@ class NewCheck(object):
 
     def fourth_step_check_situation(self):
         # 使用检查情况
-        template_ID = globalvar.get_value('food_template_ID')
         WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card2"))).click()
-        self.driver.find_element_by_id(template_ID).click()
+        self.button.click('//*[@id="jcbnr"]/div[1]/label/a')
         question_sheet = WebDriverWait(self.driver, 20, 0.5).until(EC.presence_of_element_located((By.ID, "card1")))
         question_sheet.click()
         self.driver.find_element_by_id("basicSituation").click()
