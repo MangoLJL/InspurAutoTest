@@ -202,7 +202,7 @@ def simple_check():
             i = 0  # 日常检查
             y = 6  # 食品经营
             food_bussiness_suite_true_or_false = [[], [], []]
-            z = 1  # 食品销售经营者
+            z = 0  # 食品销售经营者
             try:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】-【%s】测试' % (enterprise_type[y], food_bussiness_type[z], check_type_name[i]))
                 food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
@@ -228,11 +228,13 @@ def simple_check():
                     time.sleep(1)
                     driver.switch_to.default_content()
                     driver.switch_to.frame("mainFrame")
+                    '''
                     businessItem = "businessItem" + str(z)  # 拼食品经营小类
-                    try:  # 可能需要进一步修改
+                    try:  # 此处逻辑已被删除2018/8/15
                         driver.find_element_by_id(businessItem).click()
                     except:
                         pass
+                    '''
                     driver.find_element_by_id("secondBtn").click()
                 else:
                     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])
