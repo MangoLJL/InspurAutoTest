@@ -1,7 +1,7 @@
 # coding=utf-8
 import sys
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\common_modules')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\food')
 import re
 import time
 import traceback

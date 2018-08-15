@@ -1,15 +1,15 @@
 # coding=utf-8
 import sys
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管')
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\makeup')
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\drug')
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\food')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\makeup')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\drug')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\common_modules')
 import unittest
 import schedule
 import threading
 import time
-import send_test_report
+import DailyCheck.send_test_report
 from food.test_food_daily_check import TestFoodDailyCheck
 from makeup.test_makeup_daily_check import TestMakeupDailyCheck
 from drug.test_drug_daily_check import TestDrugDailyCheck

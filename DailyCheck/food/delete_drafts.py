@@ -2,7 +2,7 @@
 import re
 import time
 import sys
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\common_modules')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\common_modules')
 import time
 import re
 import random

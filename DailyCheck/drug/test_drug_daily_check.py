@@ -1,6 +1,6 @@
 import sys
 import traceback
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\drug')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\drug')
 import unittest
 from drug.drug_daily_check import *
 from drug.drug_actions import Template
@@ -23,7 +23,7 @@ class TestDrugDailyCheck(unittest.TestCase):
                 template.clean_template()
         except Exception as e:
             print("清理药品模板失败，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s清理药品模板失败.png" %
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\食品日常检查\\error_screenshot\\%s清理药品模板失败.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 #    @unittest.skip("I don't want to run this case.")
