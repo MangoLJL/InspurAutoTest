@@ -13,5 +13,5 @@ subject = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + 'Tes
 
 
 def send_text_report_html(test_report_path):
-    MS = MailSender(my_sender, my_pass, sender_name, receiver_addr, content, subject)
+    MS = MailSender(my_sender, my_pass, sender_name, receiver_addr, subject)
     MS.send_html(test_report_path)
