@@ -1,5 +1,6 @@
 # coding=utf-8
 import sys
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管')
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\food')
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\makeup')
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\drug')
