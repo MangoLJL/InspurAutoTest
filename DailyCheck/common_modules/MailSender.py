@@ -26,7 +26,7 @@ class MailSender(object):
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '邮件发送成功')
 
     def send_html(self, path):
-        with open(path)as f:
+        with open(path, encoding='UTF-8')as f:
             mail_body = f.read()
         msg = MIMEText(mail_body, _subtype='html', _charset='utf-8')
         msg['to'] = '管理员'
