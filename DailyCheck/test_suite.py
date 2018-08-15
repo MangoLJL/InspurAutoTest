@@ -9,7 +9,7 @@ import unittest
 import schedule
 import threading
 import time
-import DailyCheck.send_test_report
+form DailyCheck.send_test_report import send_test_report
 from food.test_food_daily_check import TestFoodDailyCheck
 from makeup.test_makeup_daily_check import TestMakeupDailyCheck
 from drug.test_drug_daily_check import TestDrugDailyCheck
