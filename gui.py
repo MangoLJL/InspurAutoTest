@@ -88,7 +88,7 @@ class AutoTestGUI(BaseWidget):
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
         self.result_text.value = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...\n' + \
             time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '本次将测试：' + test_str
-        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck&&python test_suite.py %s" % test_str)
+        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck&&python test_suite.py %s %s" % (test_str, str(self.check_box.value)))
         self.result_text.value = result.read()
 
     def open_test_report_action(self):

@@ -48,7 +48,10 @@ def job(test_str):
                                 verbosity=2
                                 )
         runner.run(suite)
-    send_test_report.send_text_report_html(test_report_path)
+    if email_flag == 'True':
+        send_test_report.send_text_report_html(test_report_path)
+
 
 test_str = sys.argv[1]
-job(test_str)
+email_flag = sys.argv[2]
+job(test_str, email_flag)
