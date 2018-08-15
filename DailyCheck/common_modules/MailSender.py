@@ -28,7 +28,7 @@ class MailSender(object):
     def send_html(self, path):
         with open(path)as f:
             mail_body = f.read()
-        msg = MIMEText(, _subtype='html', _charset='utf-8')
+        msg = MIMEText(mail_body, _subtype='html', _charset='utf-8')
         msg['to'] = '管理员'
         msg['Subject'] = self.subject
         server = smtplib.SMTP_SSL("smtp.qq.com", 465)
