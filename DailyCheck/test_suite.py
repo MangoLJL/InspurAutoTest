@@ -17,7 +17,7 @@ from common_modules.HTMLTestRunner import HTMLTestRunner
 # if __name__ == '__main__':
 
 
-def job(test_str):
+def job(test_str, email_flag):
     suite = unittest.TestSuite()
     tests = []
     if 'Food_New_Template' in test_str:
