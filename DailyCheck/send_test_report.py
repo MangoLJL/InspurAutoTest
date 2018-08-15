@@ -1,5 +1,6 @@
 # coding=utf-8
 import sys
+import time
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\common_modules')
 from common_modules.MailSender import MailSender
 
