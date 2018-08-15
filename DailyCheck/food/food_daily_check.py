@@ -229,7 +229,10 @@ def simple_check():
                     driver.switch_to.default_content()
                     driver.switch_to.frame("mainFrame")
                     businessItem = "businessItem" + str(z)  # 拼食品经营小类
-                    driver.find_element_by_id(businessItem).click()
+                    try:  # 可能需要进一步修改
+                        driver.find_element_by_id(businessItem).click()
+                    except:
+                        pass
                     driver.find_element_by_id("secondBtn").click()
                 else:
                     print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '【%s】企业列表无数据，跳过此类别企业...' % enterprise_type[y])

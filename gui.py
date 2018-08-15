@@ -10,6 +10,7 @@ from pyforms.controls import ControlCombo
 from pyforms.controls import ControlTextArea
 from pyforms.controls import ControlLabel
 from pyforms.controls import ControlCheckBoxList
+from pyforms.controls import ControlCheckBox
 
 
 class AutoTestGUI(BaseWidget):
@@ -30,6 +31,7 @@ class AutoTestGUI(BaseWidget):
         self.check_box_list += ('Makeup_Simple_Check', False)
         self.check_box_list += ('Drug_New_Template', False)
         self.check_box_list += ('Drug_Simple_Check', False)
+        self.check_box = ControlCheckBox('Send Email', False)
 
         self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action_thread_button
@@ -50,7 +52,7 @@ class AutoTestGUI(BaseWidget):
         self.result_text = ControlLabel('结果将在此处显示...')
 
         self.set_margin(20)
-        self.formset = ['check_box_list', ('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'),
+        self.formset = ['check_box_list', 'check_box', ('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'),
                         ('delete_test_report', 'delete_screenshot'), 'label', 'result_text']
 
     def pull_from_github_action_thread_button(self):
