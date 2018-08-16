@@ -1,6 +1,6 @@
 # PythonAutoTest
 ## GUI
-![image](https://user-images.githubusercontent.com/27627484/44192547-6baa7400-a162-11e8-9cd4-fbc0ece85841.png)
+![image](https://user-images.githubusercontent.com/27627484/44195276-263e7480-a16b-11e8-830e-653dac4f49c8.png)
 
 ## 参数说明
 * Choose Test：选择需要执行的测试用例
