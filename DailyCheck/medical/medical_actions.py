@@ -52,7 +52,7 @@ class NewCheck(object):
             self.driver.find_element_by_id("secondBtn").click()
             return True
         else:
-            print('化妆品无企业数据')
+            print('医疗器械无企业数据')
             return False
 
     def third_step(self, checktype):

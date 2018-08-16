@@ -47,9 +47,9 @@ def medical_simple_check():
     medical_simple_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
     driver = medical_simple_check_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
     try:
-        medical_simple_check_setup.choose_first_menu('化妆品监督检查')
-        driver.find_element_by_id('000000000000000000000000019466').click()
-        driver.find_element_by_id('check0301010001').click()
+        medical_simple_check_setup.choose_first_menu('医疗器械检查')
+        driver.find_element_by_id('000000000000000000000000019472').click()
+        driver.find_element_by_id('check0401010001').click()
         switch_to_frame = SwitchToFrame(driver)
         switch_to_frame.switch_to_main_frame()
         new_check = NewCheck(driver)

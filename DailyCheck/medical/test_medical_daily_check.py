@@ -23,7 +23,7 @@ class TestMedicalDailyCheck(unittest.TestCase):
                 template.clean_template()
         except Exception as e:
             print("清理化妆品模板失败，截图已保存至new_template_error.png，当前url为：【%s】错误信息为：%s" % (driver.current_url, e))
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\食品日常检查\\error_screenshot\\%s清理化妆品模板失败.png" %
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\ErrorScreenshot\\%s清理化妆品模板失败.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
 
 #    @unittest.skip("I don't want to run this case.")
