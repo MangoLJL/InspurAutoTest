@@ -175,12 +175,10 @@ class Template(object):
 
     def create_template(self):
         self.button.click_plus_button()
-        makeup_template_name = ("%ssunhr测试模板" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
-        self.driver.find_element_by_id('templateName').send_keys(makeup_template_name)
+        medical_template_name = ("%ssunhr测试模板" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
+        self.driver.find_element_by_id('templateName').send_keys(medical_template_name)
         self.button.click('radio0')
-        self.button.click('radio1')
-        self.button.click('radio2')
-        self.send_keys.send('checkProgramNum', '1')
+        #self.send_keys.send('checkProgramNum', '1')
         self.button.click('isPeriod1')
         self.button.click('DeptName')
         self.common_action.scroll_and_switch_to_iframe()
@@ -227,22 +225,22 @@ class Template(object):
         self.driver.switch_to.frame(iframe)
         self.driver.find_element_by_xpath("//button[@class='btn btn-success'][2]").click()
         self.button.click_confirm_button()
-        globalvar.set_value('makeup_template_name', makeup_template_name)
-        return makeup_template_name
+        globalvar.set_value('medical_template_name', medical_template_name)
+        return medical_template_name
 
-    def confirm_new_template(self, makeup_template_name):
+    def confirm_new_template(self, medical_template_name):
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
-        if current_template_name == makeup_template_name:
+        if current_template_name == medical_template_name:
             current_template_ID = str(self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href'))
             template_ID_suits = current_template_ID.split('\'')
-            makeup_template_ID = template_ID_suits[1]
-            globalvar.set_value('makeup_template_ID', makeup_template_ID)
+            medical_template_ID = template_ID_suits[1]
+            globalvar.set_value('medical_template_ID', medical_template_ID)
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建化妆品模板成功，测试通过')
             return True
         else:
-            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % makeup_template_name)
+            print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % medical_template_name)
             driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\食品日常检查\\error_screenshot\\%sconfirm_new_template_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             return False
@@ -250,9 +248,9 @@ class Template(object):
     def clean_template(self):
         url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz'
         self.driver.get(url)
-        makeup_template_name = globalvar.get_value('makeup_template_name')
+        medical_template_name = globalvar.get_value('medical_template_name')
         current_html = self.driver.page_source
-        target = self.common_action.find('a', makeup_template_name)
+        target = self.common_action.find('a', medical_template_name)
         finaltarget = target.parent
         finaltarget = finaltarget.previous_sibling
         finaltarget = finaltarget.previous_sibling

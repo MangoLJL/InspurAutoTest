@@ -4,6 +4,7 @@ sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\food')
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\makeup')
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\drug')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\medical')
 sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\common_modules')
 import unittest
 import schedule
@@ -13,6 +14,7 @@ import send_test_report
 from food.test_food_daily_check import TestFoodDailyCheck
 from makeup.test_makeup_daily_check import TestMakeupDailyCheck
 from drug.test_drug_daily_check import TestDrugDailyCheck
+from medical.test_medical_daily_check import TestMedicalDailyCheck
 from common_modules.HTMLTestRunner import HTMLTestRunner
 
 
@@ -38,6 +40,10 @@ def job(test_str, email_flag):
     if 'Drug_New_Template' in test_str:
         tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
     if 'Drug_Simple_Check' in test_str:
+        tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
+    if 'Medical_New_Template' in test_str:
+        tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
+    if 'Medical_Simple_Check' in test_str:
         tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
     suite.addTests(tests)
     test_report_path = ('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())))

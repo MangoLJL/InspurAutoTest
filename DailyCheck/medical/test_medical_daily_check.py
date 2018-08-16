@@ -1,18 +1,18 @@
 import sys
 import traceback
-sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\makeup')
+sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\medical')
 import unittest
-from makeup.makeup_daily_check import *
-from makeup.makeup_actions import Template
+from medical.medical_daily_check import *
+from medical.medical_actions import Template
 import common_modules.globalvar as globalvar
 
 
-class TestMakeupDailyCheck(unittest.TestCase):
+class TestMedicalDailyCheck(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
         try:
-            template_ID = globalvar.get_value('makeup_template_ID')
+            template_ID = globalvar.get_value('medical_template_ID')
             if template_ID == 'None':
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有需要清理的化妆品模板...')
             else:
@@ -32,6 +32,6 @@ class TestMakeupDailyCheck(unittest.TestCase):
         """测试新建检查"""
         self.assertEqual(True, new_template())
 
-    def test_makeup_simple_check(self):
+    def test_medical_simple_check(self):
         """测试新建检查"""
-        self.assertEqual(True, makeup_simple_check())
+        self.assertEqual(True, medical_simple_check())

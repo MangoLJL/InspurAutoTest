@@ -31,6 +31,8 @@ class AutoTestGUI(BaseWidget):
         self.check_box_list += ('Makeup_Simple_Check', False)
         self.check_box_list += ('Drug_New_Template', False)
         self.check_box_list += ('Drug_Simple_Check', False)
+        self.check_box_list += ('Medical_New_Template', False)
+        self.check_box_list += ('Medical_Simple_Check', False)
         self.check_box = ControlCheckBox('Send Email', False)
 
         self.pull_from_github = ControlButton('Pull From GitHub')
