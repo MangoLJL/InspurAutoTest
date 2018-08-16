@@ -178,7 +178,7 @@ class Template(object):
         medical_template_name = ("%ssunhr测试模板" % time.strftime('%Y%m%d%H%M%S', time.localtime(time.time())))
         self.driver.find_element_by_id('templateName').send_keys(medical_template_name)
         self.button.click('radio0')
-        #self.send_keys.send('checkProgramNum', '1')
+        self.send_keys.send('checkProgramNum', '1')
         self.button.click('isPeriod1')
         self.button.click('DeptName')
         self.common_action.scroll_and_switch_to_iframe()
@@ -229,7 +229,7 @@ class Template(object):
         return medical_template_name
 
     def confirm_new_template(self, medical_template_name):
-        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz')
+        url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=yl')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == medical_template_name:
@@ -237,16 +237,16 @@ class Template(object):
             template_ID_suits = current_template_ID.split('\'')
             medical_template_ID = template_ID_suits[1]
             globalvar.set_value('medical_template_ID', medical_template_ID)
-            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建化妆品模板成功，测试通过')
+            print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建医疗器械模板成功，测试通过')
             return True
         else:
             print("查找新建模板【%s】失败，当前截图已保存为confirm_new_template_error" % medical_template_name)
-            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck\\食品日常检查\\error_screenshot\\%sconfirm_new_template_error.png" %
+            driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\ErrorScreenshot\\%sconfirm_new_template_error.png" %
                                           time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             return False
 
     def clean_template(self):
-        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=hz'
+        url = 'http://10.12.1.80/checkOfCity/jsp/dtdcheck/basic/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=yl'
         self.driver.get(url)
         medical_template_name = globalvar.get_value('medical_template_name')
         current_html = self.driver.page_source
@@ -268,4 +268,4 @@ class Template(object):
         self.button.click_confirm_button()
         time.sleep(0.5)
         self.button.click_confirm_button()
-        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理化妆品模板完成')
+        print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理医疗器械模板完成')
