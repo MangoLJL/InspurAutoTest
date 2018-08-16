@@ -3,6 +3,10 @@ import time
 import shutil
 import pyforms
 import threading
+from pyforms.utils.settings_manager import conf
+import settings
+conf += settings
+
 from pyforms import BaseWidget
 from pyforms.controls import ControlText
 from pyforms.controls import ControlButton

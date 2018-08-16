@@ -1,0 +1,168 @@
+QMainWindow{
+	background-color: white;
+}
+
+QLabel{
+	min-width: 110px;
+}
+
+QLineEdit{
+	min-width: 200px;
+	border: 1px solid #CCC;
+	height: 30px;
+	padding-left: 10px;
+}
+
+QPushButton{
+	background: #3498db;
+	color: #ffffff;
+	padding: 8px 20px 8px 20px;
+    border-radius: 3px;
+}
+
+QPushButton:hover {
+  background: #3cb0fd;
+}
+
+QScrollBar:vertical {
+        width: 20px;
+        background: transparent;
+        margin-left: 3px;
+        margin-right: 3px;
+}
+QScrollBar::handle:vertical {
+        width: 20px;
+        min-height: 30px;
+        background: rgb(170, 200, 230);
+        margin-top: 15px;
+        margin-bottom: 15px;
+}
+QScrollBar::handle:vertical:hover {
+        background: rgb(165, 195, 225);
+}
+QScrollBar::sub-line:vertical {
+        height: 15px;
+        background: transparent;
+        image: url(:/White/topArrow);
+        subcontrol-position: top;
+}
+QScrollBar::add-line:vertical {
+        height: 15px;
+        background: transparent;
+        image: url(:/White/bottomArrow);
+        subcontrol-position: bottom;
+}
+QScrollBar::sub-line:vertical:hover {
+        background: rgb(170, 200, 230);
+}
+QScrollBar::add-line:vertical:hover {
+        background: rgb(170, 200, 230);
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+        background: transparent;
+}
+
+QScrollBar#verticalScrollBar:vertical {
+        margin-top: 30px;
+}
+
+
+
+QCheckBox{
+        spacing: 5px;
+}
+QCheckBox:enabled:checked{
+        color: rgb(2, 65, 132);
+}
+QCheckBox:enabled:!checked{
+        color: rgb(70, 71, 73);
+}
+QCheckBox:enabled:hover{
+        color: rgb(0, 78, 161);
+}
+QCheckBox:!enabled{
+        color: rgb(80, 80, 80);
+}
+QCheckBox::indicator {
+        width: 20px;
+        height: 20px;
+}
+QLabel#grayLabel {
+        color: rgb(70, 71, 73);
+}
+
+QLabel#highlightLabel {
+        color: rgb(2, 65, 132);
+}
+
+QLabel#redLabel {
+        color: red;
+}
+
+QLabel#grayYaHeiLabel {
+        color: rgb(175, 175, 175);
+        font-size: 16px;
+}
+
+QLabel#blueLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#listLabel {
+        color: rgb(51, 51, 51);
+}
+
+QLabel#lineBlueLabel {
+        background: rgb(0, 78, 161);
+}
+
+QLabel#graySeperateLabel {
+        background: rgb(200, 220, 230);
+}
+
+QLabel#seperateLabel {
+        background: rgb(112, 153, 194);
+}
+
+QLabel#radiusBlueLabel {
+        border-radius: 15px;
+        color: white;
+        font-size: 16px;
+        background: rgb(0, 78, 161);
+}
+
+QLabel#skinLabel[colorProperty="normal"] {
+        color: rgb(56, 99, 154);
+}
+QLabel#skinLabel[colorProperty="highlight"] {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#informationLabel {
+        qproperty-pixmap: url(:/White/information);
+}
+
+QLabel#errorLabel {
+        qproperty-pixmap: url(:/White/error);
+}
+
+QLabel#successLabel {
+        qproperty-pixmap: url(:/White/success);
+}
+
+QLabel#questionLabel {
+        qproperty-pixmap: url(:/White/question);
+}
+
+QLabel#warningLabel {
+        qproperty-pixmap: url(:/White/warning);
+}
+
+QLabel#groupLabel {
+        color: rgb(56, 99, 154);
+        border: 1px solid rgb(111, 156, 207);
+        font-size: 15px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+}
