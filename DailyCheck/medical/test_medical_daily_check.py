@@ -14,9 +14,9 @@ class TestMedicalDailyCheck(unittest.TestCase):
         try:
             template_ID = globalvar.get_value('medical_template_ID')
             if template_ID == 'None':
-                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有需要清理的化妆品模板...')
+                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '没有需要清理的医疗器械模板...')
             else:
-                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理化妆品模板...')
+                print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '清理医疗器械模板...')
                 clean_template_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
                 driver = clean_template_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')
                 template = Template(driver)

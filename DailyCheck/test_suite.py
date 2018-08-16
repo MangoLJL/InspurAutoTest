@@ -27,7 +27,7 @@ def job(test_str, email_flag):
         tests.append(TestFoodDailyCheck("test_simple_check"))  # 食品现场录入简易版本
     if 'Food_New_Check' in test_str:
         tests.append(TestFoodDailyCheck("test_new_check"))  # 食品现场录入全覆盖版本
-    if 'Food_Double_Random Check' in test_str:
+    if 'Food_Double_Random_Check' in test_str:
         tests.append(TestFoodDailyCheck("test_double_random_task"))  # 食品双随机
     if 'Food_Normal_Task' in test_str:
         tests.append(TestFoodDailyCheck("test_normal_task"))  # 食品普通计划
