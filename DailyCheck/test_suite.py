@@ -42,9 +42,9 @@ def job(test_str, email_flag):
     if 'Drug_Simple_Check' in test_str:
         tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
     if 'Medical_New_Template' in test_str:
-        tests.append(TestDrugDailyCheck("test_new_template"))  # 药品新建模板
+        tests.append(TestMedicalDailyCheck("test_new_template"))  # 药品新建模板
     if 'Medical_Simple_Check' in test_str:
-        tests.append(TestDrugDailyCheck("test_drug_simple_check"))  # 药品现场录入建议版本
+        tests.append(TestMedicalDailyCheck("test_medical_simple_check"))  # 药品现场录入建议版本
     suite.addTests(tests)
     test_report_path = ('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\TestReport\\%sTestReport.html' % time.strftime('%Y-%m-%d_%H-%M', time.localtime(time.time())))
     with open(test_report_path, 'wb') as f:
