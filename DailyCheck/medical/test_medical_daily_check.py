@@ -29,7 +29,7 @@ class TestMedicalDailyCheck(unittest.TestCase):
 #    @unittest.skip("I don't want to run this case.")
 
     def test_new_template(self):
-        """测试新建检查"""
+        """测试新建模板"""
         self.assertEqual(True, new_template())
 
     def test_medical_simple_check(self):
