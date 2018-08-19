@@ -18,7 +18,7 @@ from medical.test_medical_daily_check import TestMedicalDailyCheck
 from common_modules.HTMLTestRunner import HTMLTestRunner
 
 
-def job(test_str, email_flag):
+def job(test_str, email_flag, sender_address, sender_password, receiver_address):
     suite = unittest.TestSuite()
     tests = []
     if 'Food_New_Template' in test_str:
@@ -54,9 +54,13 @@ def job(test_str, email_flag):
                                 )
         runner.run(suite)
     if email_flag == 'True':
-        send_test_report.send_text_report_html(test_report_path)
+        send_test_report.send_text_report_html(test_report_path, sender_address, sender_password, receiver_address)
 
 
 test_str = sys.argv[1]
 email_flag = sys.argv[2]
-job(test_str, email_flag)
+sender_address = sys.argv[3]
+sender_password = sys.argv[4]
+receiver_address = sys.argv[5]
+
+job(test_str, email_flag, sender_address, sender_password, receiver_address)

@@ -37,7 +37,11 @@ class AutoTestGUI(BaseWidget):
         self.check_box_list += ('Drug_Simple_Check', False)
         self.check_box_list += ('Medical_New_Template', False)
         self.check_box_list += ('Medical_Simple_Check', False)
+
         self.check_box = ControlCheckBox('Send Email', False)
+        self.sender_address = ControlText('Sender Address:')
+        self.sender_password = ControlText('  Sender Password:')
+        self.receiver_address = ControlText('  Receiver Address:')
 
         self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action_thread_button
@@ -58,7 +62,7 @@ class AutoTestGUI(BaseWidget):
         self.result_text = ControlLabel('结果将在此处显示...')
 
         self.set_margin(20)
-        self.formset = ['check_box_list', 'check_box', ('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'),
+        self.formset = ['check_box_list', 'check_box', ('sender_address', 'sender_password', 'receiver_address'), ('pull_from_github', 'run_daily_check_test_suite', 'open_test_report'),
                         ('delete_test_report', 'delete_screenshot'), 'label', 'result_text']
 
     def pull_from_github_action_thread_button(self):
@@ -94,7 +98,8 @@ class AutoTestGUI(BaseWidget):
         self.current_minute = time.strftime('%M', time.localtime(time.time()))
         self.result_text.value = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...\n' + \
             time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '本次将测试：' + test_str
-        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck&&python test_suite.py %s %s" % (test_str, str(self.check_box.value)))
+        result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck&&python test_suite.py %s %s %s %s %s" %
+                          (test_str, str(self.check_box.value), self.sender_address.value, self.sender_password.value, self.receiver_address.value))
         self.result_text.value = result.read()
 
     def open_test_report_action(self):
