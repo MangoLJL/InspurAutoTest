@@ -5,7 +5,7 @@ sys.path.append('C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck
 from common_modules.MailSender import MailSender
 
 
-receiver_addr = []  # 填写收件人邮箱
+receiver_addr = []
 sender_name = 'TestResult'
 subject = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + 'TestReport'
 
