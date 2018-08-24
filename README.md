@@ -13,3 +13,6 @@
 * Open Latest Test Report：打开最新的测试报告HTML
 * Delete Test Report：删除所有的测试报告
 * Delete Screenshot：删除所有的错误截图
+
+## 说明
+自2018年8月24日起不再维护。
