@@ -1,4 +1,4 @@
-# PythonAutoTest
+# Inspur自动化测试代码
 ## GUI
 ![image](https://user-images.githubusercontent.com/27627484/44316205-005feb00-a45d-11e8-8f00-b6ddafa2474f.png)
 
