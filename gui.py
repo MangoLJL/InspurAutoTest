@@ -46,7 +46,7 @@ class AutoTestGUI(BaseWidget):
         self.pull_from_github = ControlButton('Pull From GitHub')
         self.pull_from_github.value = self.pull_from_github_action_thread_button
 
-        self.run_daily_check_test_suite = ControlButton('Run Test Suite')
+        self.run_daily_check_test_suite = ControlButton('Run Tests')
         self.run_daily_check_test_suite.value = self.run_daily_check_test_suite_action_thread_button
 
         self.open_test_report = ControlButton('Open Latest Test Report')
