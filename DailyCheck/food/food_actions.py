@@ -34,7 +34,7 @@ class NewCheck(object):
 
     def second_step(self):
         enterprise_selector = self.driver.find_element_by_id("enterpriseName")
-        ActionChains(self.driver).double_click(enterprise_selector).perform()
+        ActionChains(self.driver).double_click(enterprise_selector).perform()  # 双击
         self.driver.switch_to.default_content()
         time.sleep(1)
         iframe = self.driver.find_element_by_xpath("//iframe[contains(@id,'layui-layer-iframe')]")
@@ -701,14 +701,20 @@ class Template(object):
         return template_name
 
     def confirm_new_template(self, template_name):
+        # 此处的原理为：
+        # 因为业务上的测试需求是“建一个模板，然后根据模板走一个检查”，因此要在建立模板后现场检查时候定位到建立的模板。
+        # 分析选择模板时候的元素【<a id="8ab200a664eac8230164f58b7da62d20" onclick="getDisplayColumn('8ab200a664eac8230164f58b7da62d20')"> 创城、创卫餐饮检查表<font style="color:orange;"></font> </a>】
+        # 可见里边有一个ID，经过分析此ID会在模板列表中的herf中显示为【<a data-toggle="tooltip" title="" href="javascript:detail('8a8c81d1656b2f3a01656f4eac2803e0','01')" data-original-title="9527模板">9527模板</a>】
+        # 因此只需要截取到herf中的id，现场录入时直接通过id定位即可
         url = ('http://10.12.1.80/checkOfCity/jsp/dtdcheck/food/checkTemplate/dtdcheckftemplate_list.jsp?entParentId=food')
         self.driver.get(url)
         current_template_name = self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').text
         if current_template_name == template_name:
+            # 获取herf内的字段如【javascript:detail('8a8c81d1656b2f3a01656f4eac2803e0','01')】
             current_template_ID = str(self.driver.find_element_by_xpath('//*[@id="grid"]/tbody/tr[1]/td[3]/a').get_attribute('href'))
-            template_ID_suits = current_template_ID.split('\'')
-            template_ID = template_ID_suits[1]
-            globalvar.set_value('food_template_ID', template_ID)
+            template_ID_suits = current_template_ID.split('\'')  # 通过【'】分割成四段【javascript:detail(】、【8a8c81d1656b2f3a01656f4eac2803e0】、【,】、【01】
+            template_ID = template_ID_suits[1]  # 取第一段即为id
+            globalvar.set_value('food_template_ID', template_ID)  # 通过globalvar存下来
             print(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + '新建模板成功，测试通过')
             return True
         else:

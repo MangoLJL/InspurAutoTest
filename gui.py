@@ -100,6 +100,7 @@ class AutoTestGUI(BaseWidget):
             time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '本次将测试：' + test_str
         result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck&&python test_suite.py %s %s %s %s %s" %
                           (test_str, str(self.check_box.value), self.sender_address.value, self.sender_password.value, self.receiver_address.value))
+        # 五个参数分别为：测试的用例、是否发送邮件、发送人地址、发送人口令、接收人地址
         self.result_text.value = result.read()
 
     def open_test_report_action(self):

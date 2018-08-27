@@ -28,7 +28,7 @@ class Setup(object):
         '''
         driver = webdriver.Ie()
         '''
-        driver.maximize_window()
+        driver.maximize_window()  # 窗口最大化
         self.driver = driver
         self.driver.get(self.url)
         self.driver.find_element_by_id("j_username").send_keys("%s" % username)
@@ -37,7 +37,7 @@ class Setup(object):
         self.driver.find_element_by_xpath("//button[@id='form-ok']").click()
         time.sleep(2)
         x = 0
-        while x < 10:
+        while x < 10:  # 因为系统升级后经常登陆后跳转到404，所以此处while逻辑为判断是否是404，是的话则重新登陆
             self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(2)
             current_html = self.driver.page_source
@@ -60,7 +60,7 @@ class Setup(object):
         try:
             locate_first_menu = self.driver.find_element_by_xpath("//span[@class='applyText'][contains(text(),'%s')]" % first_menu)
             if second_menu == '行政执法' or second_menu == '投诉举报' or second_menu == '风险预警' or second_menu == '分析标准' or second_menu == '移动服务' or second_menu == '考试信息':
-                second_menu_class = 'extApply'
+                second_menu_class = 'extApply'  # 看前台dom可知这几个菜单的class可能是开发不规范，与别的不同
             else:
                 second_menu_class = 'pic-font'
             ActionChains(self.driver).move_to_element(locate_first_menu).perform()  # IE浏览器需要移植元素上
@@ -128,11 +128,13 @@ class SwitchToFrame(object):
         self.driver = driver
 
     def switch_to_main_frame(self):
+        # 切换到mainframe
         time.sleep(2)
         self.driver.switch_to.frame("mainFrame")
         time.sleep(1)
 
     def switch_to_default_content(self):
+        # 切换到默认
         time.sleep(2)
         self.driver.switch_to.default_content()
         time.sleep(1)
@@ -142,12 +144,15 @@ class Time(object):
     # 获取当前日期，获取当前星期，获取当前日期和详细时间
 
     def get_current_date(self):
+        # 输出20180827
         return time.strftime('%Y%m%d', time.localtime(time.time()))
 
     def get_current_week(self):
+        # 输出0123456，0代表周日
         return time.strftime('%w', time.localtime(time.time()))
 
     def get_log_time(self):
+        # 输出201808271430
         return time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 
 
@@ -158,11 +163,13 @@ class SendKeys(object):
 
     def send(self, id_or_xpath, text):
         if id_or_xpath.find('/') == -1:
+            # 因为xpath必然有右斜杠，如果没有的话则find方法返回的是-1，因此为id，使用方法为【SendKeys.send('id/xpath','xxx')】
             try:
                 self.driver.find_element_by_id(id_or_xpath).send_keys(text)
             except Exception as e:
                 print(e)
         else:
+            # 如不为-1，则证明有右斜杠，则为xpath
             try:
                 self.driver.find_element_by_xpath(id_or_xpath).send_keys(text)
             except Exception as e:
@@ -175,6 +182,7 @@ class Button(object):
         self.driver = driver
 
     def click(self, id_or_xpath):
+        # 使用方法为【Button.click('id/xpath')】
         if id_or_xpath.find('/') == -1:
             try:
                 self.driver.find_element_by_id(id_or_xpath).click()
@@ -244,11 +252,13 @@ class CommonAction(object):
         self.driver = driver
 
     def get_screenshot(self, name):
+        # 使用方法为【CommonAction.get_screenshot('XXX')】,截图名称为'日期＋XXX.png'
         self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\Documents\\PythonAutoTest\\80日常监管\\食品日常检查\\error_screenshot\\%s%s.png" %
                                            (time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())), name))
 
     def find(self, find_type, find_target):
-        # 输入需要查询的标签类型（如：span/a）和要查询的标签内的文字，返回BS类型的元素，可以用来操作'previous_sibling'等
+        # 输入需要查询的标签类型（如：span/a）和要查询的标签内的文字，如【soup.find('span','XXX')】，返回BS类型的元素，可以用来操作'previous_sibling'等
+        # BS元素可使用的属性见：https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html
         while 1:
             try:
                 self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
@@ -281,7 +291,7 @@ class CommonAction(object):
     def data_exsists(self):
         while 1:
             try:
-                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+                self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")  # 避免动态加载
                 time.sleep(2)
                 current_html = self.driver.page_source
                 soup = BeautifulSoup(current_html, 'lxml')

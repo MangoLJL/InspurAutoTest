@@ -1,3 +1,8 @@
+# coding=utf-8
+# 此模块作用为解决跨py文件传递参数的问题
+# 业务上为了解决传递新建的模板的模板ID问题
+
+
 def _init():
     global _global_dict
     _global_dict = {}

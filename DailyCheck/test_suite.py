@@ -53,14 +53,23 @@ def job(test_str, email_flag, sender_address, sender_password, receiver_address)
                                 verbosity=2
                                 )
         runner.run(suite)
-    if email_flag == 'True':
+    if email_flag == 'True' and sender_address != 'None' and sender_password != 'None'and sender_password != 'None':
         send_test_report.send_text_report_html(test_report_path, sender_address, sender_password, receiver_address)
 
 
 test_str = sys.argv[1]
 email_flag = sys.argv[2]
-sender_address = sys.argv[3]
-sender_password = sys.argv[4]
-receiver_address = sys.argv[5]
+try:
+    sender_address = sys.argv[3]
+except:
+    sender_address = 'None'
+try:
+    sender_password = sys.argv[4]
+except:
+    sender_password = 'None'
+try:
+    receiver_address = sys.argv[5]
+except:
+    sender_password = 'None'
 
 job(test_str, email_flag, sender_address, sender_password, receiver_address)
