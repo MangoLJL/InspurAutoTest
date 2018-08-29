@@ -21,8 +21,6 @@ class AutoTestGUI(BaseWidget):
 
     def __init__(self):
         super(AutoTestGUI, self).__init__('AutoTestGUI')
-        self.current_hour = None
-        self.current_minute = None
 
         self.check_box_list = ControlCheckBoxList('Choose Tests:')
         self.check_box_list += ('Food_New_Template', False)
@@ -94,8 +92,6 @@ class AutoTestGUI(BaseWidget):
         test_str = ''
         for i in range(len(test_list)):
             test_str = test_str + test_list[i] + ';'
-        self.current_hour = time.strftime('%Y-%m-%d_%H', time.localtime(time.time()))
-        self.current_minute = time.strftime('%M', time.localtime(time.time()))
         self.result_text.value = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始运行...\n' + \
             time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '本次将测试：' + test_str
         result = os.popen("cd C:\\Users\\Administrator\\Documents\\PythonAutoTest\\DailyCheck&&python test_suite.py %s %s %s %s %s" %
