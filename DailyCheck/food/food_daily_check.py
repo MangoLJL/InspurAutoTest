@@ -19,8 +19,8 @@ from common_modules.common_action import Setup, SwitchToFrame, Time, Button, Com
 
 
 def new_check():
+    # 新建检查，基本废弃
     new_template_ID = globalvar.get_value('food_template_ID')
-    # 新建检查
 
     def true_plus_false(a, b):
         return (a and b)
@@ -202,7 +202,7 @@ def simple_check():
             i = 0  # 日常检查
             y = 6  # 食品经营
             food_bussiness_suite_true_or_false = [[], [], []]
-            z = 0  # 食品销售经营者
+            # z = 0  # 食品销售经营者  # 此处逻辑已被删除2018/8/15
             try:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】-【%s】测试' % (enterprise_type[y], food_bussiness_type[z], check_type_name[i]))
                 food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
@@ -276,8 +276,8 @@ def double_random_task():
         new_double_random = NewDoubleRandom(driver)
         switch_to_frame.switch_to_main_frame()
         task_name = new_double_random.create_new_random_task()  # 创建双随机任务
-        new_random_test_confirmer_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
-        driver = new_random_test_confirmer_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')  # 因为涉及到计划提交到其他人的情况，所以需要另外建一个driver
+        new_random_test_receiver_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
+        driver = new_random_test_receiver_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')  # 因为涉及到计划提交到其他人的情况，所以需要另外建一个driver
         new_random_test_receiver = NewDoubleRandom(driver)
         new_random_test_receiver.receive_new_random_test(task_name)  # 接收双随机任务
         driver.quit()

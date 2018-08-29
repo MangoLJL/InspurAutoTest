@@ -427,6 +427,7 @@ class NewDoubleRandom(object):
                 return False
         except Exception as e:
             traceback.print_exc()
+            return False
 
 
 class NewNormalTask(object):

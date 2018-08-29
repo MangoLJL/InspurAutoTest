@@ -59,6 +59,7 @@ def job(test_str, email_flag, sender_address, sender_password, receiver_address)
 
 test_str = sys.argv[1]
 email_flag = sys.argv[2]
+# 下方逻辑可避免不填写东西时报错
 try:
     sender_address = sys.argv[3]
 except:
