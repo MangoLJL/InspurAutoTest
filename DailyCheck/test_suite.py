@@ -71,6 +71,6 @@ except:
 try:
     receiver_address = sys.argv[5]
 except:
-    sender_password = 'None'
+    receiver_address = 'None'
 
 job(test_str, email_flag, sender_address, sender_password, receiver_address)
