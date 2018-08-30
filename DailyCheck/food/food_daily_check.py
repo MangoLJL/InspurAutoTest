@@ -276,6 +276,7 @@ def double_random_task():
         new_double_random = NewDoubleRandom(driver)
         switch_to_frame.switch_to_main_frame()
         task_name = new_double_random.create_new_random_task()  # 创建双随机任务
+        driver.quit()  # 0830修改过，可能有问题
         new_random_test_receiver_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
         driver = new_random_test_receiver_setup.setup_driver('liubx', '1', '智慧监管', '日常监管')  # 因为涉及到计划提交到其他人的情况，所以需要另外建一个driver
         new_random_test_receiver = NewDoubleRandom(driver)

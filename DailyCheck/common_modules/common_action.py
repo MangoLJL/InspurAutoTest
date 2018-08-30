@@ -96,6 +96,7 @@ class Setup(object):
             time.sleep(5)
 
     def choose_first_menu(self, first_menu):
+        # choose_menu函数不可用（出现重复的菜单名字）时候使用此函数进行选择
         button = Button(self.driver)
         time.sleep(5)
         try:
@@ -113,10 +114,12 @@ class Setup(object):
             self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % first_menu).click()
 
     def choose_second_menu(self, second_menu):
+        # choose_menu函数不可用（出现重复的菜单名字）时候使用此函数进行选择
         self.driver.find_element_by_xpath("//span[@class='menu-text'][contains(text(),'%s')]" % second_menu).click()
         time.sleep(0.5)
 
     def choose_third_menu(self, third_menu):
+        # choose_menu函数不可用（出现重复的菜单名字）时候使用此函数进行选择
         self.driver.find_element_by_xpath("//span[@class='menu-text context-menu'][contains(text(),'%s')]" % third_menu).click()
         time.sleep(3)
 
@@ -195,6 +198,7 @@ class Button(object):
                 print(e)
 
     def click_plus_button(self):
+        # 点击加号图标
         time.sleep(2)
         try:
             self.driver.find_element_by_xpath("//i[@class='fa fa-plus']").click()
@@ -203,11 +207,13 @@ class Button(object):
         time.sleep(5)
 
     def click_edit_button(self):
+        # 点击编辑图标
         time.sleep(2)
         self.driver.find_element_by_xpath("//i[@class='fa fa-edit']").click()
         time.sleep(5)
 
     def click_search_button(self):
+        # 点击放大镜图标
         time.sleep(2)
         try:
             self.driver.find_element_by_xpath("//i[@class='fa fa-search']").click()
@@ -219,22 +225,27 @@ class Button(object):
         time.sleep(5)
 
     def click_right_arrow_button(self):
+        # 点击向右箭头图标
         time.sleep(2)
         self.driver.find_element_by_xpath("//i[@class='fa fa-chevron-right fa-fw']").click()
 
     def click_calendar_start_button(self):
+        # 点击向日历开始
         self.driver.find_element_by_id("checkStartDate").click()
 
     def click_calendar_end_button(self):
+        # 点击向日历结束
         self.driver.find_element_by_id("checkEndDate").click()
 
     def click_save_button(self):
+        # 点击保存按钮
         try:
             self.driver.find_element_by_xpath("//button[@class='btn btn-success']").click()
         except Exception as e:
             self.driver.find_element_by_xpath("//button[@class='btn btn-success btn-sm']").click()
 
     def click_confirm_button(self):
+        # 点击确认按钮
         self.driver.switch_to.default_content()
         self.driver.find_element_by_xpath("//a[@class='layui-layer-btn0']").click()
 
@@ -243,6 +254,7 @@ class Button(object):
         self.driver.find_element_by_xpath("//i[@class='fa fa-save1 fa-fw']").click()
 
     def click_previous_button(self):
+        # 点击上一步按钮
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary btn-sm nap-step-pre']").click()
 
 
@@ -289,6 +301,7 @@ class CommonAction(object):
                 break
 
     def data_exsists(self):
+        # 判断数据是否存在，适用于日常检查选择企业的对话框
         while 1:
             try:
                 self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")  # 避免动态加载
@@ -305,6 +318,7 @@ class CommonAction(object):
                 break
 
     def scroll_and_switch_to_iframe(self):
+        # 滚动一下避免动态加载，然后切换到iframe
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
         self.driver.switch_to.default_content()
@@ -329,6 +343,7 @@ class CommonAction(object):
         print('error_HTML.txt已被删除')
 
     def click_error_button(self):
+        # 点击报错提示的确定按钮
         try:
             time.sleep(5)
             self.driver.switch_to.default_content()
