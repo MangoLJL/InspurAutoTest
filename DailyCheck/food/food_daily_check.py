@@ -202,7 +202,7 @@ def simple_check():
             i = 0  # 日常检查
             y = 6  # 食品经营
             food_bussiness_suite_true_or_false = [[], [], []]
-            # z = 0  # 食品销售经营者  # 此处逻辑已被删除2018/8/15
+            z = 0  # 食品销售经营者  # 此处逻辑已被删除2018/8/15
             try:
                 print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '开始进行【%s】-【%s】-【%s】测试' % (enterprise_type[y], food_bussiness_type[z], check_type_name[i]))
                 food_new_check_setup = Setup('http://10.12.1.80/portal/jsp/public/login.jsp')
