@@ -352,6 +352,5 @@ class CommonAction(object):
                                                time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())))
             button.click_confirm_button()
             print(time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '检测到有错误弹窗')
-        except Exception as e:
-            print(e)
+        except:
             pass
